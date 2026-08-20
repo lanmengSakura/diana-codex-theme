@@ -8,6 +8,8 @@
 
 ## 主题预览
 
+[打开在线桌面演示](https://lanmengsakura.github.io/diana-codex-theme/) · 支持日间／暗夜切换、场景时间轴和环境面板开关
+
 | Diana Night | Diana Day |
 |---|---|
 | ![Diana Night 模拟界面](preview/qa/readme-dark-1600x900.png) | ![Diana Day 模拟界面](preview/qa/readme-light-1600x900.png) |
