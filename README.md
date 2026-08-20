@@ -4,7 +4,7 @@
 
 一套为 Windows Codex 桌面端制作的嘉然（Diana）非商业同人主题。日间与暗夜分别设计，保留 Codex 原本的工具感，只让嘉然与手绘线稿安静地停留在工作区边角。
 
-[在线演示](https://lanmengsakura.github.io/diana-codex-theme/) · [下载发行包](https://github.com/lanmengSakura/diana-codex-theme/releases/latest) · [兼容性记录](docs/compatibility.md) · [参与贡献](CONTRIBUTING.md)
+[在线演示](https://lanmengsakura.github.io/diana-codex-theme/) · [30 秒演示视频](https://github.com/lanmengSakura/diana-codex-theme/releases/download/v0.1.0/diana-codex-theme-demo-v1.mp4) · [下载发行包](https://github.com/lanmengSakura/diana-codex-theme/releases/latest) · [兼容性记录](docs/compatibility.md) · [参与贡献](CONTRIBUTING.md)
 
 ![Release](https://img.shields.io/github/v/release/lanmengSakura/diana-codex-theme?display_name=tag&color=b84970&label=release)
 ![Platform](https://img.shields.io/badge/platform-Windows%2011-b85f7c)
@@ -17,6 +17,8 @@
 > 这是非官方、非商业的粉丝项目，与 OpenAI、Codex 及 A-SOUL 官方没有隶属或背书关系。代码采用 MIT License；嘉然、阿草及相关美术素材不包含在 MIT 授权中，详见 [素材许可与署名](ASSET_LICENSES.md)。
 
 ## 效果预览
+
+<p align="center"><a href="https://github.com/lanmengSakura/diana-codex-theme/releases/download/v0.1.0/diana-codex-theme-demo-v1.mp4"><strong>▶ 观看 30 秒日间／暗夜主题演示</strong></a></p>
 
 <a href="https://lanmengsakura.github.io/diana-codex-theme/?theme=dark&scene=complete&controls=none">
   <img src="preview/qa/readme-dark-1600x900.png" alt="Diana Night 暗夜主题高保真模拟界面" width="100%">
@@ -129,6 +131,14 @@ preview/index.html?theme=dark&scene=complete&controls=none
 preview/index.html?theme=light&scene=complete&controls=none
 preview/index.html?theme=dark&scene=inspect&controls=none&play=1
 ```
+
+仓库同时保留了宣传视频的确定性时间轴和逐帧渲染器。维护者在本机准备 Chrome CDP `9227` 端口及 FFmpeg 后，可以重新导出同款 30 秒、`1920 × 1080`、`30fps` 成片：
+
+```powershell
+npm run preview:video
+```
+
+脚本只读取这套虚构桌面母版，不会捕获真实 Codex 窗口或用户数据；生成的 MP4 与封面位于 `dist/`，不会自动写入 Git 历史。
 
 ## 它是怎样工作的
 

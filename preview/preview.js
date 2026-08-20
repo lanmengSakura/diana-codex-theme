@@ -9,6 +9,9 @@ const footerThemeName = document.querySelector('.footer-theme-name');
 const railButtons = [...document.querySelectorAll('.message-rail button')];
 const panelToggle = document.querySelector('.panel-toggle');
 const sidebarTasks = [...document.querySelectorAll('.sidebar-section .task')];
+const videoCaption = document.querySelector('.video-caption');
+const videoCaptionIndex = document.querySelector('.video-caption-index');
+const videoCaptionTitle = document.querySelector('.video-caption strong');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const sceneProgress = { compose: 0.12, inspect: 0.58, complete: 0.94 };
@@ -25,7 +28,10 @@ const segment = (value, start, end) => clamp((value - start) / (end - start));
 function setReveal(selector, opacity, offset = 16) {
   document.querySelectorAll(selector).forEach((element) => {
     element.style.opacity = String(opacity);
-    element.style.transform = `translateY(${(1 - opacity) * offset}px)`;
+    const y = (1 - opacity) * offset;
+    element.style.transform = element.classList.contains('change-toast')
+      ? `translate(-50%, ${y}px)`
+      : `translateY(${y}px)`;
   });
 }
 
@@ -93,11 +99,75 @@ function moveScene(direction) {
 }
 
 const params = new URLSearchParams(window.location.search);
+root.dataset.video = params.get('video') === '1' ? 'on' : 'off';
 setTheme(params.get('theme') || root.dataset.theme);
 root.dataset.controls = ['off', 'none'].includes(params.get('controls')) ? params.get('controls') : 'on';
 setScene(params.get('scene') || root.dataset.scene);
 if (params.has('time')) renderTimeline(Number(params.get('time')));
 setPlaying(params.get('play') === '1');
+
+const videoDuration = 30;
+const easeInOut = (value) => {
+  const t = clamp(value);
+  return t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+};
+const ramp = (time, start, end) => easeInOut((time - start) / (end - start));
+const holdOpacity = (time, start, end, fade = .55) => Math.min(
+  ramp(time, start, start + fade),
+  1 - ramp(time, end - fade, end)
+);
+
+function setVideoCaption(index, title, opacity) {
+  videoCaptionIndex.textContent = index;
+  videoCaptionTitle.textContent = title;
+  root.style.setProperty('--video-caption-opacity', opacity.toFixed(3));
+  root.style.setProperty('--video-caption-shift', `${((1 - opacity) * 12).toFixed(2)}px`);
+}
+
+function renderVideo(rawTime) {
+  const time = Math.min(videoDuration, Math.max(0, Number(rawTime) || 0));
+  const lightPhase = time >= 15 && time < 25.2;
+  setTheme(lightPhase ? 'light' : 'dark');
+  root.dataset.inspector = 'open';
+  panelToggle.setAttribute('aria-pressed', 'true');
+  panelToggle.classList.add('is-on');
+
+  let timelineProgress = .12;
+  if (time >= 2 && time < 7) timelineProgress = .12 + ramp(time, 2, 7) * .46;
+  else if (time >= 7 && time < 12.4) timelineProgress = .58 + ramp(time, 7, 12.4) * .36;
+  else if (time >= 12.4 && time < 15) timelineProgress = .94;
+  else if (time >= 15 && time < 17.2) timelineProgress = .12 + ramp(time, 15, 17.2) * .46;
+  else if (time >= 17.2 && time < 21.4) timelineProgress = .58 + ramp(time, 17.2, 21.4) * .36;
+  else timelineProgress = .94;
+  renderTimeline(timelineProgress);
+
+  let caption = { index: '01', title: '暗夜，不牺牲工作区', opacity: holdOpacity(time, .45, 4.4) };
+  if (time >= 5.5 && time < 13.2) caption = { index: '02', title: '真实任务密度与原生信息层级', opacity: holdOpacity(time, 6.2, 12.6, .65) };
+  if (time >= 15 && time < 20.4) caption = { index: '03', title: '日间，暖白与彩色细线', opacity: holdOpacity(time, 15.65, 20, .65) };
+  if (time >= 20.4 && time < 25) caption = { index: '04', title: '边角陪伴，不拦截任何交互', opacity: holdOpacity(time, 20.8, 24.55, .6) };
+  if (time >= 25) caption = { index: '04', title: '', opacity: 0 };
+  setVideoCaption(caption.index, caption.title, caption.opacity);
+
+  const firstTransition = Math.max(0, 1 - Math.abs(time - 15) / .72);
+  const secondTransition = Math.max(0, 1 - Math.abs(time - 25.2) / .58);
+  const transitionOpacity = Math.pow(Math.max(firstTransition, secondTransition), .72) * .985;
+  root.style.setProperty('--video-transition-opacity', transitionOpacity.toFixed(3));
+  root.style.setProperty('--video-transition-color', time < 20 ? '#fbf8f6' : '#0d0c0f');
+
+  const cameraPulse = Math.max(
+    holdOpacity(time, 7.7, 12.7, 1.2),
+    holdOpacity(time, 20.8, 24.6, .9)
+  );
+  root.style.setProperty('--video-camera-scale', (1 + cameraPulse * .012).toFixed(5));
+
+  const endOpacity = ramp(time, 25.7, 27.1);
+  root.style.setProperty('--video-end-opacity', endOpacity.toFixed(3));
+  root.style.setProperty('--video-end-shift', `${((1 - endOpacity) * 18).toFixed(2)}px`);
+  return { time, theme: root.dataset.theme, timelineProgress, caption: caption.title, endOpacity };
+}
+
+window.__dianaVideo = { duration: videoDuration, render: renderVideo };
+if (root.dataset.video === 'on') renderVideo(Number(params.get('videoTime') || 0));
 
 themeButtons.forEach((button) => button.addEventListener('click', () => setTheme(button.dataset.themeValue)));
 sceneSelect.addEventListener('change', (event) => setScene(event.target.value));

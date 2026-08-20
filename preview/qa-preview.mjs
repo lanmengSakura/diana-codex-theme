@@ -12,6 +12,9 @@ const cases = [
   { name: 'readme-light-1600x900', width: 1600, height: 900, query: 'theme=light&scene=complete&controls=none' },
   { name: 'promo-dark-1920x1080', width: 1920, height: 1080, query: 'theme=dark&scene=inspect&controls=none' },
   { name: 'promo-light-1920x1080', width: 1920, height: 1080, query: 'theme=light&scene=inspect&controls=none' },
+  { name: 'video-night-1920x1080', width: 1920, height: 1080, query: 'video=1&videoTime=8.6&controls=none' },
+  { name: 'video-day-1920x1080', width: 1920, height: 1080, query: 'video=1&videoTime=18.5&controls=none' },
+  { name: 'video-end-1920x1080', width: 1920, height: 1080, query: 'video=1&videoTime=28&controls=none' },
   { name: 'preview-mobile-375x812', width: 375, height: 812, query: 'theme=dark&scene=complete&controls=none' }
 ];
 
