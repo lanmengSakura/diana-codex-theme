@@ -29,6 +29,8 @@
   --video-caption-opacity: 0;
   --video-caption-shift: 12px;
   --video-transition-opacity: 0;
+  --video-intro-opacity: 0;
+  --video-intro-scale: 1;
   --video-end-opacity: 0;
   --video-end-shift: 18px;
   --video-camera-scale: 1;
@@ -240,6 +242,22 @@ button:focus-visible, textarea:focus-visible, select:focus-visible, input:focus-
 .source-heading .inspector-label { margin-bottom: 0; }
 
 .video-transition { position: absolute; z-index: 40; inset: 0; background: var(--video-transition-color, #fbf8f6); opacity: 0; pointer-events: none; }
+.video-intro { position: absolute; z-index: 50; inset: 0; overflow: hidden; background: radial-gradient(circle at 72% 48%, rgb(104 53 72 / 22%), transparent 28%), linear-gradient(135deg, #0c0b0e 0%, #121015 58%, #0b0a0d 100%); color: #f7eef2; opacity: 0; transform: scale(var(--video-intro-scale)); transform-origin: center; pointer-events: none; }
+.video-intro::before { content: ""; position: absolute; inset: 34px; border: 1px solid rgb(226 126 160 / 15%); border-radius: 24px; }
+.video-intro-orbit { position: absolute; left: 50%; top: 50%; width: 760px; height: 760px; border: 1px solid rgb(231 153 176 / 14%); border-radius: 50%; transform: translate(-12%, -50%); box-shadow: 0 0 0 72px rgb(231 153 176 / 2.5%), 0 0 0 190px rgb(231 153 176 / 1.5%); }
+.video-intro-doodle { position: absolute; left: 92px; bottom: -46px; width: 520px; aspect-ratio: 1267 / 1241; background: url("../assets/diana-brand/derived/diana-doodle-chalk-v2-approved.png") center / contain no-repeat; opacity: .31; filter: brightness(.88) saturate(.82); }
+.video-intro-character { position: absolute; right: 86px; bottom: -86px; width: 650px; height: 990px; background: url("../assets/diana-brand/derived/diana-night-v3.png") right bottom / contain no-repeat; opacity: .72; filter: brightness(1.04) saturate(.92) drop-shadow(0 34px 80px rgb(0 0 0 / 38%)); }
+.video-intro-copy { position: absolute; z-index: 2; left: 470px; top: 395px; display: grid; gap: 12px; }
+.video-intro-copy::before { content: ""; width: 62px; height: 3px; margin-bottom: 6px; border-radius: 99px; background: #df7196; box-shadow: 0 0 22px rgb(223 113 150 / 32%); }
+.video-intro-copy small { color: #dc7899; font: 650 12px/1.4 "Cascadia Code", Consolas, monospace; letter-spacing: .18em; }
+.video-intro-copy strong { font-size: 62px; line-height: 1.05; letter-spacing: -.045em; }
+.video-intro-copy strong i { color: #d87898; font-style: normal; font-weight: 450; }
+.video-intro-copy p { margin: 0; color: rgb(247 238 242 / 62%); font: 500 18px/1.5 "Cascadia Code", Consolas, monospace; letter-spacing: .04em; }
+.video-intro-star, .video-intro-candy { position: absolute; display: block; background-position: center; background-size: contain; background-repeat: no-repeat; }
+.video-intro-star { width: 52px; aspect-ratio: 1; background-image: url("../assets/diana-brand/derived/diana-hand-star-reference-v2.png"); opacity: .62; filter: brightness(.92) saturate(.84); }
+.video-intro-star-a { left: 386px; top: 314px; transform: rotate(-13deg); }
+.video-intro-star-b { right: 70px; top: 104px; width: 36px; transform: rotate(11deg); }
+.video-intro-candy { left: 876px; bottom: 156px; width: 78px; aspect-ratio: 1; background-image: url("../assets/diana-brand/derived/diana-candy-wrapped-v1.png"); opacity: .56; filter: brightness(.88) saturate(.86); transform: rotate(9deg); }
 .video-caption { position: absolute; z-index: 32; left: 455px; top: 103px; display: flex; align-items: stretch; gap: 14px; min-width: 390px; padding: 12px 17px 12px 13px; border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); border-radius: 12px; background: color-mix(in srgb, var(--panel-strong) 88%, transparent); color: var(--ink); box-shadow: 0 16px 42px var(--shadow); backdrop-filter: blur(12px); opacity: 0; transform: translateY(12px); pointer-events: none; }
 .video-caption-index { width: 38px; display: grid; place-items: center; border-right: 1px solid var(--work-panel-border); color: var(--accent); font: 650 12px/1 "Cascadia Code", Consolas, monospace; letter-spacing: .08em; }
 .video-caption > div { display: grid; gap: 2px; }
@@ -253,6 +271,7 @@ button:focus-visible, textarea:focus-visible, select:focus-visible, input:focus-
 .video-end-card code { display: inline-block; padding: 8px 11px; border: 1px solid var(--work-panel-border); border-radius: 8px; background: var(--accent-wash); color: color-mix(in srgb, var(--ink) 78%, var(--accent)); font: 12px/1.4 "Cascadia Code", Consolas, monospace; }
 :root[data-video="on"] .app-grid { transition: none !important; }
 :root[data-video="on"] .video-transition { opacity: var(--video-transition-opacity); }
+:root[data-video="on"] .video-intro { opacity: var(--video-intro-opacity); }
 :root[data-video="on"] .video-caption { opacity: var(--video-caption-opacity); transform: translateY(var(--video-caption-shift)); }
 :root[data-video="on"] .video-end-card { opacity: var(--video-end-opacity); transform: translate(-50%, calc(-50% + var(--video-end-shift))); }
 :root[data-video="on"] :is(.simulation-note, .demo-controls, .controls-open) { display: none !important; }

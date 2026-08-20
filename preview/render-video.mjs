@@ -6,10 +6,10 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const previewDir = path.dirname(fileURLToPath(import.meta.url));
 const projectDir = path.dirname(previewDir);
 const endpoint = process.argv[2] || 'http://127.0.0.1:9227';
-const outputPath = path.resolve(process.argv[3] || path.join(projectDir, 'dist', 'diana-codex-theme-demo-v1.mp4'));
-const coverPath = path.join(path.dirname(outputPath), 'diana-codex-theme-demo-cover.png');
+const outputPath = path.resolve(process.argv[3] || path.join(projectDir, 'dist', 'diana-codex-theme-demo-v2-visual.mp4'));
+const coverPath = path.join(path.dirname(outputPath), 'diana-codex-theme-demo-v2-cover.png');
 const fps = 30;
-const duration = 30;
+const duration = 45;
 const totalFrames = fps * duration;
 const previewUrl = `${pathToFileURL(path.join(previewDir, 'index.html')).href}?video=1&controls=none`;
 
@@ -154,7 +154,7 @@ for (let frame = 0; frame < totalFrames; frame += 1) {
 encoder.stdin.end();
 await encoderDone;
 
-await send('Runtime.evaluate', { expression: 'window.__dianaVideo.render(22.6)', returnByValue: true });
+await send('Runtime.evaluate', { expression: 'window.__dianaVideo.render(1.45)', returnByValue: true });
 const cover = await send('Page.captureScreenshot', { format: 'png', fromSurface: true, captureBeyondViewport: false });
 await writeFile(coverPath, Buffer.from(cover.data, 'base64'));
 

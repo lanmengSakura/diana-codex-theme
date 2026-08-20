@@ -106,7 +106,7 @@ setScene(params.get('scene') || root.dataset.scene);
 if (params.has('time')) renderTimeline(Number(params.get('time')));
 setPlaying(params.get('play') === '1');
 
-const videoDuration = 30;
+const videoDuration = 45;
 const easeInOut = (value) => {
   const t = clamp(value);
   return t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
@@ -126,41 +126,46 @@ function setVideoCaption(index, title, opacity) {
 
 function renderVideo(rawTime) {
   const time = Math.min(videoDuration, Math.max(0, Number(rawTime) || 0));
-  const lightPhase = time >= 15 && time < 25.2;
+  const lightPhase = time >= 23.5 && time < 35.5;
   setTheme(lightPhase ? 'light' : 'dark');
   root.dataset.inspector = 'open';
   panelToggle.setAttribute('aria-pressed', 'true');
   panelToggle.classList.add('is-on');
 
   let timelineProgress = .12;
-  if (time >= 2 && time < 7) timelineProgress = .12 + ramp(time, 2, 7) * .46;
-  else if (time >= 7 && time < 12.4) timelineProgress = .58 + ramp(time, 7, 12.4) * .36;
-  else if (time >= 12.4 && time < 15) timelineProgress = .94;
-  else if (time >= 15 && time < 17.2) timelineProgress = .12 + ramp(time, 15, 17.2) * .46;
-  else if (time >= 17.2 && time < 21.4) timelineProgress = .58 + ramp(time, 17.2, 21.4) * .36;
+  if (time >= 3 && time < 10) timelineProgress = .12 + ramp(time, 3, 10) * .46;
+  else if (time >= 10 && time < 20.8) timelineProgress = .58 + ramp(time, 10, 20.8) * .36;
+  else if (time >= 20.8 && time < 23.5) timelineProgress = .94;
+  else if (time >= 23.5 && time < 27) timelineProgress = .12 + ramp(time, 23.5, 27) * .46;
+  else if (time >= 27 && time < 33.5) timelineProgress = .58 + ramp(time, 27, 33.5) * .36;
   else timelineProgress = .94;
   renderTimeline(timelineProgress);
 
-  let caption = { index: '01', title: '暗夜，不牺牲工作区', opacity: holdOpacity(time, .45, 4.4) };
-  if (time >= 5.5 && time < 13.2) caption = { index: '02', title: '真实任务密度与原生信息层级', opacity: holdOpacity(time, 6.2, 12.6, .65) };
-  if (time >= 15 && time < 20.4) caption = { index: '03', title: '日间，暖白与彩色细线', opacity: holdOpacity(time, 15.65, 20, .65) };
-  if (time >= 20.4 && time < 25) caption = { index: '04', title: '边角陪伴，不拦截任何交互', opacity: holdOpacity(time, 20.8, 24.55, .6) };
-  if (time >= 25) caption = { index: '04', title: '', opacity: 0 };
+  let caption = { index: '01', title: '为 Windows Codex 制作', opacity: holdOpacity(time, 3.15, 7.15) };
+  if (time >= 7.15 && time < 14.6) caption = { index: '02', title: '暗夜，暖黑与莓粉', opacity: holdOpacity(time, 7.55, 14.15, .65) };
+  if (time >= 14.6 && time < 23.2) caption = { index: '03', title: '保留原生信息与交互层级', opacity: holdOpacity(time, 15, 22.75, .65) };
+  if (time >= 23.2 && time < 30.5) caption = { index: '04', title: '日间，暖白与彩色细线', opacity: holdOpacity(time, 24.05, 30.05, .65) };
+  if (time >= 30.5 && time < 35.3) caption = { index: '05', title: '日夜切换，也能随时恢复', opacity: holdOpacity(time, 30.85, 34.95, .6) };
+  if (time >= 35.3) caption = { index: '05', title: '', opacity: 0 };
   setVideoCaption(caption.index, caption.title, caption.opacity);
 
-  const firstTransition = Math.max(0, 1 - Math.abs(time - 15) / .72);
-  const secondTransition = Math.max(0, 1 - Math.abs(time - 25.2) / .58);
+  const firstTransition = Math.max(0, 1 - Math.abs(time - 23.5) / .72);
+  const secondTransition = Math.max(0, 1 - Math.abs(time - 35.5) / .58);
   const transitionOpacity = Math.pow(Math.max(firstTransition, secondTransition), .72) * .985;
   root.style.setProperty('--video-transition-opacity', transitionOpacity.toFixed(3));
-  root.style.setProperty('--video-transition-color', time < 20 ? '#fbf8f6' : '#0d0c0f');
+  root.style.setProperty('--video-transition-color', time < 30 ? '#fbf8f6' : '#0d0c0f');
+
+  const introOpacity = 1 - ramp(time, 2.15, 3.05);
+  root.style.setProperty('--video-intro-opacity', introOpacity.toFixed(3));
+  root.style.setProperty('--video-intro-scale', (1 + ramp(time, 0, 3.05) * .018).toFixed(5));
 
   const cameraPulse = Math.max(
-    holdOpacity(time, 7.7, 12.7, 1.2),
-    holdOpacity(time, 20.8, 24.6, .9)
+    holdOpacity(time, 11, 20.6, 1.2),
+    holdOpacity(time, 26.7, 34.8, .9)
   );
   root.style.setProperty('--video-camera-scale', (1 + cameraPulse * .012).toFixed(5));
 
-  const endOpacity = ramp(time, 25.7, 27.1);
+  const endOpacity = ramp(time, 36.1, 37.35);
   root.style.setProperty('--video-end-opacity', endOpacity.toFixed(3));
   root.style.setProperty('--video-end-shift', `${((1 - endOpacity) * 18).toFixed(2)}px`);
   return { time, theme: root.dataset.theme, timelineProgress, caption: caption.title, endOpacity };
