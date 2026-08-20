@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "diana-light",
   "displayName": "Diana Day",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "status": "beta",
   "variant": "light",
   "nativeAppearance": {

@@ -39,3 +39,17 @@ test("restore stops the watcher before restoring native appearance", async () =>
   assert.match(restore, /diana-runtime\.mjs/);
   assert.match(restore, /restore --port \$Port/);
 });
+
+test("the environment heading star is restored and styled in both variants", async () => {
+  const runtime = await read("tools/diana-runtime.mjs");
+  const dark = await read("themes/diana-dark/theme.css");
+  const light = await read("themes/diana-light/theme.css");
+  assert.match(runtime, /syncEnvironmentHeadingStar/);
+  assert.match(runtime, /diana-environment-heading-star/);
+  assert.match(runtime, /Environment information/);
+  for (const source of [dark, light]) {
+    assert.match(source, /\.diana-environment-heading-star/);
+    assert.match(source, /--codedrobe-image-hand-star/);
+    assert.match(source, /pointer-events: none/);
+  }
+});

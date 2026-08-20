@@ -4,14 +4,14 @@
 
 - Operating system: Windows 11
 - Codex distribution: Microsoft Store / MSIX
-- Locally inspected version: `26.810.7004.0`
-- Theme release: `0.1.0`
+- Locally inspected version: `26.814.5517.0`
+- Theme release: `0.1.1`
 - Visual status: Diana Night and Diana Day finalized
 - Runtime status: beta
 
-## Live verification on 2026-08-18
+## Live verification on 2026-08-21
 
-The Diana runtime adapter was verified against the locally installed Microsoft Store build `26.810.7004.0`.
+The Diana runtime adapter was verified against the locally installed Microsoft Store build `26.814.5517.0`.
 
 - CDP bound to `127.0.0.1:9336`.
 - Main renderer matched by `aside.app-shell-left-panel ~ main`.
@@ -21,6 +21,7 @@ The Diana runtime adapter was verified against the locally installed Microsoft S
 - Page reloads and newly created renderer targets received the theme through one watcher.
 - The launcher no longer leaves Codex App Manager and its additional WebView2 subtree running.
 - Native appearance settings are backed up before the first managed change.
+- The Diana hand-drawn star remains attached to the environment heading across collapse, reopen, and panel rerender states.
 
 ## Showcase verification on 2026-08-20
 

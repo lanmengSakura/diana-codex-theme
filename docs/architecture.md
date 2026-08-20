@@ -23,7 +23,7 @@ The Windows launcher:
 
 ## 3. Simulated showcase
 
-`preview/index.html` is an independent 1920×1080 interface simulation. It references the same final theme assets and mirrors the released theme parameters, but it does not connect to Codex or read local tasks. README screenshots and future promotional video frames are generated from this page.
+`preview/index.html` is an independent 1920×1080 interface simulation. It references the same final theme assets and mirrors the released theme parameters, but it does not connect to Codex or read local tasks. The README day and night screenshots are generated from this page.
 
 ## Safety boundaries
 

@@ -282,6 +282,19 @@ html.codedrobe-host-codex header button[class*="section-toggle"]:not(:disabled):
   color: var(--diana-accent) !important;
 }
 
+html.codedrobe-host-codex .diana-environment-heading-star {
+  display: block;
+  flex: 0 0 auto;
+  width: 21px;
+  height: 21px;
+  background-color: var(--diana-accent);
+  -webkit-mask: var(--codedrobe-image-hand-star) center / contain no-repeat;
+  mask: var(--codedrobe-image-hand-star) center / contain no-repeat;
+  opacity: .72;
+  transform: rotate(-8deg);
+  pointer-events: none;
+}
+
 /* Diana app chrome: navigation, desktop menus, project folders, and panel toggles. */
 html.codedrobe-host-codex header.draggable
   :where(button[aria-label="隐藏边栏"], button[aria-label="Hide sidebar"], button[aria-label="返回"], button[aria-label="Back"], button[aria-label="前进"], button[aria-label="Forward"]) {

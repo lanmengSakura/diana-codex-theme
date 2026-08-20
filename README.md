@@ -4,7 +4,7 @@
 
 一套为 Windows Codex 桌面端制作的嘉然（Diana）非商业同人主题。日间与暗夜分别设计，保留 Codex 原本的工具感，只让嘉然与手绘线稿安静地停留在工作区边角。
 
-[在线演示](https://lanmengsakura.github.io/diana-codex-theme/) · [CodexThemes 社区](https://codexthemes.ai/skins/diana-codex-theme) · [45 秒带声演示](https://github.com/lanmengSakura/diana-codex-theme/releases/download/v0.1.0/diana-codex-theme-demo-v4-published-zh-CN.mp4) · [下载发行包](https://github.com/lanmengSakura/diana-codex-theme/releases/latest) · [兼容性记录](docs/compatibility.md) · [参与贡献](CONTRIBUTING.md)
+[在线演示](https://lanmengsakura.github.io/diana-codex-theme/) · [CodexThemes 社区](https://codexthemes.ai/skins/diana-codex-theme) · [下载发行包](https://github.com/lanmengSakura/diana-codex-theme/releases/latest) · [兼容性记录](docs/compatibility.md) · [参与贡献](CONTRIBUTING.md)
 
 ![Release](https://img.shields.io/github/v/release/lanmengSakura/diana-codex-theme?display_name=tag&color=b84970&label=release)
 ![Platform](https://img.shields.io/badge/platform-Windows%2011-b85f7c)
@@ -15,10 +15,10 @@
 
 > [!IMPORTANT]
 > 这是非官方、非商业的粉丝项目，与 OpenAI、Codex 及 A-SOUL 官方没有隶属或背书关系。代码采用 MIT License；嘉然、阿草及相关美术素材不包含在 MIT 授权中，详见 [素材许可与署名](ASSET_LICENSES.md)。
+>
+> 本项目中的嘉然、阿草及相关视觉内容均为 A-SOUL 二创内容，请勿用于任何商业化用途。
 
 ## 效果预览
-
-<p align="center"><a href="https://github.com/lanmengSakura/diana-codex-theme/releases/download/v0.1.0/diana-codex-theme-demo-v4-published-zh-CN.mp4"><strong>▶ 观看 45 秒中文旁白、字幕与《Hopeful Dreamer》器乐配乐演示</strong></a></p>
 
 <a href="https://lanmengsakura.github.io/diana-codex-theme/?theme=dark&scene=complete&controls=none">
   <img src="preview/qa/readme-dark-1600x900.png" alt="Diana Night 暗夜主题高保真模拟界面" width="100%">
@@ -56,7 +56,7 @@
 | Node.js | `22.4` 或更高版本 |
 | PowerShell | Windows PowerShell 5.1 或 PowerShell 7 |
 
-当前验证基线为 Codex `26.810.7004.0`。Codex 更新可能改变内部页面结构，更新前后的验证范围见 [docs/compatibility.md](docs/compatibility.md)。
+当前验证基线为 Codex `26.814.5517.0`。Codex 更新可能改变内部页面结构，更新前后的验证范围见 [docs/compatibility.md](docs/compatibility.md)。
 
 ### 安装并启用
 
@@ -106,7 +106,7 @@ npm run theme:autostart:remove
 
 自动挂载使用 Windows 任务计划程序的当前用户、受限权限和隐藏窗口模式。后台只保留一个主题 watcher；重复启用时会替换旧进程。
 
-## 在线演示与宣传母版
+## 在线演示
 
 本地打开：
 
@@ -114,7 +114,7 @@ npm run theme:autostart:remove
 npm run preview:open
 ```
 
-演示页使用固定 `1920 × 1080` 舞台，并根据浏览器窗口等比缩放。README 截图和后续宣传视频都从这一个页面导出，避免宣传图与实际主题使用两套视觉参数。
+演示页使用固定 `1920 × 1080` 舞台，并根据浏览器窗口等比缩放。README 日夜截图也由这个页面生成，确保展示图与主题使用同一套视觉参数。
 
 | 操作 | 功能 |
 |---|---|
@@ -131,18 +131,6 @@ preview/index.html?theme=dark&scene=complete&controls=none
 preview/index.html?theme=light&scene=complete&controls=none
 preview/index.html?theme=dark&scene=inspect&controls=none&play=1
 ```
-
-仓库同时保留了宣传视频的确定性时间轴、旁白母稿、字幕、原创配乐生成器和逐帧渲染器。维护者在本机准备 Chrome CDP `9227` 端口、FFmpeg、Python 与 `edge-tts` 后，可以重新导出同款 45 秒、`1920 × 1080`、`30fps` 带声成片：
-
-```powershell
-npm run preview:video:narrated
-```
-
-只需要无声视觉母版时，可以执行 `npm run preview:video`。完整脚本只读取这套虚构桌面母版，不会捕获真实 Codex 窗口或用户数据；生成的 MP4、旁白、配乐与封面位于 `dist/`，不会自动写入 Git 历史。
-
-默认配乐由仓库脚本原创合成。若维护者另有可合法使用的本地音轨，可以用
-`tools/render-narrated-video.ps1 -BgmPath <本地音频> -OutputPath <输出文件> -ReuseVisual`
-快速重混，无需重渲染画面。外部录音不会自动进入 Git 或发行包；《Hopeful Dreamer》非商业本地混音的来源与边界见 [配乐说明](video/hopeful-dreamer-source.md)，完整素材规则见 [素材许可与署名](ASSET_LICENSES.md)。
 
 ## 它是怎样工作的
 
@@ -167,7 +155,7 @@ flowchart LR
 ```text
 assets/        嘉然、阿草、线稿和装饰素材
 docs/          架构、兼容性、概念稿与发布说明
-preview/       高保真模拟界面、时间轴和 README 截图
+preview/       高保真展示页面与 README 日夜截图
 skills/        可复用的主题制作与验证 Skill
 tests/         启动器与展示页静态测试
 themes/        Diana Night / Diana Day 主题源码
@@ -189,9 +177,8 @@ npm run theme:pack
 ## 许可与素材
 
 - 代码、脚本与主题配置使用 [MIT License](LICENSE)。
-- 嘉然、阿草的名称、形象、原始美术和派生图片不包含在 MIT 授权中，仅用于非商业同人创作。
+- 嘉然、阿草的名称、形象、原始美术和派生图片不包含在 MIT 授权中，均为 A-SOUL 二创内容，请勿用于任何商业化用途。
 - 素材来源、处理方式和再使用边界记录在 [ASSET_LICENSES.md](ASSET_LICENSES.md)。
-- 重新分发或二次修改前，请自行确认并遵守适用的官方二创规则。
 
 <div align="center">
 

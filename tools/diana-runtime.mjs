@@ -165,11 +165,20 @@ const dianaRendererProfile = {
     const cornerLineClass = "diana-corner-line";
     const characterStarsClass = "diana-character-stars";
     const characterAcaoClass = "diana-character-acao";
+    const environmentStarClass = "diana-environment-heading-star";
+    const environmentLabels = [
+      "环境信息",
+      "Environment",
+      "Environment info",
+      "Environment information",
+    ];
     let trackedScroller = null;
     let trackedNav = null;
     let railMutationObserver = null;
     let railResizeObserver = null;
     let railAnimationFrame = 0;
+    let environmentMutationObserver = null;
+    let environmentAnimationFrame = 0;
 
     function scheduleMessageRailSync() {
       if (railAnimationFrame) return;
@@ -268,6 +277,65 @@ const dianaRendererProfile = {
       railResizeObserver.observe(trackedScroller);
       syncMessageRail();
       scheduleMessageRailSync();
+    }
+
+    function findEnvironmentHeadingButton() {
+      const title = Array.from(
+        document.querySelectorAll(
+          'section[role="presentation"] > header button[aria-expanded] > span',
+        ),
+      ).find((element) => environmentLabels.includes((element.textContent ?? "").trim()));
+      return title?.closest("button") ?? null;
+    }
+
+    function mutationTouchesEnvironmentHeading(mutation) {
+      return [...mutation.addedNodes, ...mutation.removedNodes].some((node) => {
+        if (node.nodeType !== Node.ELEMENT_NODE) return false;
+        if (node.classList?.contains(environmentStarClass)) return true;
+        const text = (node.textContent ?? "").trim();
+        return environmentLabels.some((label) => text === label || text.includes(label));
+      });
+    }
+
+    function syncEnvironmentHeadingStar() {
+      const heading = findEnvironmentHeadingButton();
+      document.querySelectorAll(`.${environmentStarClass}`).forEach((star) => {
+        if (star.parentElement !== heading) star.remove();
+      });
+      if (!heading || heading.querySelector(`:scope > .${environmentStarClass}`)) return;
+
+      const star = document.createElement("span");
+      star.className = environmentStarClass;
+      star.setAttribute("aria-hidden", "true");
+      heading.prepend(star);
+    }
+
+    function scheduleEnvironmentHeadingSync() {
+      if (environmentAnimationFrame) return;
+      environmentAnimationFrame = requestAnimationFrame(() => {
+        environmentAnimationFrame = 0;
+        syncEnvironmentHeadingStar();
+      });
+    }
+
+    function ensureEnvironmentHeadingTracking() {
+      if (!environmentMutationObserver) {
+        environmentMutationObserver = new MutationObserver((mutations) => {
+          if (mutations.some(mutationTouchesEnvironmentHeading)) {
+            scheduleEnvironmentHeadingSync();
+          }
+        });
+        environmentMutationObserver.observe(document.body, { childList: true, subtree: true });
+      }
+      syncEnvironmentHeadingStar();
+    }
+
+    function stopEnvironmentHeadingTracking() {
+      if (environmentAnimationFrame) cancelAnimationFrame(environmentAnimationFrame);
+      environmentAnimationFrame = 0;
+      environmentMutationObserver?.disconnect();
+      environmentMutationObserver = null;
+      document.querySelectorAll(`.${environmentStarClass}`).forEach((star) => star.remove());
     }
 
     function findSurface() {
@@ -370,6 +438,7 @@ const dianaRendererProfile = {
 
       if (isAuxiliaryWindow) {
         stopMessageRailTracking();
+        stopEnvironmentHeadingTracking();
         return true;
       }
 
@@ -393,11 +462,13 @@ const dianaRendererProfile = {
       const home = document.querySelector('[role="main"]:has([data-testid="home-icon"])');
       chrome.classList.toggle("dream-home-shell", Boolean(home));
       ensureMessageRailTracking();
+      ensureEnvironmentHeadingTracking();
       return true;
     }
 
     function cleanup() {
       stopMessageRailTracking();
+      stopEnvironmentHeadingTracking();
       document.documentElement?.classList.remove("codedrobe-codex-skin", auxiliaryWindowClass);
       document.getElementById(chromeId)?.remove();
       document.querySelectorAll(`.${surfaceClass}`).forEach((surface) => {
@@ -443,6 +514,13 @@ const dianaRendererProfile = {
           selectors: [`[${railCurrentAttribute}="true"]`],
         });
       }
+      const environmentHeading = findEnvironmentHeadingButton();
+      if (environmentHeading && !environmentHeading.querySelector(`:scope > .${environmentStarClass}`)) {
+        missing.push({
+          name: "diana-environment-heading-star",
+          selectors: [`.${environmentStarClass}`],
+        });
+      }
       return {
         id: "diana-codex-v1",
         pass: missing.length === 0,
@@ -466,6 +544,7 @@ const dianaRendererProfile = {
     document.querySelectorAll("[data-diana-viewport-current]").forEach((button) => {
       button.removeAttribute("data-diana-viewport-current");
     });
+    document.querySelectorAll(".diana-environment-heading-star").forEach((star) => star.remove());
   },
 };
 

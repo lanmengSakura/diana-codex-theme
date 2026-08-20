@@ -3,6 +3,11 @@
 /dist/
 /.runtime/
 
+# Local Bilibili video production files are maintained separately.
+/video/
+/preview/render-video.mjs
+/tools/render-narrated-video.ps1
+
 # The deployed showcase is maintained as a separate nested project.
 /site/
 

@@ -1,6 +1,6 @@
 {
   "name": "diana-codex-theme",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A reversible Diana fan theme for Codex Desktop, with independent day and night variants.",
   "private": true,
   "type": "module",
@@ -25,9 +25,6 @@
     "theme:restore": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/restore-diana-theme.ps1",
     "theme:uninstall": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/restore-diana-theme.ps1 -RemoveAutostart",
     "preview:open": "powershell.exe -NoProfile -Command Start-Process (Resolve-Path 'preview/index.html')",
-    "preview:video": "node preview/render-video.mjs",
-    "preview:video:narrated": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/render-narrated-video.ps1",
-    "video:bgm": "node video/generate-bgm.mjs",
     "validate": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File skills/diana-codex-theme/scripts/validate-theme.ps1",
     "test": "node --test tests/*.test.mjs",
     "check": "npm run test && npm run validate && npm run theme:pack"
