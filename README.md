@@ -47,18 +47,74 @@
 
 ## 开始使用
 
-### 环境要求
+### 先选择部署路线
+
+| 路线 | 适用对象 | 当前状态 | 部署方式 |
+|---|---|---|---|
+| Windows 已验证路线 | Windows 11、Microsoft Store / MSIX 版 Codex | 已在真实 Codex `26.814.5517.0` 验证 | 下载完整仓库，通过本地启动器挂载主题 |
+| macOS Skill 路线 | 希望让 Codex 在 Mac 上现场部署主题的用户 | 实验性，尚未真机验证 | 安装自包含 Skill，由 Codex 检查当前版本后决定安全部署方式 |
+
+Windows 用户优先使用第一条路线。macOS 路线提供的是完整美术素材、日夜 CSS 蓝图和部署规则，不代表每个 Mac 版 Codex 都已经确认存在可用的主题入口。
+
+### 路线一：Windows 已验证部署
+
+#### 环境要求
 
 | 项目 | 要求 |
 |---|---|
 | 操作系统 | Windows 11 |
 | Codex | Microsoft Store / MSIX 桌面版 |
+| Git | 任意当前可用版本；使用 ZIP 下载时可以不安装 |
 | Node.js | `22.4` 或更高版本 |
 | PowerShell | Windows PowerShell 5.1 或 PowerShell 7 |
 
 当前验证基线为 Codex `26.814.5517.0`。Codex 更新可能改变内部页面结构，更新前后的验证范围见 [docs/compatibility.md](docs/compatibility.md)。
 
-### macOS 实验性 Skill 部署
+#### 安装说明
+
+1. 安装 [Node.js](https://nodejs.org/) `22.4` 或更高版本，建议选择 LTS。安装完成后关闭并重新打开 PowerShell。
+2. 获取项目文件。下面两种方式任选一种：
+
+   - 已安装 [Git for Windows](https://git-scm.com/download/win)：
+
+     ```powershell
+     git clone https://github.com/lanmengSakura/diana-codex-theme.git
+     cd diana-codex-theme
+     ```
+
+   - 不使用 Git：下载 [项目 ZIP](https://github.com/lanmengSakura/diana-codex-theme/archive/refs/heads/main.zip)，解压后进入文件夹，在文件夹空白处右键选择“在终端中打开”。
+
+3. 在项目目录安装依赖。第一次执行需要联网，等待命令正常结束：
+
+   ```powershell
+   npm ci
+   ```
+
+4. 选择一个版本启用：
+
+   ```powershell
+   # 暗夜版
+   npm run theme:dark
+
+   # 日间版；两条命令只需要执行其中一条
+   # npm run theme:light
+   ```
+
+5. 首次启用时，启动器会关闭并重新打开 Codex。重新进入后可以检查主题状态：
+
+   ```powershell
+   npm run theme:status
+   ```
+
+整个过程通常不需要管理员权限，也不需要手动修改 `WindowsApps`。调试端口只绑定在 `127.0.0.1:9336`，不会暴露到局域网或公网。
+
+> [!TIP]
+> 如果提示“无法识别 `git`”或“无法识别 `npm`”，先确认 Git 或 Node.js 已安装，再关闭并重新打开终端。只想先看效果，可以直接打开 [在线演示](https://lanmengsakura.github.io/diana-codex-theme/)，演示页不会连接本机 Codex，也不会读取本地任务。
+
+> [!NOTE]
+> 如果主题在普通方式重启 Codex 后消失，请继续阅读下面的“Windows 登录后自动挂载”。如果 Codex 更新后无法挂载，先重新执行 `npm run theme:dark` 或 `npm run theme:light`；仍未恢复时请查看 [兼容性记录](docs/compatibility.md)，不要修改应用安装文件。
+
+### 路线二：macOS 实验性 Skill 部署
 
 macOS 尚未经过真机验证，因此不列入正式兼容平台，也不提供一套假定路径与进程结构的固定安装器。仓库中的 [`skills/diana-codex-theme`](skills/diana-codex-theme) 已自包含日夜 CSS 蓝图和全部定稿美术素材。Mac 用户可以下载 [Diana Skill 压缩包](https://github.com/lanmengSakura/diana-codex-theme/releases/download/v0.1.1/diana-codex-theme-skill-0.1.1.zip)，解压到用户级 `$HOME/.agents/skills/diana-codex-theme`，然后对 Codex 说：
 
@@ -66,26 +122,7 @@ macOS 尚未经过真机验证，因此不列入正式兼容平台，也不提�
 
 Codex 会先检查当前 Mac 上的版本、发行方式和安全样式入口，再决定是否能做用户空间内、可恢复的部署。若没有安全入口，它应停止而不是修改 `.app`、`app.asar` 或应用签名。OpenAI 官方文档将 `$HOME/.agents/skills` 列为用户级 Skill 目录，并说明 Skill 可携带 `assets/`、`references/` 与可选脚本；详情见 [Build skills](https://learn.chatgpt.com/docs/build-skills)。
 
-### 安装并启用
-
-```powershell
-git clone https://github.com/lanmengSakura/diana-codex-theme.git
-cd diana-codex-theme
-npm ci
-
-# 暗夜版
-npm run theme:dark
-
-# 日间版
-# npm run theme:light
-```
-
-首次启用需要让 Codex 带着本地调试端口重新启动，因此当前正在运行的 Codex 会被关闭并重新打开。端口只绑定在 `127.0.0.1:9336`，不会暴露到局域网或公网。
-
-> [!TIP]
-> 只想先看效果，可以直接打开 [在线演示](https://lanmengsakura.github.io/diana-codex-theme/)。演示页不会连接本机 Codex，也不会读取本地任务。
-
-## 常用命令
+## Windows 常用命令
 
 | 用途 | 命令 | 是否重启 Codex |
 |---|---|---:|
@@ -99,7 +136,7 @@ npm run theme:dark
 
 如果 Codex 是从普通入口全新启动、尚未带上主题端口，请使用 `theme:dark` 或 `theme:light`，不要直接执行热切换命令。
 
-## 登录后自动挂载
+## Windows 登录后自动挂载
 
 ```powershell
 # 安装当前用户级自动挂载任务，并立即启动暗夜版
