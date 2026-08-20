@@ -26,8 +26,9 @@
     "theme:uninstall": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/restore-diana-theme.ps1 -RemoveAutostart",
     "preview:open": "powershell.exe -NoProfile -Command Start-Process (Resolve-Path 'preview/index.html')",
     "validate": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File skills/diana-codex-theme/scripts/validate-theme.ps1",
+    "skill:verify": "node skills/diana-codex-theme/scripts/verify-bundle.mjs",
     "test": "node --test tests/*.test.mjs",
-    "check": "npm run test && npm run validate && npm run theme:pack"
+    "check": "npm run test && npm run skill:verify && npm run validate && npm run theme:pack"
   },
   "dependencies": {
     "@codedrobe/core": "0.6.1"

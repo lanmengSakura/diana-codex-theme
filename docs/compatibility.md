@@ -9,6 +9,15 @@
 - Visual status: Diana Night and Diana Day finalized
 - Runtime status: beta
 
+## macOS status
+
+- Support level: experimental, agent-assisted only
+- Real-device verification: not performed
+- Distribution: self-contained `skills/diana-codex-theme` bundle
+- Deployment rule: inspect the current Codex build first; use only a reversible user-space hook
+
+The macOS path is not a port of the Windows launcher and is not a compatibility claim. The skill carries the finalized artwork and CSS blueprints, but Codex must inspect the Mac installation in front of it. If no safe hook exists, it must leave the application bundle and signature untouched and report that deployment was not performed.
+
 ## Live verification on 2026-08-21
 
 The Diana runtime adapter was verified against the locally installed Microsoft Store build `26.814.5517.0`.

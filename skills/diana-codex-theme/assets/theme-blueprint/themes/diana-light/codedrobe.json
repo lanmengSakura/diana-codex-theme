@@ -1,0 +1,60 @@
+{
+  "$schema": "https://codedrobe.app/schemas/theme-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "diana-day",
+  "displayName": "Diana Day",
+  "version": "0.1.1",
+  "copy": {
+    "tagline": "嘉然今天也在安静地陪你写代码。"
+  },
+  "catalog": {
+    "name": {
+      "en": "Diana Day",
+      "zh": "嘉然日间主题"
+    },
+    "description": {
+      "en": "A calm light Diana fan theme for Codex Desktop with fine colored line art and reversible local styling.",
+      "zh": "为 Codex 桌面端制作的嘉然非商业日间主题，以细腻彩线和可恢复本地样式保持明亮而安静的工作氛围。"
+    },
+    "categories": ["other"]
+  },
+  "images": {
+    "character": "../../assets/diana-brand/derived/diana-corner-cutout-v2.png",
+    "hand-star": "../../assets/diana-brand/derived/diana-hand-star-reference-v2.png",
+    "candy-wrapped": "../../assets/diana-brand/derived/diana-candy-wrapped-v1.png",
+    "candy-lollipop": "../../assets/diana-brand/derived/diana-candy-lollipop-v1.png",
+    "acao-heart": "../../assets/diana-brand/derived/acao-heart-v3.png",
+    "acao-cheer": "../../assets/diana-brand/derived/acao-cheer-v1.png",
+    "line-art-upper": "../../assets/diana-brand/derived/diana-line-art-approved-upper.png",
+    "line-art-corner": "../../assets/diana-brand/derived/diana-left-top-detailed-corner-mask-v7.png",
+    "line-art-lower": "../../assets/diana-brand/derived/diana-doodle-chalk-v2-approved.png"
+  },
+  "targets": {
+    "codex": {
+      "css": "theme.css",
+      "options": {
+        "rendererProfile": "diana-codex-v1",
+        "baseTheme": {
+          "mode": "light",
+          "accent": "#B84970",
+          "contrast": 45,
+          "ink": "#2C2529",
+          "surface": "#FBF8F6",
+          "opaqueWindows": true,
+          "codeTheme": "codex",
+          "fonts": {
+            "windowsCode": "Cascadia Code",
+            "windowsUi": "Microsoft YaHei UI",
+            "macCode": "SF Mono",
+            "macUi": "PingFang SC"
+          },
+          "semanticColors": {
+            "diffAdded": "#B8DDC4",
+            "diffRemoved": "#E8A9BF",
+            "skill": "#B84970"
+          }
+        }
+      }
+    }
+  }
+}

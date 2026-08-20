@@ -2,7 +2,7 @@
 
 # Diana Codex Theme
 
-一套为 Windows Codex 桌面端制作的嘉然（Diana）非商业同人主题。日间与暗夜分别设计，保留 Codex 原本的工具感，只让嘉然与手绘线稿安静地停留在工作区边角。
+一套为 Codex 桌面端制作的嘉然（Diana）非商业同人主题。日间与暗夜分别设计，保留 Codex 原本的工具感，只让嘉然与手绘线稿安静地停留在工作区边角。Windows 提供已验证运行时；macOS 提供由 Codex 现场检查后执行的实验性 Skill 部署流程。
 
 [在线演示](https://lanmengsakura.github.io/diana-codex-theme/) · [CodexThemes 社区](https://codexthemes.ai/skins/diana-codex-theme) · [下载发行包](https://github.com/lanmengSakura/diana-codex-theme/releases/latest) · [兼容性记录](docs/compatibility.md) · [参与贡献](CONTRIBUTING.md)
 
@@ -57,6 +57,14 @@
 | PowerShell | Windows PowerShell 5.1 或 PowerShell 7 |
 
 当前验证基线为 Codex `26.814.5517.0`。Codex 更新可能改变内部页面结构，更新前后的验证范围见 [docs/compatibility.md](docs/compatibility.md)。
+
+### macOS 实验性 Skill 部署
+
+macOS 尚未经过真机验证，因此不列入正式兼容平台，也不提供一套假定路径与进程结构的固定安装器。仓库中的 [`skills/diana-codex-theme`](skills/diana-codex-theme) 已自包含日夜 CSS 蓝图和全部定稿美术素材。Mac 用户可以下载 [Diana Skill 压缩包](https://github.com/lanmengSakura/diana-codex-theme/releases/download/v0.1.1/diana-codex-theme-skill-0.1.1.zip)，解压到用户级 `$HOME/.agents/skills/diana-codex-theme`，然后对 Codex 说：
+
+> 使用 Diana Skill 帮我部署暗夜主题。
+
+Codex 会先检查当前 Mac 上的版本、发行方式和安全样式入口，再决定是否能做用户空间内、可恢复的部署。若没有安全入口，它应停止而不是修改 `.app`、`app.asar` 或应用签名。OpenAI 官方文档将 `$HOME/.agents/skills` 列为用户级 Skill 目录，并说明 Skill 可携带 `assets/`、`references/` 与可选脚本；详情见 [Build skills](https://learn.chatgpt.com/docs/build-skills)。
 
 ### 安装并启用
 
@@ -156,7 +164,7 @@ flowchart LR
 assets/        嘉然、阿草、线稿和装饰素材
 docs/          架构、兼容性、概念稿与发布说明
 preview/       高保真展示页面与 README 日夜截图
-skills/        可复用的主题制作与验证 Skill
+skills/        自包含日夜素材、部署决策与验证流程的主题 Skill
 tests/         启动器与展示页静态测试
 themes/        Diana Night / Diana Day 主题源码
 tools/         启用、切换、自动挂载、状态和恢复工具

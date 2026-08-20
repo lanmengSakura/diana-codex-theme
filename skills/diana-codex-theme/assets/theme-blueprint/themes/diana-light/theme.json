@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "diana-light",
+  "displayName": "Diana Day",
+  "version": "0.1.1",
+  "status": "beta",
+  "variant": "light",
+  "nativeAppearance": {
+    "accent": "#B84970",
+    "contrast": 45,
+    "ink": "#2C2529",
+    "surface": "#FBF8F6"
+  },
+  "assets": {
+    "character": "../../assets/diana-brand/derived/diana-corner-cutout-v2.png",
+    "lineArtUpper": "../../assets/diana-brand/derived/diana-line-art-approved-upper.png",
+    "lineArtLower": "../../assets/diana-brand/derived/diana-doodle-chalk-v2-approved.png"
+  },
+  "css": "theme.css"
+}
