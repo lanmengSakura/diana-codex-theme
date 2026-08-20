@@ -12,7 +12,7 @@
 |---|---|
 | ![Diana Night 模拟界面](preview/qa/readme-dark-1600x900.png) | ![Diana Day 模拟界面](preview/qa/readme-light-1600x900.png) |
 
-预览图由仓库内的 [`preview/index.html`](preview/index.html) 生成。界面、任务和环境信息均为虚构内容，不包含作者的真实 Codex 会话或项目截图。
+预览图由仓库内的 [`preview/index.html`](preview/index.html) 生成。窗口标题栏、任务侧栏、线程栏、会话正文、文件变更卡、环境面板和输入区均按 Windows Codex 桌面端的实际比例重新搭建；界面中的任务和环境信息仍为虚构内容，不包含作者的真实 Codex 会话或项目截图。
 
 ## 设计特点
 
@@ -100,6 +100,8 @@ npm run preview:open
 - `Space`：播放或暂停时间轴
 - `←` / `→`：切换“提出任务、执行中、完成”场景
 - 页面底部控制条：切换主题、场景并拖动时间轴
+- 右上面板按钮：展开或收起模拟环境信息
+- 左侧任务：切换模拟选中状态，验证主题控件语言
 
 也可以使用查询参数生成稳定画面：
 

@@ -7,6 +7,8 @@ const controlsClose = document.querySelector('.controls-close');
 const controlsOpen = document.querySelector('.controls-open');
 const footerThemeName = document.querySelector('.footer-theme-name');
 const railButtons = [...document.querySelectorAll('.message-rail button')];
+const panelToggle = document.querySelector('.panel-toggle');
+const sidebarTasks = [...document.querySelectorAll('.sidebar-section .task')];
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const sceneProgress = { compose: 0.12, inspect: 0.58, complete: 0.94 };
@@ -21,10 +23,10 @@ const clamp = (value, minimum = 0, maximum = 1) => Math.min(maximum, Math.max(mi
 const segment = (value, start, end) => clamp((value - start) / (end - start));
 
 function setReveal(selector, opacity, offset = 16) {
-  const element = document.querySelector(selector);
-  if (!element) return;
-  element.style.opacity = String(opacity);
-  element.style.transform = `translateY(${(1 - opacity) * offset}px)`;
+  document.querySelectorAll(selector).forEach((element) => {
+    element.style.opacity = String(opacity);
+    element.style.transform = `translateY(${(1 - opacity) * offset}px)`;
+  });
 }
 
 function updateRail(value) {
@@ -106,6 +108,15 @@ timeline.addEventListener('input', (event) => {
 playToggle.addEventListener('click', () => setPlaying(!playing));
 controlsClose.addEventListener('click', () => { root.dataset.controls = 'off'; });
 controlsOpen.addEventListener('click', () => { root.dataset.controls = 'on'; });
+panelToggle.addEventListener('click', () => {
+  const isOpen = panelToggle.getAttribute('aria-pressed') === 'true';
+  panelToggle.setAttribute('aria-pressed', String(!isOpen));
+  panelToggle.classList.toggle('is-on', !isOpen);
+  root.dataset.inspector = isOpen ? 'closed' : 'open';
+});
+sidebarTasks.forEach((task) => task.addEventListener('click', () => {
+  sidebarTasks.forEach((item) => item.classList.toggle('active', item === task));
+}));
 window.addEventListener('resize', scaleStage);
 document.addEventListener('keydown', (event) => {
   if (event.key === ' ') {

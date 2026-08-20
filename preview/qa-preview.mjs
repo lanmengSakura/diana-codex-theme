@@ -145,9 +145,14 @@ const interactiveCheck = await send('Runtime.evaluate', {
     await new Promise((resolve) => setTimeout(resolve, 140));
     document.querySelector('.play-toggle').click();
     const playback = Number(document.querySelector('#timeline').value) > before;
+    document.querySelector('.panel-toggle').click();
+    const panel = root.dataset.inspector === 'closed' && document.querySelector('.panel-toggle').getAttribute('aria-pressed') === 'false';
+    const nextTask = [...document.querySelectorAll('.sidebar-section .task')].find((item) => !item.classList.contains('active'));
+    nextTask.click();
+    const taskSelection = nextTask.classList.contains('active') && document.querySelectorAll('.sidebar-section .task.active').length === 1;
     document.querySelector('.controls-close').click();
     const controls = root.dataset.controls === 'off';
-    return { lightTheme, scene, playback, controls };
+    return { lightTheme, scene, playback, panel, taskSelection, controls };
   })()`,
   awaitPromise: true,
   returnByValue: true
@@ -156,6 +161,6 @@ const interactive = interactiveCheck.result.value;
 if (Object.values(interactive).some((value) => value !== true)) {
   throw new Error(`Interactive showcase check failed: ${JSON.stringify(interactive)}.`);
 }
-console.log('interactive controls: theme switch, scene switch, playback, and control hiding passed');
+console.log('interactive controls: theme, scene, playback, inspector, task selection, and control hiding passed');
 
 socket.close();

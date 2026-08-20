@@ -4,173 +4,87 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark light">
-  <meta name="description" content="Diana Codex Theme simulated interface and motion-ready showcase.">
-  <title>Diana Codex Theme · Showcase</title>
+  <meta name="description" content="Diana Codex Theme faithful simulated desktop interface and motion-ready showcase.">
+  <title>Diana Codex Theme · Desktop Showcase</title>
   <link rel="stylesheet" href="preview.css">
 </head>
 <body>
-  <div class="stage-frame" aria-label="Diana Codex 主题模拟界面">
-    <div class="stage" data-screen-label="01 Diana simulated workspace">
-      <header class="system-bar">
-        <div class="system-nav" aria-hidden="true">
-          <span class="window-glyph"></span>
-          <span class="nav-arrow">‹</span>
-          <span class="nav-arrow">›</span>
-          <span>文件</span><span>编辑</span><span>视图</span><span>帮助</span>
-        </div>
-        <div class="window-actions" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div>
-      </header>
+  <div class="stage-frame" aria-label="Diana Codex 主题桌面模拟界面">
+    <div class="stage" data-screen-label="01 Diana simulated Codex desktop">
+      <svg class="icon-sprite" aria-hidden="true">
+        <symbol id="i-app" viewBox="0 0 16 16"><rect x="2.5" y="2.5" width="11" height="11" rx="2.5"/><path d="M6 3v10"/></symbol>
+        <symbol id="i-back" viewBox="0 0 16 16"><path d="m10.5 3.5-4.5 4.5 4.5 4.5"/></symbol>
+        <symbol id="i-forward" viewBox="0 0 16 16"><path d="m5.5 3.5 4.5 4.5-4.5 4.5"/></symbol>
+        <symbol id="i-search" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.25"/><path d="m10.2 10.2 3.1 3.1"/></symbol>
+        <symbol id="i-bell" viewBox="0 0 16 16"><path d="M3.6 11.5h8.8l-1.1-1.7V6.9a3.3 3.3 0 0 0-6.6 0v2.9l-1.1 1.7Z"/><path d="M6.8 13.2c.3.6.7.8 1.2.8s.9-.2 1.2-.8"/></symbol>
+        <symbol id="i-compose" viewBox="0 0 16 16"><path d="M8.9 3H4.7A2.7 2.7 0 0 0 2 5.7v5.6A2.7 2.7 0 0 0 4.7 14h5.6a2.7 2.7 0 0 0 2.7-2.7V7.1"/><path d="m7 9 1.2-3.1 4.5-4.5 1.9 1.9-4.5 4.5L7 9Z"/></symbol>
+        <symbol id="i-folder" viewBox="0 0 16 16"><path d="M1.8 4.6A1.8 1.8 0 0 1 3.6 2.8h3l1.2 1.4h4.6a1.8 1.8 0 0 1 1.8 1.8v5.2a2 2 0 0 1-2 2H3.8a2 2 0 0 1-2-2V4.6Z"/></symbol>
+        <symbol id="i-more" viewBox="0 0 16 16"><circle cx="3" cy="8" r="1" fill="currentColor" stroke="none"/><circle cx="8" cy="8" r="1" fill="currentColor" stroke="none"/><circle cx="13" cy="8" r="1" fill="currentColor" stroke="none"/></symbol>
+        <symbol id="i-location" viewBox="0 0 16 16"><rect x="2" y="3.5" width="12" height="9.5" rx="2"/><path d="M2 6h12M5 3.5l1-1h4l1 1"/></symbol>
+        <symbol id="i-panel" viewBox="0 0 16 16"><rect x="1.8" y="2.2" width="12.4" height="11.6" rx="3"/><path d="M10.2 2.2v11.6M4.8 6.2h2.4M4.8 9.8h2.4"/></symbol>
+        <symbol id="i-change" viewBox="0 0 16 16"><rect x="3" y="2" width="10" height="12" rx="2"/><path d="M6 6h4M6 9h4"/></symbol>
+        <symbol id="i-local" viewBox="0 0 16 16"><rect x="2" y="2.7" width="12" height="8.3" rx="1.7"/><path d="M5 13.3h6M8 11v2.3"/></symbol>
+        <symbol id="i-branch" viewBox="0 0 16 16"><circle cx="4" cy="3.5" r="1.6"/><circle cx="4" cy="12.5" r="1.6"/><circle cx="12" cy="5.2" r="1.6"/><path d="M4 5.1v5.8M5.6 10.4C7.3 9.8 8 8.5 8 6.9V6.7c0-1 .7-1.5 2.4-1.5"/></symbol>
+        <symbol id="i-sync" viewBox="0 0 16 16"><path d="M2.5 6A5.6 5.6 0 0 1 12 3.6l1.5 1.7M13.5 10A5.6 5.6 0 0 1 4 12.4l-1.5-1.7"/><path d="M13.5 2.5v2.8h-2.8M2.5 13.5v-2.8h2.8"/></symbol>
+        <symbol id="i-github" viewBox="0 0 16 16"><path d="M8 1.8a6.2 6.2 0 0 0-2 12.1c.3.1.4-.1.4-.3v-1.1c-1.8.4-2.2-.7-2.2-.7-.3-.7-.7-.9-.7-.9-.6-.4 0-.4 0-.4.7 0 1 .7 1 .7.6 1 1.6.7 2 .5.1-.4.2-.7.4-.9-1.5-.2-3-.7-3-3.1 0-.7.2-1.2.6-1.7-.1-.2-.3-.8.1-1.7 0 0 .5-.2 1.7.7a5.8 5.8 0 0 1 3.2 0c1.2-.9 1.7-.7 1.7-.7.4.9.2 1.5.1 1.7.4.5.6 1 .6 1.7 0 2.4-1.5 2.9-3 3.1.2.2.5.6.5 1.2v1.6c0 .2.1.4.4.3A6.2 6.2 0 0 0 8 1.8Z"/></symbol>
+        <symbol id="i-link" viewBox="0 0 16 16"><path d="m6.2 9.8 3.6-3.6M5 11.8l-1 .9a2.7 2.7 0 1 1-3.8-3.8l2.3-2.3a2.7 2.7 0 0 1 3.8 0M11 4.2l1-.9a2.7 2.7 0 1 1 3.8 3.8l-2.3 2.3a2.7 2.7 0 0 1-3.8 0"/></symbol>
+        <symbol id="i-terminal" viewBox="0 0 16 16"><rect x="1.8" y="2.4" width="12.4" height="11.2" rx="2"/><path d="m4.5 5.5 2 2-2 2M8.5 10h3"/></symbol>
+        <symbol id="i-edit" viewBox="0 0 16 16"><path d="M3 11.8 2.5 14l2.2-.5 8.7-8.7-1.7-1.7L3 11.8Z"/><path d="m10.5 4.3 1.7 1.7"/></symbol>
+        <symbol id="i-file" viewBox="0 0 16 16"><path d="M4 1.8h5.2l3 3v9.4H4z"/><path d="M9.2 1.8v3h3"/></symbol>
+        <symbol id="i-undo" viewBox="0 0 16 16"><path d="M4.8 5.2H11a3.2 3.2 0 0 1 0 6.4H8.5"/><path d="M5.2 2.8 2.8 5.2l2.4 2.4"/></symbol>
+        <symbol id="i-review" viewBox="0 0 16 16"><rect x="2.2" y="2" width="11.6" height="12" rx="2"/><path d="M5 5.5h6M5 8h6M5 10.5h3"/></symbol>
+        <symbol id="i-mic" viewBox="0 0 16 16"><rect x="5.5" y="1.8" width="5" height="8" rx="2.5"/><path d="M3.7 7.8a4.3 4.3 0 0 0 8.6 0M8 12.1v2.1M5.7 14.2h4.6"/></symbol>
+        <symbol id="i-bolt" viewBox="0 0 16 16"><path d="M9.2 1.8 3.5 9h4l-.7 5.2 5.7-7.2h-4z" fill="currentColor" stroke="none"/></symbol>
+      </svg>
+
+      <header class="system-bar"><div class="system-nav" aria-hidden="true"><svg class="icon system-app-icon"><use href="#i-app"/></svg><svg class="icon system-arrow"><use href="#i-back"/></svg><svg class="icon system-arrow"><use href="#i-forward"/></svg><span>文件</span><span>编辑</span><span>视图</span><span>帮助</span></div><div class="window-actions" aria-hidden="true"><span class="window-min"></span><span class="window-max"></span><span class="window-close">×</span></div></header>
 
       <div class="app-grid">
         <aside class="sidebar">
-          <div class="sidebar-brand"><strong>Codex</strong><span class="chevron">⌄</span></div>
-          <nav class="primary-nav" aria-label="主导航">
-            <button type="button"><span class="ui-icon compose-icon"></span>新对话</button>
-            <button type="button"><span class="ui-icon nodes-icon"></span>拉取请求</button>
-            <button type="button"><span class="ui-icon grid-icon"></span>站点</button>
-            <button type="button"><span class="ui-icon clock-icon"></span>已安排</button>
-          </nav>
-
+          <div class="sidebar-brand"><strong>Codex</strong><span class="chevron">⌄</span><div class="sidebar-brand-actions"><button type="button" aria-label="搜索"><svg class="icon"><use href="#i-search"/></svg></button><button type="button" aria-label="通知"><svg class="icon"><use href="#i-bell"/></svg></button></div></div>
+          <nav class="quick-nav" aria-label="快捷任务"><button type="button"><svg class="icon"><use href="#i-compose"/></svg><span>新对话</span><span class="quick-hint">⌘ N</span></button><button class="recent-task" type="button">完善 Diana Codex 主题展示</button><button class="recent-task" type="button">整理主题安装与恢复说明</button><button class="show-more" type="button">展开显示</button></nav>
           <div class="sidebar-scroll">
-            <section class="sidebar-section">
-              <p>置顶</p>
-              <button type="button"><span class="folder-icon"></span>主题演示</button>
-              <button class="task active" type="button">Diana Codex Theme</button>
-              <button class="task" type="button">准备公开说明</button>
-            </section>
-            <section class="sidebar-section">
-              <p>项目</p>
-              <button type="button"><span class="folder-icon"></span>Showcase Lab</button>
-              <button class="task" type="button">双主题视觉验证</button>
-              <button class="task" type="button">制作宣传母版</button>
-              <button type="button"><span class="folder-icon"></span>Theme Package</button>
-              <button class="task" type="button">安装与恢复流程</button>
-            </section>
+            <section class="sidebar-section"><button class="project-title" type="button"><svg class="icon"><use href="#i-folder"/></svg>主题制作</button><button class="task" type="button">视觉令牌与配色</button><button class="task" type="button">线稿素材校准</button><button class="task" type="button">日夜版本同步</button><button class="task" type="button">主题兼容性检查</button></section>
+            <section class="sidebar-section"><button class="project-title" type="button"><svg class="icon"><use href="#i-folder"/></svg>展示页面</button><button class="task" type="button">桌面端比例复刻</button><button class="task" type="button">宣传静帧导出</button><button class="task" type="button">演示时间轴</button></section>
+            <section class="sidebar-section"><button class="project-title" type="button"><svg class="icon"><use href="#i-folder"/></svg>开源发布</button><button class="task" type="button">README 与素材边界</button><button class="task" type="button">发行包验证</button><button class="task" type="button">更新兼容性说明</button></section>
+            <section class="sidebar-section project-section"><p>项目</p><button class="project-title" type="button"><svg class="icon"><use href="#i-folder"/></svg>Diana Codex Theme</button><button class="task active" type="button"><span>完善桌面演示母版</span><span class="active-dot"></span></button><button class="project-title" type="button"><svg class="icon"><use href="#i-folder"/></svg>Theme QA</button><button class="project-title" type="button"><svg class="icon"><use href="#i-folder"/></svg>Visual Assets</button></section>
           </div>
-
-          <div class="sidebar-footer">
-            <span class="avatar">D</span>
-            <strong class="footer-theme-name">Diana Night</strong>
-            <span class="footer-wave" aria-hidden="true"></span>
-          </div>
+          <div class="sidebar-footer"><span class="avatar">D</span><strong class="footer-theme-name">Diana Night</strong><span class="footer-spacer"></span><span class="voice-bars" aria-hidden="true"></span><span>语音</span><button type="button" aria-label="帮助">?</button></div>
         </aside>
 
         <main class="workspace">
-          <header class="workspace-header">
-            <div class="workspace-title">
-              <span class="folder-icon"></span>
-              <strong>Diana Codex Theme</strong>
-              <button type="button" aria-label="更多操作">•••</button>
-            </div>
-            <div class="workspace-actions">
-              <button type="button"><span class="open-mark"></span>打开位置⌄</button>
-              <button class="panel-toggle" type="button" aria-label="显示环境信息"><span></span></button>
-            </div>
-          </header>
-
+          <header class="workspace-header"><div class="workspace-title"><svg class="icon"><use href="#i-folder"/></svg><strong>完善 Diana Codex 主题展示</strong><button type="button" aria-label="更多操作"><svg class="icon"><use href="#i-more"/></svg></button></div><div class="workspace-actions"><button type="button"><svg class="icon"><use href="#i-location"/></svg>打开位置<span class="chevron">⌄</span></button><button class="panel-toggle is-on" type="button" aria-label="显示环境信息" aria-pressed="true"><svg class="icon"><use href="#i-panel"/></svg></button></div></header>
           <div class="work-surface">
-            <div class="theme-skin" aria-hidden="true">
-              <span class="skin-upper"></span>
-              <span class="skin-corner-left"></span>
-              <span class="skin-doodle-left"></span>
-              <div class="skin-character-cluster">
-                <span class="skin-star skin-star-small"></span>
-                <span class="skin-star skin-star-large"></span>
-                <span class="skin-candy skin-candy-wrapped"></span>
-                <span class="skin-candy skin-candy-lollipop"></span>
-                <span class="skin-acao skin-acao-heart"></span>
-                <span class="skin-acao skin-acao-cheer"></span>
-              </div>
-              <span class="skin-character"></span>
-            </div>
-
+            <div class="theme-skin" aria-hidden="true"><span class="skin-upper"></span><span class="skin-corner-left"></span><span class="skin-doodle-left"></span><div class="skin-character-cluster"><span class="skin-star skin-star-small"></span><span class="skin-star skin-star-large"></span><span class="skin-candy skin-candy-wrapped"></span><span class="skin-candy skin-candy-lollipop"></span><span class="skin-acao skin-acao-heart"></span><span class="skin-acao skin-acao-cheer"></span></div><span class="skin-character"></span></div>
             <section class="conversation" aria-label="虚构演示对话">
-              <nav class="message-rail" aria-label="演示消息位置">
-                <button type="button"><span></span></button>
-                <button type="button"><span></span></button>
-                <button class="rail-current" type="button"><span></span></button>
-                <button type="button"><span></span></button>
-                <button type="button"><span></span></button>
-                <button type="button"><span></span></button>
-                <button type="button"><span></span></button>
-                <button type="button"><span></span></button>
-                <button type="button"><span></span></button>
-              </nav>
-
+              <nav class="message-rail" aria-label="演示消息位置"><button type="button"><span></span></button><button type="button"><span></span></button><button type="button"><span></span></button><button type="button"><span></span></button><button class="rail-current" type="button"><span></span></button><button type="button"><span></span></button><button type="button"><span></span></button><button type="button"><span></span></button><button type="button"><span></span></button><button type="button"><span></span></button><button type="button"><span></span></button><button type="button"><span></span></button></nav>
               <div class="conversation-inner">
-                <article class="user-bubble reveal reveal-user">
-                  将已经定稿的日间与夜间主题整理成公开演示。展示页面只使用虚构任务，不读取任何真实会话。
-                </article>
-
+                <article class="user-bubble reveal reveal-user">把定稿的日间与暗夜主题整理成公开演示。界面要像真实桌面端，仍然只使用虚构任务。</article>
                 <article class="assistant-turn reveal reveal-answer">
-                  <div class="turn-meta"><span class="status-star">✦</span><span>展示母版</span></div>
-                  <h1>日夜主题已经落入同一套演示界面</h1>
-                  <p>界面比例、人物锚点与装饰层全部跟随主题源码。主工作区保持安静，嘉然与手绘线条只在边角形成陪伴感。</p>
-
-                  <div class="check-list reveal reveal-complete">
-                    <p><span></span>不截取真实 Codex 会话或项目内容</p>
-                    <p><span></span>README 静帧与宣传视频共享同一母版</p>
-                    <p><span></span>装饰层不改变主工作区文字颜色</p>
-                  </div>
-
+                  <div class="turn-time">已处理 2 分钟 18 秒 <span>›</span></div>
+                  <p>我会以真实 Codex 桌面的窗口比例和组件密度为基准，保留系统标题栏、任务树、会话正文、环境信息与输入框。主题装饰只停留在边角，不改变主工作区的文字颜色。</p>
+                  <ul><li>暗夜与日间使用各自定稿的主题令牌</li><li>所有任务、路径和环境信息均为虚构示例</li><li>README 静帧与后续宣传视频共用同一母版</li></ul>
+                  <div class="activity-row"><svg class="icon"><use href="#i-terminal"/></svg><span>运行了命令</span></div><div class="activity-row"><svg class="icon"><use href="#i-edit"/></svg><span>编辑了 3 个文件</span><span class="activity-caret">⌃</span></div>
                   <div class="file-card reveal reveal-tool">
-                    <div class="file-card-head">
-                      <span class="file-mark">＋</span>
-                      <strong>主题展示文件</strong>
-                      <span class="variant-pills"><i>Night</i><i>Day</i></span>
-                    </div>
-                    <div class="file-row"><code>themes/diana-dark/theme.css</code><span>定稿</span></div>
-                    <div class="file-row"><code>themes/diana-light/theme.css</code><span>定稿</span></div>
-                    <div class="file-row"><code>preview/index.html</code><span>模拟界面</span></div>
+                    <div class="file-card-head"><span class="file-mark"><svg class="icon"><use href="#i-file"/></svg></span><div><strong>已编辑 3 个文件</strong><small><b>+186</b> <i>−24</i></small></div><div class="file-actions"><button type="button"><svg class="icon"><use href="#i-undo"/></svg>撤销</button><button type="button"><svg class="icon"><use href="#i-review"/></svg>审核</button></div></div>
+                    <div class="file-row"><code>preview/index.html</code><span><b>+82</b> <i>−12</i></span></div><div class="file-row"><code>preview/preview.css</code><span><b>+96</b> <i>−12</i></span></div><div class="file-row"><code>README.md</code><span><b>+8</b> <i>−0</i></span></div>
                   </div>
+                  <p class="completion-copy reveal reveal-complete">桌面骨架已经按真实应用重新校准：左栏、线程栏和环境面板保持原生工具密度；主对话恢复为普通消息字号；角色、线稿、星星、糖果和阿草继续沿用两套定稿素材。</p>
                 </article>
               </div>
-
-              <form class="composer" onsubmit="return false">
-                <label class="sr-only" for="demo-prompt">演示输入框</label>
-                <textarea id="demo-prompt" rows="2" placeholder="随心输入"></textarea>
-                <div class="composer-bottom">
-                  <div><button type="button" aria-label="添加附件">＋</button><span class="access-label">完全访问</span></div>
-                  <div><span class="model">5.6 Sol 高⌄</span><button class="mic" type="button" aria-label="语音输入"></button><button class="send" type="button" aria-label="发送">↑</button></div>
-                </div>
-              </form>
+              <div class="change-toast reveal reveal-complete">3 个文件已更改 <b>+186</b> <i>−24</i></div>
+              <form class="composer" onsubmit="return false"><label class="sr-only" for="demo-prompt">演示输入框</label><textarea id="demo-prompt" rows="2" placeholder="随心输入"></textarea><div class="composer-bottom"><div><button type="button" aria-label="添加附件">＋</button><span class="shield-dot"></span><span class="access-label">完全访问</span></div><div><svg class="icon bolt"><use href="#i-bolt"/></svg><span class="model">5.6 Sol 高</span><span class="chevron">⌄</span><button class="mic" type="button" aria-label="语音输入"><svg class="icon"><use href="#i-mic"/></svg></button><button class="send" type="button" aria-label="停止生成">■</button></div></div></form>
             </section>
-
             <aside class="inspector" aria-label="虚构环境信息">
-              <div class="inspector-title"><span class="inspector-star"></span><strong>演示环境</strong><button type="button">＋</button></div>
-              <button type="button"><span class="square-icon"></span>变更 <b>已就绪</b></button>
-              <button type="button"><span class="screen-icon"></span>本地</button>
-              <button type="button"><span class="branch-icon"></span>demo/showcase</button>
-              <button type="button"><span class="sync-icon"></span>提交或推送</button>
-              <hr>
-              <p class="inspector-label">来源</p>
-              <button type="button"><span class="source-icon"></span>simulated workspace</button>
-              <button type="button"><span class="source-icon"></span>final theme assets</button>
+              <div class="inspector-title"><span class="inspector-star"></span><strong>环境信息</strong><button type="button">＋</button></div><button type="button"><svg class="icon"><use href="#i-change"/></svg>变更</button><button type="button"><svg class="icon"><use href="#i-local"/></svg>本地</button><button type="button"><svg class="icon"><use href="#i-branch"/></svg>main<span class="row-caret">⌄</span></button><button type="button"><svg class="icon"><use href="#i-sync"/></svg>提交或推送</button><button class="muted-row" type="button"><svg class="icon"><use href="#i-github"/></svg>无法获取拉取请求状态</button><hr><p class="inspector-label">子智能体</p><button type="button"><span class="agent-dots"><i></i><i></i><i></i></span>3 个运行中</button><hr><div class="source-heading"><p class="inspector-label">来源</p><button type="button">＋</button></div><button type="button"><svg class="icon"><use href="#i-file"/></svg>theme.css</button><button type="button"><svg class="icon"><use href="#i-github"/></svg>github.com/demo/theme</button><button class="muted-row" type="button"><svg class="icon"><use href="#i-link"/></svg>查看全部</button>
             </aside>
           </div>
         </main>
       </div>
     </div>
   </div>
-
-  <p class="simulation-note">SIMULATED UI · NO USER DATA</p>
-  <section class="demo-controls" aria-label="演示控制">
-    <button class="play-toggle" type="button" aria-label="播放演示">▷</button>
-    <fieldset class="theme-switch" aria-label="主题">
-      <legend>主题</legend>
-      <button class="theme-button is-active" data-theme-value="dark" type="button">暗夜</button>
-      <button class="theme-button" data-theme-value="light" type="button">日间</button>
-    </fieldset>
-    <label class="scene-control">场景
-      <select id="scene-select">
-        <option value="compose">提出任务</option>
-        <option value="inspect">执行中</option>
-        <option value="complete">完成</option>
-      </select>
-    </label>
-    <label class="timeline-label"><span>时间轴</span><input id="timeline" type="range" min="0" max="1000" value="940"></label>
-    <button class="controls-close" type="button" aria-label="隐藏演示控制">×</button>
-  </section>
+  <p class="simulation-note">SIMULATED CODEX UI · NO USER DATA</p>
+  <section class="demo-controls" aria-label="演示控制"><button class="play-toggle" type="button" aria-label="播放演示">▷</button><fieldset class="theme-switch" aria-label="主题"><legend>主题</legend><button class="theme-button is-active" data-theme-value="dark" type="button">暗夜</button><button class="theme-button" data-theme-value="light" type="button">日间</button></fieldset><label class="scene-control">场景<select id="scene-select"><option value="compose">提出任务</option><option value="inspect">执行中</option><option value="complete">完成</option></select></label><label class="timeline-label"><span>时间轴</span><input id="timeline" type="range" min="0" max="1000" value="940"></label><button class="controls-close" type="button" aria-label="隐藏演示控制">×</button></section>
   <button class="controls-open" type="button">Demo controls</button>
   <script src="preview.js"></script>
 </body>
