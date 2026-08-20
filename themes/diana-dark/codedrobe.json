@@ -1,0 +1,60 @@
+{
+  "$schema": "https://codedrobe.app/schemas/theme-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "diana-night",
+  "displayName": "Diana Night",
+  "version": "0.1.0",
+  "copy": {
+    "tagline": "嘉然今天也在安静地陪你写代码。"
+  },
+  "catalog": {
+    "name": {
+      "en": "Diana Night",
+      "zh": "嘉然暗夜主题"
+    },
+    "description": {
+      "en": "A quiet dark Diana fan theme for Codex Desktop with sparse corner art and reversible local styling.",
+      "zh": "为 Codex 桌面端制作的嘉然非商业暗夜主题，以克制的角落线稿和可恢复本地样式保留工作区重心。"
+    },
+    "categories": ["other"]
+  },
+  "images": {
+    "character": "../../assets/diana-brand/derived/diana-night-v3.png",
+    "hand-star": "../../assets/diana-brand/derived/diana-hand-star-reference-v2.png",
+    "candy-wrapped": "../../assets/diana-brand/derived/diana-candy-wrapped-v1.png",
+    "candy-lollipop": "../../assets/diana-brand/derived/diana-candy-lollipop-v1.png",
+    "acao-heart": "../../assets/diana-brand/derived/acao-heart-v3.png",
+    "acao-cheer": "../../assets/diana-brand/derived/acao-cheer-v1.png",
+    "line-art-upper": "../../assets/diana-brand/derived/diana-line-art-approved-upper.png",
+    "line-art-corner": "../../assets/diana-brand/derived/diana-left-top-detailed-corner-mask-v7.png",
+    "line-art-lower": "../../assets/diana-brand/derived/diana-doodle-chalk-v2-approved.png"
+  },
+  "targets": {
+    "codex": {
+      "css": "theme.css",
+      "options": {
+        "rendererProfile": "diana-codex-v1",
+        "baseTheme": {
+          "mode": "dark",
+          "accent": "#D86E91",
+          "contrast": 60,
+          "ink": "#F3EEF0",
+          "surface": "#0D0C0F",
+          "opaqueWindows": true,
+          "codeTheme": "codex",
+          "fonts": {
+            "windowsCode": "Cascadia Code",
+            "windowsUi": "Microsoft YaHei UI",
+            "macCode": "SF Mono",
+            "macUi": "PingFang SC"
+          },
+          "semanticColors": {
+            "diffAdded": "#9CC9AC",
+            "diffRemoved": "#D78BA5",
+            "skill": "#D86E91"
+          }
+        }
+      }
+    }
+  }
+}

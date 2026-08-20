@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "diana-dark",
+  "displayName": "Diana Night",
+  "version": "0.1.0",
+  "status": "beta",
+  "variant": "dark",
+  "nativeAppearance": {
+    "accent": "#D86E91",
+    "contrast": 60,
+    "ink": "#F3EEF0",
+    "surface": "#0D0C0F"
+  },
+  "assets": {
+    "character": "../../assets/diana-brand/derived/diana-night-v3.png",
+    "lineArtUpper": "../../assets/diana-brand/derived/diana-line-art-approved-upper.png",
+    "lineArtLower": "../../assets/diana-brand/derived/diana-doodle-chalk-v2-approved.png"
+  },
+  "css": "theme.css"
+}

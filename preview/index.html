@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark" data-scene="complete" data-controls="on">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="Diana Codex Theme simulated interface and motion-ready showcase.">
+  <title>Diana Codex Theme · Showcase</title>
+  <link rel="stylesheet" href="preview.css">
+</head>
+<body>
+  <div class="stage-frame" aria-label="Diana Codex 主题模拟界面">
+    <div class="stage" data-screen-label="01 Diana simulated workspace">
+      <header class="system-bar">
+        <div class="system-nav" aria-hidden="true">
+          <span class="window-glyph"></span>
+          <span class="nav-arrow">‹</span>
+          <span class="nav-arrow">›</span>
+          <span>文件</span><span>编辑</span><span>视图</span><span>帮助</span>
+        </div>
+        <div class="window-actions" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div>
+      </header>
+
+      <div class="app-grid">
+        <aside class="sidebar">
+          <div class="sidebar-brand"><strong>Codex</strong><span class="chevron">⌄</span></div>
+          <nav class="primary-nav" aria-label="主导航">
+            <button type="button"><span class="ui-icon compose-icon"></span>新对话</button>
+            <button type="button"><span class="ui-icon nodes-icon"></span>拉取请求</button>
+            <button type="button"><span class="ui-icon grid-icon"></span>站点</button>
+            <button type="button"><span class="ui-icon clock-icon"></span>已安排</button>
+          </nav>
+
+          <div class="sidebar-scroll">
+            <section class="sidebar-section">
+              <p>置顶</p>
+              <button type="button"><span class="folder-icon"></span>主题演示</button>
+              <button class="task active" type="button">Diana Codex Theme</button>
+              <button class="task" type="button">准备公开说明</button>
+            </section>
+            <section class="sidebar-section">
+              <p>项目</p>
+              <button type="button"><span class="folder-icon"></span>Showcase Lab</button>
+              <button class="task" type="button">双主题视觉验证</button>
+              <button class="task" type="button">制作宣传母版</button>
+              <button type="button"><span class="folder-icon"></span>Theme Package</button>
+              <button class="task" type="button">安装与恢复流程</button>
+            </section>
+          </div>
+
+          <div class="sidebar-footer">
+            <span class="avatar">D</span>
+            <strong class="footer-theme-name">Diana Night</strong>
+            <span class="footer-wave" aria-hidden="true"></span>
+          </div>
+        </aside>
+
+        <main class="workspace">
+          <header class="workspace-header">
+            <div class="workspace-title">
+              <span class="folder-icon"></span>
+              <strong>Diana Codex Theme</strong>
+              <button type="button" aria-label="更多操作">•••</button>
+            </div>
+            <div class="workspace-actions">
+              <button type="button"><span class="open-mark"></span>打开位置⌄</button>
+              <button class="panel-toggle" type="button" aria-label="显示环境信息"><span></span></button>
+            </div>
+          </header>
+
+          <div class="work-surface">
+            <div class="theme-skin" aria-hidden="true">
+              <span class="skin-upper"></span>
+              <span class="skin-corner-left"></span>
+              <span class="skin-doodle-left"></span>
+              <div class="skin-character-cluster">
+                <span class="skin-star skin-star-small"></span>
+                <span class="skin-star skin-star-large"></span>
+                <span class="skin-candy skin-candy-wrapped"></span>
+                <span class="skin-candy skin-candy-lollipop"></span>
+                <span class="skin-acao skin-acao-heart"></span>
+                <span class="skin-acao skin-acao-cheer"></span>
+              </div>
+              <span class="skin-character"></span>
+            </div>
+
+            <section class="conversation" aria-label="虚构演示对话">
+              <nav class="message-rail" aria-label="演示消息位置">
+                <button type="button"><span></span></button>
+                <button type="button"><span></span></button>
+                <button class="rail-current" type="button"><span></span></button>
+                <button type="button"><span></span></button>
+                <button type="button"><span></span></button>
+                <button type="button"><span></span></button>
+                <button type="button"><span></span></button>
+                <button type="button"><span></span></button>
+                <button type="button"><span></span></button>
+              </nav>
+
+              <div class="conversation-inner">
+                <article class="user-bubble reveal reveal-user">
+                  将已经定稿的日间与夜间主题整理成公开演示。展示页面只使用虚构任务，不读取任何真实会话。
+                </article>
+
+                <article class="assistant-turn reveal reveal-answer">
+                  <div class="turn-meta"><span class="status-star">✦</span><span>展示母版</span></div>
+                  <h1>日夜主题已经落入同一套演示界面</h1>
+                  <p>界面比例、人物锚点与装饰层全部跟随主题源码。主工作区保持安静，嘉然与手绘线条只在边角形成陪伴感。</p>
+
+                  <div class="check-list reveal reveal-complete">
+                    <p><span></span>不截取真实 Codex 会话或项目内容</p>
+                    <p><span></span>README 静帧与宣传视频共享同一母版</p>
+                    <p><span></span>装饰层不改变主工作区文字颜色</p>
+                  </div>
+
+                  <div class="file-card reveal reveal-tool">
+                    <div class="file-card-head">
+                      <span class="file-mark">＋</span>
+                      <strong>主题展示文件</strong>
+                      <span class="variant-pills"><i>Night</i><i>Day</i></span>
+                    </div>
+                    <div class="file-row"><code>themes/diana-dark/theme.css</code><span>定稿</span></div>
+                    <div class="file-row"><code>themes/diana-light/theme.css</code><span>定稿</span></div>
+                    <div class="file-row"><code>preview/index.html</code><span>模拟界面</span></div>
+                  </div>
+                </article>
+              </div>
+
+              <form class="composer" onsubmit="return false">
+                <label class="sr-only" for="demo-prompt">演示输入框</label>
+                <textarea id="demo-prompt" rows="2" placeholder="随心输入"></textarea>
+                <div class="composer-bottom">
+                  <div><button type="button" aria-label="添加附件">＋</button><span class="access-label">完全访问</span></div>
+                  <div><span class="model">5.6 Sol 高⌄</span><button class="mic" type="button" aria-label="语音输入"></button><button class="send" type="button" aria-label="发送">↑</button></div>
+                </div>
+              </form>
+            </section>
+
+            <aside class="inspector" aria-label="虚构环境信息">
+              <div class="inspector-title"><span class="inspector-star"></span><strong>演示环境</strong><button type="button">＋</button></div>
+              <button type="button"><span class="square-icon"></span>变更 <b>已就绪</b></button>
+              <button type="button"><span class="screen-icon"></span>本地</button>
+              <button type="button"><span class="branch-icon"></span>demo/showcase</button>
+              <button type="button"><span class="sync-icon"></span>提交或推送</button>
+              <hr>
+              <p class="inspector-label">来源</p>
+              <button type="button"><span class="source-icon"></span>simulated workspace</button>
+              <button type="button"><span class="source-icon"></span>final theme assets</button>
+            </aside>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <p class="simulation-note">SIMULATED UI · NO USER DATA</p>
+  <section class="demo-controls" aria-label="演示控制">
+    <button class="play-toggle" type="button" aria-label="播放演示">▷</button>
+    <fieldset class="theme-switch" aria-label="主题">
+      <legend>主题</legend>
+      <button class="theme-button is-active" data-theme-value="dark" type="button">暗夜</button>
+      <button class="theme-button" data-theme-value="light" type="button">日间</button>
+    </fieldset>
+    <label class="scene-control">场景
+      <select id="scene-select">
+        <option value="compose">提出任务</option>
+        <option value="inspect">执行中</option>
+        <option value="complete">完成</option>
+      </select>
+    </label>
+    <label class="timeline-label"><span>时间轴</span><input id="timeline" type="range" min="0" max="1000" value="940"></label>
+    <button class="controls-close" type="button" aria-label="隐藏演示控制">×</button>
+  </section>
+  <button class="controls-open" type="button">Demo controls</button>
+  <script src="preview.js"></script>
+</body>
+</html>

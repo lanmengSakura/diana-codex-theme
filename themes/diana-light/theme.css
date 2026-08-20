@@ -1,0 +1,561 @@
+html.codedrobe-host-codex {
+  --diana-surface: #fbf8f6;
+  --diana-panel: #fff;
+  --diana-ink: #2c2529;
+  --diana-muted: #7e7178;
+  --diana-accent: #b84970;
+  --diana-accent-soft: #f2dce3;
+  --diana-accent-wash: rgb(184 73 112 / 9%);
+  --diana-accent-wash-strong: rgb(184 73 112 / 16%);
+  --diana-accent-ring: rgb(184 73 112 / 42%);
+  --diana-rail-seed: rgb(184 73 112 / 55%);
+  --diana-rail-seed-strong: rgb(174 55 96 / 92%);
+  --diana-border: #e8dfe2;
+  --diana-sidebar-surface: #f8f3f5;
+  --diana-work-panel: #fff7fa;
+  --diana-work-panel-border: rgb(184 73 112 / 16%);
+  --diana-work-divider: rgb(184 73 112 / 12%);
+  --diana-scroll-thumb: rgb(184 73 112 / 32%);
+  --diana-scroll-thumb-hover: rgb(174 55 96 / 54%);
+  --diana-account-surface: #fdf7f9;
+  --diana-line-berry: #b85f7c;
+  --diana-line-coral: #cf7f88;
+  --diana-line-gold: #c69a58;
+  color-scheme: light;
+}
+
+html.codedrobe-host-codex body {
+  background-color: var(--diana-surface);
+  color: var(--diana-ink);
+}
+
+html.codedrobe-host-codex aside.app-shell-left-panel {
+  background-color: var(--diana-sidebar-surface) !important;
+}
+
+html.codedrobe-host-codex #codedrobe-codex-skin-chrome {
+  position: absolute;
+  z-index: 0;
+  overflow: hidden;
+  container-type: inline-size;
+  pointer-events: none;
+  user-select: none;
+}
+
+html.codedrobe-host-codex .diana-skin-surface > .diana-skin-foreground {
+  position: relative;
+  z-index: 1;
+}
+
+html.codedrobe-host-codex #codedrobe-codex-skin-chrome > * {
+  display: none;
+}
+
+html.codedrobe-host-codex #codedrobe-codex-skin-chrome > :is(.diana-doodle-layer, .diana-corner-line, .diana-character-stars) {
+  display: block;
+}
+
+html.codedrobe-host-codex:is(.compact-window, .diana-auxiliary-window) #codedrobe-codex-skin-chrome {
+  display: none;
+}
+
+html.codedrobe-host-codex #codedrobe-codex-skin-chrome::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: var(--diana-line-coral);
+  -webkit-mask-image: var(--codedrobe-image-line-art-upper);
+  -webkit-mask-position: top 44px right 18px;
+  -webkit-mask-size: clamp(230px, 45cqw, 350px) auto;
+  -webkit-mask-repeat: no-repeat;
+  mask-image: var(--codedrobe-image-line-art-upper);
+  mask-position: top 44px right 18px;
+  mask-size: clamp(230px, 45cqw, 350px) auto;
+  mask-repeat: no-repeat;
+  opacity: .28;
+  pointer-events: none;
+}
+
+html.codedrobe-host-codex #codedrobe-codex-skin-chrome::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  right: -12px;
+  bottom: -6px;
+  width: clamp(270px, 46cqw, 440px);
+  height: min(78vh, 720px);
+  background: var(--codedrobe-image-character) right bottom / contain no-repeat;
+  opacity: .72;
+  filter: saturate(.96) brightness(1) drop-shadow(0 24px 42px rgb(69 42 51 / 15%));
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 180ms ease;
+}
+
+html.codedrobe-host-codex #codedrobe-codex-skin-chrome > .diana-doodle-layer {
+  position: absolute;
+  z-index: 0;
+  left: 18px;
+  bottom: clamp(90px, 9vh, 118px);
+  width: clamp(230px, 44cqw, 340px);
+  aspect-ratio: 1;
+  background: var(--diana-line-berry);
+  -webkit-mask: var(--codedrobe-image-line-art-lower) center / contain no-repeat;
+  mask: var(--codedrobe-image-line-art-lower) center / contain no-repeat;
+  opacity: .48;
+  pointer-events: none;
+}
+
+html.codedrobe-host-codex #codedrobe-codex-skin-chrome > .diana-corner-line {
+  position: absolute;
+  z-index: 0;
+  top: 54px;
+  left: 34px;
+  width: clamp(300px, 50cqw, 820px);
+  aspect-ratio: 1600 / 485;
+  background: var(--diana-line-berry);
+  -webkit-mask: var(--codedrobe-image-line-art-corner) left center / contain no-repeat;
+  mask: var(--codedrobe-image-line-art-corner) left center / contain no-repeat;
+  opacity: .28;
+  pointer-events: none;
+}
+
+html.codedrobe-host-codex #codedrobe-codex-skin-chrome > .diana-character-stars {
+  position: absolute;
+  z-index: 0;
+  right: -12px;
+  bottom: -6px;
+  width: clamp(270px, 46cqw, 440px);
+  height: min(78vh, 720px);
+  pointer-events: none;
+}
+
+html.codedrobe-host-codex .diana-character-star {
+  position: absolute;
+  display: block;
+  aspect-ratio: 1;
+  background: var(--diana-line-gold);
+  -webkit-mask: var(--codedrobe-image-hand-star) center / contain no-repeat;
+  mask: var(--codedrobe-image-hand-star) center / contain no-repeat;
+  opacity: .66;
+}
+
+html.codedrobe-host-codex .diana-character-star-small {
+  left: 7%;
+  top: 44%;
+  width: clamp(25px, 3.8cqw, 34px);
+  transform: rotate(-11deg);
+}
+
+html.codedrobe-host-codex .diana-character-star-large {
+  right: 3%;
+  top: 27%;
+  width: clamp(34px, 5cqw, 46px);
+  transform: rotate(9deg);
+}
+
+html.codedrobe-host-codex .diana-character-candy {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  aspect-ratio: 1;
+  opacity: .68;
+}
+
+html.codedrobe-host-codex .diana-character-candy-wrapped {
+  left: 2%;
+  top: 55%;
+  width: clamp(56px, 7.5cqw, 74px);
+  background: var(--diana-line-coral);
+  -webkit-mask: var(--codedrobe-image-candy-wrapped) center / contain no-repeat;
+  mask: var(--codedrobe-image-candy-wrapped) center / contain no-repeat;
+  transform: rotate(-12deg);
+}
+
+html.codedrobe-host-codex .diana-character-candy-lollipop {
+  right: 5%;
+  top: 59%;
+  width: clamp(60px, 8.2cqw, 80px);
+  background: var(--diana-line-coral);
+  -webkit-mask: var(--codedrobe-image-candy-lollipop) center / contain no-repeat;
+  mask: var(--codedrobe-image-candy-lollipop) center / contain no-repeat;
+  transform: rotate(8deg);
+}
+
+html.codedrobe-host-codex .diana-character-acao {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  aspect-ratio: 1;
+  opacity: .62;
+}
+
+html.codedrobe-host-codex .diana-character-acao-heart {
+  left: 16.3%;
+  top: 69%;
+  width: clamp(92px, 12cqw, 118px);
+  background: var(--diana-line-berry);
+  -webkit-mask: var(--codedrobe-image-acao-heart) center / contain no-repeat;
+  mask: var(--codedrobe-image-acao-heart) center / contain no-repeat;
+  transform: rotate(-4deg);
+}
+
+html.codedrobe-host-codex .diana-character-acao-cheer {
+  right: 6%;
+  top: 73%;
+  width: clamp(90px, 11.4cqw, 112px);
+  background: var(--diana-line-berry);
+  -webkit-mask: var(--codedrobe-image-acao-cheer) center / contain no-repeat;
+  mask: var(--codedrobe-image-acao-cheer) center / contain no-repeat;
+  transform: rotate(4deg);
+}
+
+html.codedrobe-host-codex #codedrobe-codex-skin-chrome.dream-home-shell::after {
+  opacity: .92;
+  right: clamp(-18px, 1cqw, 10px);
+  width: clamp(280px, 49cqw, 390px);
+  height: min(78vh, 700px);
+}
+
+html.codedrobe-host-codex #codedrobe-codex-skin-chrome.dream-home-shell > .diana-character-stars {
+  right: clamp(-18px, 1cqw, 10px);
+  width: clamp(280px, 49cqw, 390px);
+  height: min(78vh, 700px);
+}
+
+html.codedrobe-host-codex :where(button, [role="button"]):focus-visible {
+  outline-color: var(--diana-accent);
+}
+
+/* Diana control language. Main conversation typography intentionally remains native. */
+html.codedrobe-host-codex :where(header.draggable, aside.app-shell-left-panel)
+  :where(button, [role="button"]):not(:disabled):hover,
+html.codedrobe-host-codex :where(header.draggable, aside.app-shell-left-panel)
+  :where(button, [role="button"])[data-state="open"] {
+  background-color: var(--diana-accent-wash) !important;
+}
+
+html.codedrobe-host-codex aside.app-shell-left-panel
+  :where(.sidebar-item, [role="button"])[data-app-action-sidebar-thread-selected="true"] {
+  background-color: var(--diana-accent-wash-strong) !important;
+  color: var(--diana-accent) !important;
+  box-shadow: inset 2px 0 0 var(--diana-accent);
+}
+
+html.codedrobe-host-codex aside.app-shell-left-panel
+  :where(button[class*="section-toggle"], [class*="sidebar-icon-button"]):not(:disabled):hover {
+  color: var(--diana-accent) !important;
+}
+
+html.codedrobe-host-codex aside.app-shell-left-panel button[class*="section-toggle"] {
+  color: color-mix(in srgb, var(--diana-accent) 58%, var(--diana-ink));
+}
+
+html.codedrobe-host-codex [class*="_ComposerLayoutRoot_"] {
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--diana-border) 84%, transparent),
+    0 14px 34px rgb(88 53 66 / 8%);
+  transition: box-shadow 140ms ease, background-color 140ms ease;
+}
+
+html.codedrobe-host-codex [class*="_ComposerLayoutRoot_"]:focus-within {
+  box-shadow:
+    inset 0 0 0 1px var(--diana-accent-ring),
+    0 14px 38px rgb(88 53 66 / 11%);
+}
+
+html.codedrobe-host-codex [class*="_ComposerLayoutRoot_"]
+  :where(button, [role="button"]):not(:disabled):hover,
+html.codedrobe-host-codex [class*="_ComposerLayoutRoot_"]
+  :where(button, [role="button"])[data-state="open"] {
+  background-color: var(--diana-accent-wash-strong) !important;
+  color: var(--diana-accent) !important;
+}
+
+html.codedrobe-host-codex [class*="_ComposerLayoutRoot_"]
+  :where(button.bg-primary-solid, button[aria-label="发送"], button[aria-label="停止"]) {
+  background-color: var(--diana-accent) !important;
+  color: #fff !important;
+  box-shadow: 0 5px 16px rgb(184 73 112 / 18%);
+}
+
+html.codedrobe-host-codex [class*="_ComposerLayoutRoot_"]
+  :where(button.bg-primary-solid, button[aria-label="发送"], button[aria-label="停止"]):active {
+  transform: scale(.97);
+}
+
+html.codedrobe-host-codex [role="textbox"][contenteditable="true"] {
+  caret-color: var(--diana-accent);
+}
+
+html.codedrobe-host-codex button[class*="summary-panel-item"]:not(:disabled):hover::before {
+  background-color: var(--diana-accent-wash) !important;
+}
+
+html.codedrobe-host-codex header button[class*="section-toggle"]:not(:disabled):hover {
+  color: var(--diana-accent) !important;
+}
+
+/* Diana app chrome: navigation, desktop menus, project folders, and panel toggles. */
+html.codedrobe-host-codex header.draggable
+  :where(button[aria-label="隐藏边栏"], button[aria-label="Hide sidebar"], button[aria-label="返回"], button[aria-label="Back"], button[aria-label="前进"], button[aria-label="Forward"]) {
+  color: color-mix(in srgb, var(--diana-accent) 50%, var(--diana-ink));
+  transition: color 140ms ease, background-color 140ms ease, box-shadow 140ms ease;
+}
+
+html.codedrobe-host-codex header.draggable
+  :where(button[aria-label="隐藏边栏"], button[aria-label="Hide sidebar"], button[aria-label="返回"], button[aria-label="Back"], button[aria-label="前进"], button[aria-label="Forward"]):not(:disabled):hover {
+  color: var(--diana-accent) !important;
+  box-shadow: inset 0 0 0 1px var(--diana-accent-ring);
+}
+
+html.codedrobe-host-codex header.draggable button[role="menuitem"] {
+  color: color-mix(in srgb, var(--diana-accent) 34%, var(--diana-ink));
+  transition: color 140ms ease, background-color 140ms ease, box-shadow 140ms ease;
+}
+
+html.codedrobe-host-codex header.draggable button[role="menuitem"]:is(:hover, :focus-visible, [data-state="open"]) {
+  background-color: var(--diana-accent-wash) !important;
+  color: var(--diana-accent) !important;
+}
+
+html.codedrobe-host-codex header.draggable button[role="menuitem"][data-state="open"] {
+  box-shadow: inset 0 -1px 0 var(--diana-accent);
+}
+
+html.codedrobe-host-codex aside.app-shell-left-panel
+  [data-app-action-sidebar-project-row]
+  [data-sidebar-project-drop-zone="project-icon"] {
+  color: color-mix(in srgb, var(--diana-accent) 58%, var(--diana-ink));
+  transition: color 140ms ease, filter 140ms ease;
+}
+
+html.codedrobe-host-codex aside.app-shell-left-panel
+  [data-app-action-sidebar-project-row]
+  [data-sidebar-project-drop-zone="project-icon"] svg {
+  transition: transform 140ms ease;
+}
+
+html.codedrobe-host-codex aside.app-shell-left-panel
+  [data-app-action-sidebar-project-row]:is(:hover, [aria-expanded="true"])
+  [data-sidebar-project-drop-zone="project-icon"] {
+  color: var(--diana-accent);
+  filter: drop-shadow(0 2px 5px color-mix(in srgb, var(--diana-accent) 20%, transparent));
+}
+
+html.codedrobe-host-codex aside.app-shell-left-panel
+  [data-app-action-sidebar-project-row]:hover
+  [data-sidebar-project-drop-zone="project-icon"] svg {
+  transform: translateY(-1px);
+}
+
+html.codedrobe-host-codex
+  :where(button[aria-label="切换置顶摘要"], button[aria-label="Toggle pinned summary"], button[aria-label="切换底部面板显示"], button[aria-label="Toggle bottom panel"], button[aria-label="显示/隐藏侧边栏"], button[aria-label="Show/hide sidebar"]) {
+  position: relative;
+  transition: color 140ms ease, background-color 140ms ease, box-shadow 140ms ease;
+}
+
+html.codedrobe-host-codex
+  :where(button[aria-label="切换置顶摘要"], button[aria-label="Toggle pinned summary"], button[aria-label="切换底部面板显示"], button[aria-label="Toggle bottom panel"], button[aria-label="显示/隐藏侧边栏"], button[aria-label="Show/hide sidebar"]):not(:disabled):hover {
+  color: var(--diana-accent) !important;
+  background-color: var(--diana-accent-wash) !important;
+}
+
+html.codedrobe-host-codex
+  :where(button[aria-label="切换置顶摘要"], button[aria-label="Toggle pinned summary"], button[aria-label="切换底部面板显示"], button[aria-label="Toggle bottom panel"], button[aria-label="显示/隐藏侧边栏"], button[aria-label="Show/hide sidebar"])[aria-pressed="true"] {
+  color: var(--diana-accent) !important;
+  background-color: var(--diana-accent-wash-strong) !important;
+  box-shadow: inset 0 0 0 1px var(--diana-accent-ring);
+}
+
+html.codedrobe-host-codex
+  :where(button[aria-label="切换置顶摘要"], button[aria-label="Toggle pinned summary"], button[aria-label="切换底部面板显示"], button[aria-label="Toggle bottom panel"], button[aria-label="显示/隐藏侧边栏"], button[aria-label="Show/hide sidebar"])[aria-pressed="true"]::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 4px;
+  height: 4px;
+  border-radius: 1px;
+  background: var(--diana-accent);
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+html.codedrobe-host-codex ::selection {
+  background: var(--diana-accent-wash-strong);
+}
+
+/* Starberry message rail: preserves Codex's native jump-to-message behavior. */
+html.codedrobe-host-codex nav:is([aria-label="用户消息"], [aria-label="User messages"]) {
+  isolation: isolate;
+  overflow: visible;
+}
+
+html.codedrobe-host-codex nav:is([aria-label="用户消息"], [aria-label="User messages"])::before,
+html.codedrobe-host-codex nav:is([aria-label="用户消息"], [aria-label="User messages"])::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: 1px;
+  width: 5px;
+  height: 5px;
+  border-radius: 1px;
+  background: var(--diana-accent);
+  opacity: .55;
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+html.codedrobe-host-codex nav:is([aria-label="用户消息"], [aria-label="User messages"])::before {
+  top: -7px;
+}
+
+html.codedrobe-host-codex nav:is([aria-label="用户消息"], [aria-label="User messages"])::after {
+  bottom: -7px;
+}
+
+html.codedrobe-host-codex nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:first-child[data-diana-viewport-current="true"])::before,
+html.codedrobe-host-codex nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:last-child[data-diana-viewport-current="true"])::after {
+  opacity: 0;
+}
+
+html.codedrobe-host-codex nav:is([aria-label="用户消息"], [aria-label="User messages"]) button {
+  position: relative;
+  border-radius: 4px;
+}
+
+html.codedrobe-host-codex nav:is([aria-label="用户消息"], [aria-label="User messages"])
+  button > span > span {
+  height: 3px !important;
+  border-radius: 999px !important;
+  background: var(--diana-rail-seed) !important;
+  opacity: .72 !important;
+  transform-origin: left center !important;
+  transition:
+    transform 140ms cubic-bezier(.2, .8, .2, 1),
+    opacity 140ms ease,
+    filter 140ms ease !important;
+}
+
+html.codedrobe-host-codex nav:is([aria-label="用户消息"], [aria-label="User messages"])
+  button:nth-child(5n + 1):not([data-diana-viewport-current="true"]) > span > span {
+  transform: scaleX(.38) !important;
+  opacity: .9 !important;
+}
+
+html.codedrobe-host-codex nav:is([aria-label="用户消息"], [aria-label="User messages"])
+  button:not([data-diana-viewport-current="true"]):hover > span > span {
+  transform: scaleX(.72) !important;
+  opacity: 1 !important;
+  filter: drop-shadow(0 0 4px rgb(184 73 112 / 28%));
+}
+
+html.codedrobe-host-codex nav:is([aria-label="用户消息"], [aria-label="User messages"])
+  button[data-diana-viewport-current="true"]::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: -1px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  background: var(--diana-rail-seed-strong);
+  clip-path: polygon(50% 0, 61% 36%, 100% 50%, 61% 64%, 50% 100%, 39% 64%, 0 50%, 39% 36%);
+  transform: translateY(-50%);
+  filter: drop-shadow(0 0 4px rgb(184 73 112 / 30%));
+  pointer-events: none;
+}
+
+html.codedrobe-host-codex nav:is([aria-label="用户消息"], [aria-label="User messages"])
+  button[data-diana-viewport-current="true"] > span > span {
+  transform: scaleX(.76) !important;
+  background: var(--diana-rail-seed-strong) !important;
+  opacity: .78 !important;
+}
+
+html.codedrobe-host-codex nav:is([aria-label="用户消息"], [aria-label="User messages"])
+  button:focus-visible {
+  outline: 1px solid var(--diana-accent-ring) !important;
+  outline-offset: -1px;
+}
+
+/* Native work surfaces: color-only integration, with the original controls intact. */
+html.codedrobe-host-codex
+  div.relative.flex.max-h-full.min-h-0.flex-col.overflow-hidden.rounded-3xl.bg-surface-elevated-secondary:has(section[role="presentation"]) {
+  background-color: var(--diana-work-panel) !important;
+  border-color: var(--diana-work-panel-border) !important;
+  box-shadow: 0 16px 36px rgb(91 54 69 / 10%), 0 0 0 1px var(--diana-work-panel-border) !important;
+}
+
+html.codedrobe-host-codex
+  div.relative.flex.max-h-full.min-h-0.flex-col.overflow-hidden.rounded-3xl.bg-surface-elevated-secondary:has(section[role="presentation"])
+  section[role="presentation"] > header {
+  background-color: var(--diana-work-panel) !important;
+}
+
+html.codedrobe-host-codex
+  div.relative.flex.max-h-full.min-h-0.flex-col.overflow-hidden.rounded-3xl.bg-surface-elevated-secondary:has(section[role="presentation"])
+  section[role="presentation"]::after {
+  background-color: var(--diana-work-divider) !important;
+}
+
+html.codedrobe-host-codex :where(.thread-scroll-container, .overflow-y-auto):not(.hide-scrollbar) {
+  scrollbar-color: var(--diana-scroll-thumb) transparent;
+}
+
+html.codedrobe-host-codex
+  :where(.thread-scroll-container, .overflow-y-auto):not(.hide-scrollbar)::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+html.codedrobe-host-codex
+  :where(.thread-scroll-container, .overflow-y-auto):not(.hide-scrollbar)::-webkit-scrollbar-thumb {
+  background-color: var(--diana-scroll-thumb);
+}
+
+html.codedrobe-host-codex
+  :where(.thread-scroll-container, .overflow-y-auto):not(.hide-scrollbar)::-webkit-scrollbar-thumb:hover {
+  background-color: var(--diana-scroll-thumb-hover);
+}
+
+html.codedrobe-host-codex aside.app-shell-left-panel div.absolute.inset-x-0.bottom-0.z-20 {
+  background-color: var(--diana-account-surface);
+  border-top: 1px solid var(--diana-work-panel-border);
+}
+
+html.codedrobe-host-codex aside.app-shell-left-panel
+  button:is([aria-label="打开个人资料菜单"], [aria-label="Open profile menu"]) {
+  color: color-mix(in srgb, var(--diana-ink) 82%, var(--diana-accent)) !important;
+}
+
+html.codedrobe-host-codex aside.app-shell-left-panel
+  button:is(
+    [aria-label="开始新的语音聊天"],
+    [aria-label="Start a new voice chat"],
+    [aria-label="打开帮助菜单"],
+    [aria-label="Open help menu"]
+  ) {
+  color: color-mix(in srgb, var(--diana-muted) 72%, var(--diana-accent)) !important;
+}
+
+html.codedrobe-host-codex aside.app-shell-left-panel
+  button:is(
+    [aria-label="打开个人资料菜单"],
+    [aria-label="Open profile menu"],
+    [aria-label="开始新的语音聊天"],
+    [aria-label="Start a new voice chat"],
+    [aria-label="打开帮助菜单"],
+    [aria-label="Open help menu"]
+  ):hover {
+  color: var(--diana-accent) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.codedrobe-host-codex *,
+  html.codedrobe-host-codex *::before,
+  html.codedrobe-host-codex *::after {
+    transition-duration: .01ms !important;
+  }
+}

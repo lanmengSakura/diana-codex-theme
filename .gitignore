@@ -1,0 +1,22 @@
+# Dependencies, local packages, and runtime state
+/node_modules/
+/dist/
+/.runtime/
+
+# The deployed showcase is maintained as a separate nested project.
+/site/
+
+# Local renderer snapshots and development captures
+/docs/codex-dom-*.json
+/preview/qa/*
+!/preview/qa/readme-dark-1600x900.png
+!/preview/qa/readme-light-1600x900.png
+!/preview/qa/promo-dark-1920x1080.png
+!/preview/qa/promo-light-1920x1080.png
+!/preview/qa/preview-mobile-375x812.png
+/assets/diana-brand/rejected/
+
+# Logs and operating-system files
+*.log
+.DS_Store
+Thumbs.db
