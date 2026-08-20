@@ -4,7 +4,7 @@
 
 一套为 Windows Codex 桌面端制作的嘉然（Diana）非商业同人主题。日间与暗夜分别设计，保留 Codex 原本的工具感，只让嘉然与手绘线稿安静地停留在工作区边角。
 
-[在线演示](https://lanmengsakura.github.io/diana-codex-theme/) · [45 秒带声演示](https://github.com/lanmengSakura/diana-codex-theme/releases/download/v0.1.0/diana-codex-theme-demo-v2-zh-CN.mp4) · [下载发行包](https://github.com/lanmengSakura/diana-codex-theme/releases/latest) · [兼容性记录](docs/compatibility.md) · [参与贡献](CONTRIBUTING.md)
+[在线演示](https://lanmengsakura.github.io/diana-codex-theme/) · [CodexThemes 社区](https://codexthemes.ai/skins/diana-codex-theme) · [45 秒带声演示](https://github.com/lanmengSakura/diana-codex-theme/releases/download/v0.1.0/diana-codex-theme-demo-v4-published-zh-CN.mp4) · [下载发行包](https://github.com/lanmengSakura/diana-codex-theme/releases/latest) · [兼容性记录](docs/compatibility.md) · [参与贡献](CONTRIBUTING.md)
 
 ![Release](https://img.shields.io/github/v/release/lanmengSakura/diana-codex-theme?display_name=tag&color=b84970&label=release)
 ![Platform](https://img.shields.io/badge/platform-Windows%2011-b85f7c)
@@ -18,7 +18,7 @@
 
 ## 效果预览
 
-<p align="center"><a href="https://github.com/lanmengSakura/diana-codex-theme/releases/download/v0.1.0/diana-codex-theme-demo-v2-zh-CN.mp4"><strong>▶ 观看 45 秒中文旁白、字幕与原创配乐演示</strong></a></p>
+<p align="center"><a href="https://github.com/lanmengSakura/diana-codex-theme/releases/download/v0.1.0/diana-codex-theme-demo-v4-published-zh-CN.mp4"><strong>▶ 观看 45 秒中文旁白、字幕与《Hopeful Dreamer》器乐配乐演示</strong></a></p>
 
 <a href="https://lanmengsakura.github.io/diana-codex-theme/?theme=dark&scene=complete&controls=none">
   <img src="preview/qa/readme-dark-1600x900.png" alt="Diana Night 暗夜主题高保真模拟界面" width="100%">
@@ -138,7 +138,11 @@ preview/index.html?theme=dark&scene=inspect&controls=none&play=1
 npm run preview:video:narrated
 ```
 
-只需要无声视觉母版时，可以执行 `npm run preview:video`。完整脚本只读取这套虚构桌面母版，不会捕获真实 Codex 窗口或用户数据；生成的 MP4、旁白、配乐与封面位于 `dist/`，不会自动写入 Git 历史。配乐由仓库脚本原创合成，不包含官方歌曲、嘉然翻唱或第三方录音；具体边界见 [素材许可与署名](ASSET_LICENSES.md)。
+只需要无声视觉母版时，可以执行 `npm run preview:video`。完整脚本只读取这套虚构桌面母版，不会捕获真实 Codex 窗口或用户数据；生成的 MP4、旁白、配乐与封面位于 `dist/`，不会自动写入 Git 历史。
+
+默认配乐由仓库脚本原创合成。若维护者另有可合法使用的本地音轨，可以用
+`tools/render-narrated-video.ps1 -BgmPath <本地音频> -OutputPath <输出文件> -ReuseVisual`
+快速重混，无需重渲染画面。外部录音不会自动进入 Git 或发行包；《Hopeful Dreamer》非商业本地混音的来源与边界见 [配乐说明](video/hopeful-dreamer-source.md)，完整素材规则见 [素材许可与署名](ASSET_LICENSES.md)。
 
 ## 它是怎样工作的
 

@@ -263,12 +263,13 @@ button:focus-visible, textarea:focus-visible, select:focus-visible, input:focus-
 .video-caption > div { display: grid; gap: 2px; }
 .video-caption small { color: var(--muted); font: 600 10px/1.4 "Cascadia Code", Consolas, monospace; letter-spacing: .08em; text-transform: uppercase; }
 .video-caption strong { font-size: 18px; font-weight: 650; letter-spacing: -.015em; }
-.video-end-card { position: absolute; z-index: 35; left: calc(405px + (1515px - 405px) / 2); top: 50%; width: 690px; padding: 34px 40px 36px; border: 1px solid var(--work-panel-border); border-radius: 18px; background: color-mix(in srgb, var(--panel-strong) 94%, transparent); box-shadow: 0 0 0 100vmax color-mix(in srgb, var(--surface) 76%, transparent), 0 28px 80px var(--shadow); backdrop-filter: blur(18px); color: var(--ink); opacity: 0; transform: translate(-50%, calc(-50% + 18px)); pointer-events: none; }
+.video-end-card { position: absolute; z-index: 35; left: calc(405px + (1515px - 405px) / 2); top: 50%; width: 780px; padding: 38px 44px 42px; border: 1px solid var(--work-panel-border); border-radius: 18px; background: color-mix(in srgb, var(--panel-strong) 94%, transparent); box-shadow: 0 0 0 100vmax color-mix(in srgb, var(--surface) 76%, transparent), 0 28px 80px var(--shadow); backdrop-filter: blur(18px); color: var(--ink); opacity: 0; transform: translate(-50%, calc(-50% + 18px)); pointer-events: none; }
 .video-end-line { display: block; width: 54px; height: 3px; margin-bottom: 20px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 18px var(--accent-ring); }
 .video-end-card small { color: var(--accent); font: 650 11px/1.4 "Cascadia Code", Consolas, monospace; letter-spacing: .16em; }
 .video-end-card strong { display: block; margin-top: 10px; font-size: 40px; line-height: 1.12; letter-spacing: -.035em; }
-.video-end-card p { margin: 13px 0 22px; color: var(--muted); font-size: 16px; }
-.video-end-card code { display: inline-block; padding: 8px 11px; border: 1px solid var(--work-panel-border); border-radius: 8px; background: var(--accent-wash); color: color-mix(in srgb, var(--ink) 78%, var(--accent)); font: 12px/1.4 "Cascadia Code", Consolas, monospace; }
+.video-end-card p { margin: 13px 0 24px; color: var(--muted); font-size: 16px; }
+.video-end-link-label { display: block; margin-bottom: 8px; color: color-mix(in srgb, var(--muted) 78%, var(--accent)); font-size: 12px; font-weight: 620; letter-spacing: .08em; }
+.video-end-card code { display: block; width: 100%; padding: 14px 16px; border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent); border-radius: 10px; background: var(--accent-wash); color: color-mix(in srgb, var(--ink) 84%, var(--accent)); font: 19px/1.4 "Cascadia Code", Consolas, monospace; letter-spacing: -.025em; white-space: nowrap; }
 :root[data-video="on"] .app-grid { transition: none !important; }
 :root[data-video="on"] .video-transition { opacity: var(--video-transition-opacity); }
 :root[data-video="on"] .video-intro { opacity: var(--video-intro-opacity); }
