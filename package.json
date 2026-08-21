@@ -1,6 +1,6 @@
 {
   "name": "diana-codex-theme",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A reversible Diana fan theme for Codex Desktop, with independent day and night variants.",
   "private": true,
   "type": "module",
@@ -31,6 +31,7 @@
     "terminal:install": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File terminal/install-diana-terminal.ps1",
     "terminal:default": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File terminal/install-diana-terminal.ps1 -SetDefault",
     "terminal:open": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File terminal/install-diana-terminal.ps1 -Open",
+    "terminal:shortcut": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File terminal/new-diana-terminal-shortcut.ps1",
     "terminal:uninstall": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File terminal/uninstall-diana-terminal.ps1",
     "preview:open": "powershell.exe -NoProfile -Command Start-Process (Resolve-Path 'preview/index.html')",
     "validate": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File skills/diana-codex-theme/scripts/validate-theme.ps1",

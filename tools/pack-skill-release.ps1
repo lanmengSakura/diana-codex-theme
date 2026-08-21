@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [string]$Version = '0.2.0'
+    [string]$Version
 )
 
 $ErrorActionPreference = 'Stop'
@@ -19,6 +19,9 @@ function Get-Sha256 {
 }
 
 $repositoryRoot = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
+if (-not $Version) {
+    $Version = (Get-Content -LiteralPath (Join-Path $repositoryRoot 'package.json') -Raw -Encoding UTF8 | ConvertFrom-Json).version
+}
 $skillDirectory = Join-Path $repositoryRoot 'skills\diana-codex-theme'
 $outputDirectory = Join-Path $repositoryRoot 'dist'
 $outputPath = Join-Path $outputDirectory "diana-codex-theme-skill-$Version.zip"

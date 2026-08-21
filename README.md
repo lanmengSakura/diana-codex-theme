@@ -116,7 +116,7 @@ Windows 用户优先使用第一条路线。macOS 路线提供的是完整美术
 
 ### 路线二：macOS 实验性 Skill 部署
 
-macOS 尚未经过真机验证，因此不列入正式兼容平台，也不提供一套假定路径与进程结构的固定安装器。仓库中的 [`skills/diana-codex-theme`](skills/diana-codex-theme) 已自包含日夜 CSS 蓝图和全部定稿美术素材。Mac 用户可以下载 [Diana Skill 压缩包](https://github.com/lanmengSakura/diana-codex-theme/releases/download/v0.2.0/diana-codex-theme-skill-0.2.0.zip)，解压到用户级 `$HOME/.agents/skills/diana-codex-theme`，然后对 Codex 说：
+macOS 尚未经过真机验证，因此不列入正式兼容平台，也不提供一套假定路径与进程结构的固定安装器。仓库中的 [`skills/diana-codex-theme`](skills/diana-codex-theme) 已自包含日夜 CSS 蓝图和全部定稿美术素材。Mac 用户可以下载 [Diana Skill 压缩包](https://github.com/lanmengSakura/diana-codex-theme/releases/download/v0.2.1/diana-codex-theme-skill-0.2.1.zip)，解压到用户级 `$HOME/.agents/skills/diana-codex-theme`，然后对 Codex 说：
 
 > 使用 Diana Skill 帮我部署暗夜主题。
 
@@ -146,7 +146,7 @@ Codex 会先检查当前 Mac 上的版本、发行方式和安全样式入口，
 
 #### 选择安装方式
 
-从 [Diana Codex Theme 0.2.0 Release](https://github.com/lanmengSakura/diana-codex-theme/releases/tag/v0.2.0) 下载 `diana-terminal-0.2.0.zip`，解压后选择一条路线：
+从 [Diana Codex Theme 0.2.1 Release](https://github.com/lanmengSakura/diana-codex-theme/releases/tag/v0.2.1) 下载 `diana-terminal-0.2.1.zip`，解压后选择一条路线：
 
 | 路线 | 双击文件 | 从源码安装 | 对现有终端的影响 |
 |---|---|---|---|
@@ -162,6 +162,29 @@ npm run terminal:open
 # 完整移除终端主题
 npm run terminal:uninstall
 ```
+
+#### 让指定脚本稳定带上皮肤
+
+Windows 的默认终端接管只负责把普通 CMD／PowerShell 窗口交给 Windows Terminal，不保证外部脚本会选中 Diana 配置。需要让某个 `.cmd`、`.bat` 或 `.ps1` 每次都带上完整背景时，可以为它生成一个专用快捷方式：
+
+```powershell
+# 从完整仓库运行；未指定保存位置时会加入开始菜单的 Diana Terminal 文件夹
+npm run terminal:shortcut -- -CommandPath "D:\Tools\monitor.cmd"
+
+# 也可以把快捷方式放在原脚本旁边
+npm run terminal:shortcut -- `
+  -CommandPath "D:\Tools\monitor.cmd" `
+  -ShortcutPath "D:\Tools\打开监测（Diana）.lnk"
+```
+
+发行压缩包中也包含 `new-diana-terminal-shortcut.ps1`，不依赖 Node.js：
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\new-diana-terminal-shortcut.ps1 `
+  -CommandPath "D:\Tools\monitor.cmd"
+```
+
+脚本会按扩展名选择 `Diana CMD` 或 `Diana PowerShell`，只创建当前用户快捷方式，不改原脚本、注册表或系统终端代理。以后从这个快捷方式打开即可；直接双击原文件时，是否带上背景仍取决于 Windows 的终端启动方式。
 
 终端主题要求 Windows Terminal `1.24` 或更高版本，使用原生 Fragment 与本地静态 PNG。它不启用 Acrylic、像素着色器、动画或后台进程；细节见 [`terminal/README.md`](terminal/README.md)。
 

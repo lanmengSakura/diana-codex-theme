@@ -10,7 +10,7 @@
 
 ### 使用发行压缩包
 
-从 [v0.2.0 Release](https://github.com/lanmengSakura/diana-codex-theme/releases/tag/v0.2.0) 下载 `diana-terminal-0.2.0.zip`，解压后任选一种：
+从 [v0.2.1 Release](https://github.com/lanmengSakura/diana-codex-theme/releases/tag/v0.2.1) 下载 `diana-terminal-0.2.1.zip`，解压后任选一种：
 
 | 路线 | 双击文件 | 结果 |
 |---|---|---|
@@ -40,6 +40,21 @@ npm run terminal:default
 ```
 
 此命令会先备份当前 `settings.json`，再只修改 `defaultProfile`。原默认配置记录在主题状态文件中；卸载主题时，如果默认项仍然是 Diana，安装器会将它恢复。它不会删除原生 PowerShell/CMD，不会修改系统终端代理注册表，也不会把设置应用到其他 Windows 用户。
+
+## 为指定脚本创建 Diana 入口
+
+Windows 把普通 CMD／PowerShell 交给默认终端时，不保证自动选中 Diana 配置。要让某个 `.cmd`、`.bat` 或 `.ps1` 稳定带上完整背景，请为它创建专用快捷方式：
+
+```powershell
+# 发行压缩包
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\new-diana-terminal-shortcut.ps1 `
+  -CommandPath "D:\Tools\monitor.cmd"
+
+# 完整仓库
+npm run terminal:shortcut -- -CommandPath "D:\Tools\monitor.cmd"
+```
+
+默认会把快捷方式放进开始菜单的 `Diana Terminal` 文件夹。需要放在脚本旁边时，补充 `-ShortcutPath "D:\Tools\打开监测（Diana）.lnk"`。工具只创建 `.lnk`，不会改原脚本、注册表或系统终端代理；`.cmd`／`.bat` 使用 `Diana CMD`，`.ps1` 使用 `Diana PowerShell`。
 
 ## 移除
 

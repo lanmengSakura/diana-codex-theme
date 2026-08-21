@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [string]$Version = '0.2.0'
+    [string]$Version
 )
 
 $ErrorActionPreference = 'Stop'
@@ -19,6 +19,9 @@ function Get-Sha256 {
 }
 
 $repositoryRoot = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
+if (-not $Version) {
+    $Version = (Get-Content -LiteralPath (Join-Path $repositoryRoot 'package.json') -Raw -Encoding UTF8 | ConvertFrom-Json).version
+}
 $outputDirectory = Join-Path $repositoryRoot 'dist'
 $outputPath = Join-Path $outputDirectory "diana-terminal-$Version.zip"
 $releaseFiles = @(
@@ -27,6 +30,7 @@ $releaseFiles = @(
     (Join-Path $PSScriptRoot 'install-as-default.cmd'),
     (Join-Path $PSScriptRoot 'uninstall.cmd'),
     (Join-Path $PSScriptRoot 'install-diana-terminal.ps1'),
+    (Join-Path $PSScriptRoot 'new-diana-terminal-shortcut.ps1'),
     (Join-Path $PSScriptRoot 'set-diana-terminal-default.ps1'),
     (Join-Path $PSScriptRoot 'uninstall-diana-terminal.ps1'),
     (Join-Path $PSScriptRoot 'diana-terminal'),

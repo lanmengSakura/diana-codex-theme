@@ -46,6 +46,21 @@ test('terminal default-profile support is reversible and avoids registry changes
   assert.doesNotMatch(script, /Set-ItemProperty|New-ItemProperty|HKCU:|HKLM:/);
 });
 
+test('terminal script shortcuts explicitly select a Diana profile', async () => {
+  const [shortcutScript, packageScript] = await Promise.all([
+    readFile(new URL('../terminal/new-diana-terminal-shortcut.ps1', import.meta.url), 'utf8'),
+    readFile(new URL('../terminal/pack-terminal-release.ps1', import.meta.url), 'utf8'),
+  ]);
+
+  assert.match(shortcutScript, /Diana CMD/);
+  assert.match(shortcutScript, /Diana PowerShell/);
+  assert.match(shortcutScript, /WScript\.Shell/);
+  assert.match(shortcutScript, /wt\.exe/);
+  assert.match(shortcutScript, /\.cmd.*\.bat.*\.ps1/s);
+  assert.doesNotMatch(shortcutScript, /Set-ItemProperty|New-ItemProperty|HKCU:|HKLM:/);
+  assert.match(packageScript, /new-diana-terminal-shortcut\.ps1/);
+});
+
 test('terminal release documents both install routes and uses a simulated screenshot', async () => {
   const [rootReadme, terminalReadme, showcase, screenshot] = await Promise.all([
     readFile(new URL('../README.md', import.meta.url), 'utf8'),
@@ -59,7 +74,9 @@ test('terminal release documents both install routes and uses a simulated screen
   assert.match(rootReadme, /install-as-default\.cmd/);
   assert.match(terminalReadme, /独立保留/);
   assert.match(terminalReadme, /设为默认/);
+  assert.match(rootReadme, /terminal:shortcut/);
+  assert.match(terminalReadme, /new-diana-terminal-shortcut\.ps1/);
   assert.match(showcase, /C:\\Projects\\diana-codex-theme/);
-  assert.doesNotMatch(showcase, /C:\\Users\\|蓝梦|AppData|\.codex/);
+  assert.doesNotMatch(showcase, /C:\\Users\\|AppData|\.codex/);
   assert.ok(screenshot.length > 100_000);
 });
