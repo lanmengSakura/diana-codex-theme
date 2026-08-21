@@ -165,6 +165,9 @@ npm run terminal:uninstall
 
 终端主题要求 Windows Terminal `1.24` 或更高版本，使用原生 Fragment 与本地静态 PNG。它不启用 Acrylic、像素着色器、动画或后台进程；细节见 [`terminal/README.md`](terminal/README.md)。
 
+> [!NOTE]
+> 当前终端主题只正式制作并验证了 Windows Terminal 版本。macOS 与 Linux 上的 bash、zsh、fish 等 Shell 本身不负责绘制背景，不同终端模拟器也没有统一的主题格式，因此仓库暂不提供 iTerm2、WezTerm、kitty 或 GNOME Terminal 安装包。定稿背景与装饰素材保留在 [`terminal/diana-terminal`](terminal/diana-terminal) 中，其他平台用户可以按自己的终端自行适配，也欢迎提交不覆盖用户原配置、可完整卸载的适配方案。
+
 安装完成后可以按 <kbd>Windows</kbd> 键，在开始菜单中搜索 `Diana PowerShell` 或 `Diana CMD` 直接打开，也可以从 Windows Terminal 的配置下拉菜单选择。更多说明见 [`terminal/README.md`](terminal/README.md)。
 
 ## Windows 登录后自动挂载
