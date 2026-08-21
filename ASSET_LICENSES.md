@@ -6,7 +6,7 @@
 
 - Source file: `assets/diana-brand/source/diana-reference.jpg`
 - Derived transparent cutout: `assets/diana-brand/derived/diana-corner-cutout-v2.png`
-- Derived night colorway: `assets/diana-brand/derived/diana-night-v3.png`
+- Derived night colorway: `assets/diana-brand/derived/diana-night-v3.png`; the Windows Terminal package uses it without redrawing the character inside the deterministic transparent composition `terminal/diana-terminal/diana-terminal-bg-v2.png`.
 - Approved decorative line source: `docs/concepts/diana-line-art-style-proof-v2.png`
 - Derived transparent line masks: `assets/diana-brand/derived/diana-line-art-approved-upper.png` and `diana-line-art-approved-lower.png`
 - Approved narrative doodle: `assets/diana-brand/derived/diana-doodle-chalk-v2-approved.png`. Diana Night displays the prepared chalk bitmap with a low-luminance filter; Diana Day uses the same transparent line structure as a berry-colored mask. Earlier colored studies remain reproducibility material and are not the current production layer.

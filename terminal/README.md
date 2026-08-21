@@ -1,0 +1,58 @@
+# Diana Terminal（暗夜版）
+
+这是为 Windows Terminal 制作的暗夜主题，包含 `Diana PowerShell` 和 `Diana CMD` 两个可选配置。用户可以将它们独立保留，也可以主动把 Diana PowerShell 设为当前用户的默认配置。
+
+![Diana PowerShell 高保真模拟截图](qa/terminal-readme-1600x900.png)
+
+## 安装
+
+要求 Windows Terminal `1.24` 或更高版本。
+
+### 使用发行压缩包
+
+从 [v0.2.0 Release](https://github.com/lanmengSakura/diana-codex-theme/releases/tag/v0.2.0) 下载 `diana-terminal-0.2.0.zip`，解压后任选一种：
+
+| 路线 | 双击文件 | 结果 |
+|---|---|---|
+| 独立保留 | `install-independent.cmd` | 新增两个 Diana 配置与开始菜单快捷方式，原默认项不变 |
+| 设为默认 | `install-as-default.cmd` | 完成同样安装，并将 Diana PowerShell 设为当前用户默认配置 |
+
+### 从完整仓库安装
+
+独立保留：
+
+```powershell
+npm run terminal:install
+```
+
+安装后，从 Windows Terminal 的配置下拉菜单选择 `Diana PowerShell` 或 `Diana CMD`。也可以直接安装并打开：
+
+```powershell
+npm run terminal:open
+```
+
+安装器还会在当前用户的开始菜单中创建两个快捷方式。以后直接按 <kbd>Windows</kbd> 键，搜索 `Diana PowerShell` 或 `Diana CMD` 即可打开，使用方式与普通应用一致。
+
+如果希望直接打开 Windows Terminal 时默认进入 `Diana PowerShell`：
+
+```powershell
+npm run terminal:default
+```
+
+此命令会先备份当前 `settings.json`，再只修改 `defaultProfile`。原默认配置记录在主题状态文件中；卸载主题时，如果默认项仍然是 Diana，安装器会将它恢复。它不会删除原生 PowerShell/CMD，不会修改系统终端代理注册表，也不会把设置应用到其他 Windows 用户。
+
+## 移除
+
+```powershell
+npm run terminal:uninstall
+```
+
+发行压缩包用户也可以双击 `uninstall.cmd`。
+
+主题只向当前用户的 Windows Terminal Fragment 目录复制一个 JSON 和一张本地 PNG。终端专用背景让左侧信息密集区完全透明；右上复用桌面暗夜版的星星、弧线与草莓线稿，右下按同一比例缩入嘉然立绘、两颗手绘星、糖果、棒棒糖和两只阿草。没有 Acrylic、像素着色器、动画、远程资源或常驻进程。
+
+需要重新生成终端专用背景时运行：
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File terminal/build-terminal-background.ps1
+```

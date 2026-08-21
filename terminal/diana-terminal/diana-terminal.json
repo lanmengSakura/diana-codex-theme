@@ -1,0 +1,73 @@
+{
+  "profiles": [
+    {
+      "name": "Diana PowerShell",
+      "guid": "{9f604e64-7bc5-4f8a-9d55-7fe0a6fe27d1}",
+      "commandline": "pwsh.exe -NoLogo",
+      "colorScheme": "Diana Night",
+      "tabColor": "#442735",
+      "backgroundImage": "diana-terminal-bg-v2.png",
+      "backgroundImageAlignment": "bottomRight",
+      "backgroundImageOpacity": 1.0,
+      "backgroundImageStretchMode": "uniform",
+      "cursorColor": "#F2AEC3",
+      "cursorShape": "bar",
+      "font": {
+        "face": "Cascadia Mono",
+        "size": 11,
+        "weight": "normal"
+      },
+      "padding": "14, 12, 14, 12",
+      "opacity": 100,
+      "useAcrylic": false,
+      "adjustIndistinguishableColors": "indexed"
+    },
+    {
+      "name": "Diana CMD",
+      "guid": "{376e4b97-e3c1-42ea-a6ee-5605714340e7}",
+      "commandline": "cmd.exe",
+      "colorScheme": "Diana Night",
+      "tabColor": "#442735",
+      "backgroundImage": "diana-terminal-bg-v2.png",
+      "backgroundImageAlignment": "bottomRight",
+      "backgroundImageOpacity": 1.0,
+      "backgroundImageStretchMode": "uniform",
+      "cursorColor": "#F2AEC3",
+      "cursorShape": "vintage",
+      "font": {
+        "face": "Cascadia Mono",
+        "size": 11,
+        "weight": "normal"
+      },
+      "padding": "14, 12, 14, 12",
+      "opacity": 100,
+      "useAcrylic": false,
+      "adjustIndistinguishableColors": "indexed"
+    }
+  ],
+  "schemes": [
+    {
+      "name": "Diana Night",
+      "background": "#0D0C0F",
+      "foreground": "#F3EEF0",
+      "selectionBackground": "#4A2B38",
+      "cursorColor": "#F2AEC3",
+      "black": "#171419",
+      "red": "#E07C9C",
+      "green": "#93C7A4",
+      "yellow": "#E6C68C",
+      "blue": "#8EAAD8",
+      "purple": "#C794CA",
+      "cyan": "#81C3C4",
+      "white": "#E7DFE3",
+      "brightBlack": "#6F6870",
+      "brightRed": "#F29AB5",
+      "brightGreen": "#B0D9BA",
+      "brightYellow": "#F4D9A6",
+      "brightBlue": "#AEC3EA",
+      "brightPurple": "#DAB1DC",
+      "brightCyan": "#A7DDDE",
+      "brightWhite": "#FFF8FB"
+    }
+  ]
+}

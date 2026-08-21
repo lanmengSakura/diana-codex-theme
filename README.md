@@ -116,7 +116,7 @@ Windows 用户优先使用第一条路线。macOS 路线提供的是完整美术
 
 ### 路线二：macOS 实验性 Skill 部署
 
-macOS 尚未经过真机验证，因此不列入正式兼容平台，也不提供一套假定路径与进程结构的固定安装器。仓库中的 [`skills/diana-codex-theme`](skills/diana-codex-theme) 已自包含日夜 CSS 蓝图和全部定稿美术素材。Mac 用户可以下载 [Diana Skill 压缩包](https://github.com/lanmengSakura/diana-codex-theme/releases/download/v0.1.1/diana-codex-theme-skill-0.1.1.zip)，解压到用户级 `$HOME/.agents/skills/diana-codex-theme`，然后对 Codex 说：
+macOS 尚未经过真机验证，因此不列入正式兼容平台，也不提供一套假定路径与进程结构的固定安装器。仓库中的 [`skills/diana-codex-theme`](skills/diana-codex-theme) 已自包含日夜 CSS 蓝图和全部定稿美术素材。Mac 用户可以下载 [Diana Skill 压缩包](https://github.com/lanmengSakura/diana-codex-theme/releases/download/v0.2.0/diana-codex-theme-skill-0.2.0.zip)，解压到用户级 `$HOME/.agents/skills/diana-codex-theme`，然后对 Codex 说：
 
 > 使用 Diana Skill 帮我部署暗夜主题。
 
@@ -135,6 +135,37 @@ Codex 会先检查当前 Mac 上的版本、发行方式和安全样式入口，
 | 恢复并移除自动挂载 | `npm run theme:uninstall` | 否 |
 
 如果 Codex 是从普通入口全新启动、尚未带上主题端口，请使用 `theme:dark` 或 `theme:light`，不要直接执行热切换命令。
+
+### Diana Terminal（暗夜版）
+
+仓库同时附带一套仅面向 Windows Terminal 的暗夜终端主题，包含 `Diana PowerShell` 与 `Diana CMD` 两个配置。左侧信息区保持透明，右上与右下复用 Diana Night 的定稿线稿、立绘、星星、糖果和阿草组合。
+
+<img src="terminal/qa/terminal-readme-1600x900.png" alt="Diana PowerShell 高保真模拟截图" width="100%">
+
+<p align="center"><sub>Diana Terminal · 模拟命令与公开路径，不包含作者的真实终端内容</sub></p>
+
+#### 选择安装方式
+
+从 [Diana Codex Theme 0.2.0 Release](https://github.com/lanmengSakura/diana-codex-theme/releases/tag/v0.2.0) 下载 `diana-terminal-0.2.0.zip`，解压后选择一条路线：
+
+| 路线 | 双击文件 | 从源码安装 | 对现有终端的影响 |
+|---|---|---|---|
+| 独立保留 | `install-independent.cmd` | `npm run terminal:install` | 新增 Diana PowerShell / CMD 与开始菜单快捷方式；不修改默认项 |
+| 设为默认 | `install-as-default.cmd` | `npm run terminal:default` | 完成同样安装，并备份设置后将 Diana PowerShell 设为当前用户默认配置 |
+
+两条路线都不会覆盖或删除原生 PowerShell、CMD 配置。设为默认只修改当前用户 Windows Terminal 的 `defaultProfile`，不会改系统终端代理注册表；卸载时会在默认项仍为 Diana 的前提下恢复原值。
+
+```powershell
+# 独立安装并立即打开 Diana PowerShell
+npm run terminal:open
+
+# 完整移除终端主题
+npm run terminal:uninstall
+```
+
+终端主题要求 Windows Terminal `1.24` 或更高版本，使用原生 Fragment 与本地静态 PNG。它不启用 Acrylic、像素着色器、动画或后台进程；细节见 [`terminal/README.md`](terminal/README.md)。
+
+安装完成后可以按 <kbd>Windows</kbd> 键，在开始菜单中搜索 `Diana PowerShell` 或 `Diana CMD` 直接打开，也可以从 Windows Terminal 的配置下拉菜单选择。更多说明见 [`terminal/README.md`](terminal/README.md)。
 
 ## Windows 登录后自动挂载
 
@@ -202,6 +233,7 @@ assets/        嘉然、阿草、线稿和装饰素材
 docs/          架构、兼容性、概念稿与发布说明
 preview/       高保真展示页面与 README 日夜截图
 skills/        自包含日夜素材、部署决策与验证流程的主题 Skill
+terminal/      Windows Terminal 暗夜主题、安装与移除脚本
 tests/         启动器与展示页静态测试
 themes/        Diana Night / Diana Day 主题源码
 tools/         启用、切换、自动挂载、状态和恢复工具

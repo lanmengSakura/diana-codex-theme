@@ -2,6 +2,7 @@
 /node_modules/
 /dist/
 /.runtime/
+/terminal/diana-terminal/diana-night-v3.png
 
 # Logs and operating-system files
 *.log

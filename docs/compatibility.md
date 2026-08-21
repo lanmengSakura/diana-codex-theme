@@ -5,9 +5,17 @@
 - Operating system: Windows 11
 - Codex distribution: Microsoft Store / MSIX
 - Locally inspected version: `26.814.5517.0`
-- Theme release: `0.1.1`
+- Theme release: `0.2.0`
 - Visual status: Diana Night and Diana Day finalized
 - Runtime status: beta
+
+## Windows Terminal status
+
+- Required version: Windows Terminal `1.24` or newer
+- Locally verified version: `1.24.11911.0`
+- Profiles: `Diana PowerShell` and `Diana CMD`
+- Install modes: independent profiles, or current-user default with reversible `defaultProfile` backup
+- Runtime cost: one local static PNG; no watcher, animation, Acrylic, pixel shader, or background process
 
 ## macOS status
 

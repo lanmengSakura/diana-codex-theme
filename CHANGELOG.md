@@ -1,7 +1,9 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 - 2026-08-21
 
+- 新增正式版 Diana Terminal 暗夜主题：提供独立的 PowerShell 与 CMD 配置，复用桌面暗夜版右上线稿和右下完整角色装饰组合，并保持左侧信息区透明。
+- 使用 Windows Terminal 当前用户 Fragment 安装主题，同时创建可恢复的开始菜单快捷方式；不覆盖默认终端、不修改 `settings.json`，也不增加后台进程。
 - 将 `diana-codex-theme` Skill 补成自包含包，内置定稿日夜 CSS 蓝图和全部生产美术素材。
 - 新增跨平台素材完整性校验，以及素材与仓库生产版本的逐字节同步测试。
 - 新增 macOS 实验性现场部署流程：由 Codex 先检查当前安装的安全入口，只允许用户空间内、可恢复的修改，禁止改动 `.app` 与应用签名。
