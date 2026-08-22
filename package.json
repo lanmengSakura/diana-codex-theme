@@ -1,7 +1,7 @@
 {
   "name": "diana-codex-theme",
-  "version": "0.2.1",
-  "description": "A reversible Diana fan theme for Codex Desktop, with independent day and night variants.",
+  "version": "0.2.2",
+  "description": "Safe Diana visual blueprints and artwork for Codex, plus a verified Windows Terminal theme.",
   "private": true,
   "type": "module",
   "license": "MIT",
@@ -13,17 +13,10 @@
     "node": ">=22.4"
   },
   "scripts": {
-    "theme:pack": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/pack-themes.ps1",
-    "theme:dark": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/enable-diana-theme.ps1 -Variant dark -RestartExisting -Watch -MaintainHost",
-    "theme:light": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/enable-diana-theme.ps1 -Variant light -RestartExisting -Watch -MaintainHost",
-    "theme:switch:dark": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/enable-diana-theme.ps1 -Variant dark -Watch -MaintainHost",
-    "theme:switch:light": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/enable-diana-theme.ps1 -Variant light -Watch -MaintainHost",
-    "theme:autostart:dark": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/install-diana-autostart.ps1 -Variant dark -StartNow",
-    "theme:autostart:light": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/install-diana-autostart.ps1 -Variant light -StartNow",
-    "theme:autostart:remove": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/install-diana-autostart.ps1 -Remove",
-    "theme:status": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/get-diana-status.ps1",
-    "theme:restore": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/restore-diana-theme.ps1",
-    "theme:uninstall": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/restore-diana-theme.ps1 -RemoveAutostart",
+    "security:audit": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/audit-legacy-cdp.ps1",
+    "security:remove-legacy": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/remove-legacy-cdp.ps1",
+    "theme:status": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/audit-legacy-cdp.ps1",
+    "theme:uninstall": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/remove-legacy-cdp.ps1",
     "terminal:validate": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File terminal/validate-diana-terminal.ps1",
     "terminal:build": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File terminal/build-terminal-background.ps1",
     "terminal:showcase": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File terminal/render-terminal-showcase.ps1",
@@ -37,11 +30,9 @@
     "validate": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File skills/diana-codex-theme/scripts/validate-theme.ps1",
     "skill:verify": "node skills/diana-codex-theme/scripts/verify-bundle.mjs",
     "skill:pack": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/pack-skill-release.ps1",
-    "release:pack": "npm run theme:pack && npm run terminal:pack && npm run skill:pack",
+    "release:sanitize": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/prepare-safe-release.ps1",
+    "release:pack": "npm run release:sanitize && npm run terminal:pack && npm run skill:pack",
     "test": "node --test tests/*.test.mjs",
-    "check": "npm run test && npm run terminal:validate && npm run skill:verify && npm run validate && npm run theme:pack"
-  },
-  "dependencies": {
-    "@codedrobe/core": "0.6.1"
+    "check": "npm run test && npm run terminal:validate && npm run skill:verify && npm run validate && npm run release:sanitize"
   }
 }

@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "id": "diana-light",
   "displayName": "Diana Day",
-  "version": "0.2.1",
-  "status": "beta",
+  "version": "0.2.2",
+  "status": "blueprint",
   "variant": "light",
   "nativeAppearance": {
     "accent": "#B84970",
@@ -13,7 +13,13 @@
   },
   "assets": {
     "character": "../../assets/diana-brand/derived/diana-corner-cutout-v2.png",
+    "handStar": "../../assets/diana-brand/derived/diana-hand-star-reference-v2.png",
+    "candyWrapped": "../../assets/diana-brand/derived/diana-candy-wrapped-v1.png",
+    "candyLollipop": "../../assets/diana-brand/derived/diana-candy-lollipop-v1.png",
+    "acaoHeart": "../../assets/diana-brand/derived/acao-heart-v3.png",
+    "acaoCheer": "../../assets/diana-brand/derived/acao-cheer-v1.png",
     "lineArtUpper": "../../assets/diana-brand/derived/diana-line-art-approved-upper.png",
+    "lineArtCorner": "../../assets/diana-brand/derived/diana-left-top-detailed-corner-mask-v7.png",
     "lineArtLower": "../../assets/diana-brand/derived/diana-doodle-chalk-v2-approved.png"
   },
   "css": "theme.css"

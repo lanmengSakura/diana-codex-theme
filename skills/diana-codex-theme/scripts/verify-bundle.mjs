@@ -20,7 +20,7 @@ const required = [
 ].map((name) => `${assetRoot}/${name}`);
 
 for (const variant of ["diana-dark", "diana-light"]) {
-  for (const name of ["codedrobe.json", "theme.css", "theme.json"]) {
+  for (const name of ["theme.css", "theme.json"]) {
     required.push(`${themeRoot}/${variant}/${name}`);
   }
 }

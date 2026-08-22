@@ -21,11 +21,11 @@ Treat that request as authorization to inspect and prepare a reversible user-spa
 1. Run `node scripts/verify-bundle.mjs` when Node.js is available. If it is not, manually confirm the files listed in [visual-system.md](visual-system.md).
 2. Record the Mac architecture, macOS version, exact Codex version, distribution, application path, and active appearance.
 3. Inspect Codex settings and user-writable support/configuration directories. Search for a supported appearance, theme, plugin, extension, custom-CSS, or user-style hook.
-4. Inspect the current renderer and launch interface read-only only when needed. Do not assume Windows process names, MSIX paths, command flags, ports, or DOM selectors.
+4. Inspect only documented application, theme, plugin, pet, or extension interfaces. Do not assume Windows process names, MSIX paths, command flags, ports, or DOM selectors.
 5. Prefer an official or documented user-space hook. Copy the selected blueprint and only its local images to a dedicated Diana directory in the user's writable application-support or configuration area.
 6. Adapt only selectors, font fallbacks, and paths required by the inspected Mac build. Preserve theme tokens, artwork, placement relationships, `pointer-events: none`, and the host scope.
 7. Create a restore record containing every new path, every changed user file, the original values, and the disable procedure.
-8. Ask before restarting Codex, adding launch arguments, opening a debugging port, or installing a LaunchAgent/login item.
+8. Ask before restarting Codex or replacing an existing user configuration. Do not add launch arguments, open a debugging port, or install a LaunchAgent/login item.
 9. After activation, verify the full state matrix in [runtime-safety.md](runtime-safety.md), then disable and restore once to prove recovery.
 
 ## Hard boundaries
@@ -36,7 +36,7 @@ Never write to or re-sign:
 - `Contents/Resources`, `app.asar`, frameworks, helpers, or executables inside a `.app`;
 - `_CodeSignature`, entitlements, quarantine metadata, or Gatekeeper state.
 
-Never use a network-exposed debugging endpoint, remote CSS/image URL, analytics code, or a general-purpose remote script.
+Never use CDP, a local or network-exposed debugging endpoint, remote CSS/image URL, analytics code, or a general-purpose remote script.
 
 Do not create a LaunchAgent or other auto-start mechanism as part of the first deployment. Offer persistence only after one clean manual enable/disable/restore cycle and obtain explicit approval.
 

@@ -10,7 +10,7 @@
 
 ### 使用发行压缩包
 
-从 [v0.2.1 Release](https://github.com/lanmengSakura/diana-codex-theme/releases/tag/v0.2.1) 下载 `diana-terminal-0.2.1.zip`，解压后任选一种：
+从 [最新 Release](https://github.com/lanmengSakura/diana-codex-theme/releases/latest) 下载 `diana-terminal-0.2.2.zip`，解压后任选一种：
 
 | 路线 | 双击文件 | 结果 |
 |---|---|---|

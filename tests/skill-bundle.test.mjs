@@ -9,14 +9,14 @@ const read = (base, relativePath) => readFile(path.join(base, relativePath));
 
 test("the standalone skill carries byte-identical production themes and assets", async () => {
   const manifests = await Promise.all([
-    readFile(path.join(root, "themes", "diana-dark", "codedrobe.json"), "utf8"),
-    readFile(path.join(root, "themes", "diana-light", "codedrobe.json"), "utf8")
+    readFile(path.join(root, "themes", "diana-dark", "theme.json"), "utf8"),
+    readFile(path.join(root, "themes", "diana-light", "theme.json"), "utf8")
   ]);
   const assetNames = new Set();
 
   for (const source of manifests) {
     const manifest = JSON.parse(source);
-    for (const assetPath of Object.values(manifest.images)) {
+    for (const assetPath of Object.values(manifest.assets)) {
       assetNames.add(path.basename(assetPath));
     }
   }
@@ -28,7 +28,7 @@ test("the standalone skill carries byte-identical production themes and assets",
   }
 
   for (const variant of ["diana-dark", "diana-light"]) {
-    for (const name of ["codedrobe.json", "theme.css", "theme.json"]) {
+    for (const name of ["theme.css", "theme.json"]) {
       const production = await read(root, path.join("themes", variant, name));
       const bundled = await read(skillRoot, path.join("assets", "theme-blueprint", "themes", variant, name));
       assert.deepEqual(bundled, production, `${variant}/${name} drifted from the production theme`);
@@ -43,4 +43,5 @@ test("the macOS route is explicitly experimental and refuses app-bundle patching
   assert.match(source, /Never write to or re-sign/);
   assert.match(source, /\/Applications\/\*\.app/);
   assert.match(source, /valid outcome/);
+  assert.match(source, /Never use CDP/);
 });

@@ -10,30 +10,27 @@ The bundled CSS and artwork are visual blueprints. They do not prove that a new 
 
 1. Record the operating system, exact Codex version, distribution, executable location, and active appearance.
 2. Inspect official appearance, theme, plugin, and user-style entry points first.
-3. Capture read-only DOM and computed-style evidence for the target states when a renderer inspection hook is available.
+3. Capture read-only layout evidence only through a documented application or plugin interface.
 4. Confirm every selector is scoped below a verified host marker.
 5. Confirm every deployed asset resolves locally from a user-writable directory.
 6. Prepare disable and restore commands before the first write.
 
 ## Application boundary
 
-Never alter installed application files, packages, resources, signatures, `app.asar`, `WindowsApps`, or a macOS `.app` bundle. Never bind a debugging endpoint to a non-loopback interface.
+Never alter installed application files, packages, resources, signatures, `app.asar`, `WindowsApps`, or a macOS `.app` bundle. Never launch Codex with a remote debugging flag, connect through CDP, or create a localhost debugger for theming. Loopback binding is not an authentication boundary.
 
-The Windows repository launcher uses a loopback-only debugging connection and a reversible CSS enhancement. That route is validated only on its recorded Windows build. Do not transplant its process names, flags, paths, or persistence mechanism to macOS.
-
-On macOS, follow [macos-deployment.md](macos-deployment.md). Prefer a supported application hook. A debugging connection is a fallback only after the current build has been inspected and the user has approved any restart or launch-argument change.
+On every platform, use Codex's own Appearance controls first. The full artwork requires a documented user-space theme, plugin, pet, or extension hook. If the inspected build does not provide one, applying only the native palette is the safe outcome.
 
 ## Change control
 
 Explicit approval is required before:
 
 - restarting or closing Codex;
-- changing launch flags;
 - creating a login item, LaunchAgent, scheduled task, or other persistence;
 - replacing an existing user configuration file rather than merging a narrowly scoped entry.
 
 ## Verification
 
-Test home, conversation, settings, diff, approval, long scrolling, narrow width, compact/secondary windows, theme switching, restart persistence, disable, and restore. Verify pointer and keyboard interaction with decorations enabled.
+Test home, conversation, settings, diff, approval, long scrolling, narrow width, compact/secondary windows, theme switching, disable, and restore. Verify pointer and keyboard interaction with decorations enabled.
 
 A browser mockup is visual design evidence only. A successful bundle check proves file completeness only. Neither is runtime compatibility evidence.

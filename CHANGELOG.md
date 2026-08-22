@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.2 - 2026-08-22
+
+- 移除公开版的 CDP 调试端口、后台 watcher、Codex 启动参数、计划任务自动挂载和 `.codedrobe-theme` 发行包。
+- 移除 `@codedrobe/core` 运行时依赖；`release:pack` 现在只生成安全的 Windows Terminal 包与自包含视觉 Skill。
+- 将日夜主题重构为原生配色 + 完整本地美术 + CSS 蓝图，完整角落立绘仅允许通过当前 Codex 版本正式支持的用户空间入口部署。
+- 新增旧版风险检测与清理命令，清理过程不连接调试端口，也不读取会话内容。
+- 更新 README、架构、安全策略、兼容性记录与 Skill，明确 loopback 不是认证边界。
+
 ## 0.2.1 - 2026-08-22
 
 - 新增通用脚本快捷方式工具：让 `.cmd`、`.bat` 与 `.ps1` 明确使用 Diana CMD 或 Diana PowerShell，不再依赖默认终端接管时的配置选择。

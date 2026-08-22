@@ -1,11 +1,11 @@
 ---
 name: diana-codex-theme
-description: Deploy, refine, verify, troubleshoot, or restore the self-contained Diana/Jiaran Codex day and night themes. Use when a user asks Codex to install this theme from the bundled artwork and CSS, including the verified Windows workflow or an experimental macOS deployment after live safety inspection. Do not use to patch Codex application bundles or claim untested compatibility.
+description: Safely apply, adapt, preview, or restore the self-contained Diana/Jiaran Codex day and night visual system. Use when a user asks Codex to use the bundled artwork, native color values, or CSS blueprints. Prefer official Appearance controls and documented user-space hooks; never open a browser debugging port or patch the Codex application.
 ---
 
 # Diana Codex Theme
 
-Deploy Diana as a quiet corner companion without changing Codex's main reading hierarchy. The skill carries the finalized day/night artwork and CSS blueprints, so do not fetch substitutes or require the surrounding repository.
+Bring Diana into Codex without weakening the app's security boundary. The skill carries the finalized day/night artwork, native color values, and CSS blueprints, so do not fetch substitutes or require the surrounding repository.
 
 ## Start here
 
@@ -28,9 +28,9 @@ Do not regenerate character art, replace it with a hotlink, or silently simplify
 
 ### Windows
 
-When the surrounding repository is present, use its existing launcher, validation, status, switch, and restore commands. This is the currently verified route. Ask before restarting Codex or changing launch flags.
+Start with Codex Settings > Appearance. Apply the bundled `nativeAppearance` values through the app's own theme controls or import flow. This safely preserves the Diana palette but does not add corner artwork.
 
-When only this standalone skill is present, treat the bundled files as a deployment blueprint. Inspect the live installation and create only the minimum user-writable, reversible adapter needed for that machine. Do not pretend the repository launcher exists.
+Treat the CSS and images as a deployment blueprint. Use them only when the current Codex build exposes a documented theme, plugin, pet, or user-style hook that can carry local decorative assets without a debugging endpoint. If no such hook exists, keep the native palette and report that the full artwork was not installed.
 
 ### macOS
 
@@ -44,11 +44,11 @@ Preview and package the visual assets, but do not claim real-app support unless 
 
 1. Verify the skill bundle.
 2. Record the exact Codex version and distribution.
-3. Inspect supported appearance, theme, plugin, and user-style entry points before considering a debugging connection.
+3. Inspect supported appearance, theme, plugin, pet, and user-style entry points. Do not create a debugging connection.
 4. Prepare a restore record before the first write. Back up only files that this workflow will change.
 5. Copy required assets and styles into a user-writable support directory; never write into the installed application bundle.
 6. Keep selectors below an explicit host scope and keep every decorative layer non-interactive.
-7. Ask before restarting Codex, changing launch arguments, or installing an automatic startup item.
+7. Ask before restarting Codex or replacing an existing user configuration file. Do not change launch arguments or install persistence.
 8. Verify home, conversation, settings, diff, approval, long scroll, narrow width, theme switching, restart, disable, and restore.
 9. Report the exact tested version, deployed paths, remaining limitations, and restore command.
 
@@ -59,12 +59,13 @@ If a safe entry point cannot be established, report that the assets are ready bu
 1. Preserve the token relationships in the visual reference unless the user approves a new direction.
 2. Edit day and night variants together.
 3. Keep decorative artwork below task content and outside the composer.
-4. Update a browser preview before changing a runtime adapter.
+4. Update a browser preview before changing a deployment adapter.
 5. Inspect screenshots rather than relying only on DOM checks.
 
 ## Guardrails
 
 - Never patch `WindowsApps`, a macOS `.app` bundle, `app.asar`, signatures, quarantine metadata, or bundled Codex resources.
+- Never add `--remote-debugging-port`, connect through CDP, open a localhost debugger, or install a watcher/login task for the theme.
 - Never inject analytics, remote CSS, remote images, or arbitrary remote scripts.
 - Never claim compatibility from a mockup, CSS parse, or screenshot alone.
 - Keep code licensing separate from character-art licensing.

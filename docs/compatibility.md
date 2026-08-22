@@ -5,9 +5,9 @@
 - Operating system: Windows 11
 - Codex distribution: Microsoft Store / MSIX
 - Locally inspected version: `26.814.5517.0`
-- Theme release: `0.2.1`
+- Theme release: `0.2.2`
 - Visual status: Diana Night and Diana Day finalized
-- Runtime status: beta
+- Desktop status: native color recipe + visual blueprint; no executable injector
 
 ## Windows Terminal status
 
@@ -19,28 +19,33 @@
 - Default-terminal boundary: direct shell handoff may open Windows Terminal without selecting a Diana profile; use the generated shortcut when the full background must be guaranteed
 - Runtime cost: one local static PNG; no watcher, animation, Acrylic, pixel shader, or background process
 
+## Codex desktop status
+
+- Safe supported layer: native Appearance colors and fonts
+- Full corner artwork: blueprint only until the installed Codex version exposes a documented user-space visual hook
+- Background processes: none
+- Debugging endpoints: forbidden
+- Persistence: none
+- Legacy migration: use `npm run security:remove-legacy`, restart Codex normally, then run `npm run security:audit`
+
+The public release deliberately does not claim that the full simulated desktop artwork can currently be installed. Online screenshots remain visual design references.
+
 ## macOS status
 
 - Support level: experimental, agent-assisted only
 - Real-device verification: not performed
 - Distribution: self-contained `skills/diana-codex-theme` bundle
-- Deployment rule: inspect the current Codex build first; use only a reversible user-space hook
+- Deployment rule: use native Appearance first; inspect the current Codex build only for a documented, reversible user-space hook
 
 The macOS path is not a port of the Windows launcher and is not a compatibility claim. The skill carries the finalized artwork and CSS blueprints, but Codex must inspect the Mac installation in front of it. If no safe hook exists, it must leave the application bundle and signature untouched and report that deployment was not performed.
 
-## Live verification on 2026-08-21
+## Legacy runtime record (retired in v0.2.2)
 
-The Diana runtime adapter was verified against the locally installed Microsoft Store build `26.814.5517.0`.
+The former Diana runtime adapter was visually verified against Microsoft Store build `26.814.5517.0`, but it depended on unauthenticated loopback CDP and is no longer a supported or distributed deployment route.
 
-- CDP bound to `127.0.0.1:9336`.
-- Main renderer matched by `aside.app-shell-left-panel ~ main`.
-- Compact avatar renderer matched by `main.relative` and excluded from decoration through the `compact-window` root class.
-- Composer matched by `[role="textbox"][contenteditable="true"]`.
-- Main conversation and compact overlay had no missing required nodes or horizontal overflow.
-- Page reloads and newly created renderer targets received the theme through one watcher.
-- The launcher no longer leaves Codex App Manager and its additional WebView2 subtree running.
-- Native appearance settings are backed up before the first managed change.
-- The Diana hand-drawn star remains attached to the environment heading across collapse, reopen, and panel rerender states.
+- A loopback-only bind prevented direct LAN and Internet access, but did not authenticate other local processes.
+- The desktop launcher, watcher, scheduled task, package dependency, and release attachments were removed in `v0.2.2`.
+- The visual implementation remains available as local artwork, native color values, CSS blueprints, and the independent preview.
 
 ## Showcase verification on 2026-08-20
 
@@ -57,7 +62,7 @@ Codex desktop UI selectors are implementation details and may change between rel
 
 1. Home, conversation, settings, diff, approval, error, and compact overlay states.
 2. Pointer and keyboard interaction with all decorative layers enabled.
-3. Theme persistence after renderer reload and application restart.
-4. Status reporting and a clean restore path with no residue.
+3. No new listener, debugging launch flag, watcher, or persistence.
+4. A clean disable and restore path with no residue.
 
-The runtime is opt-in and must not restart an existing Codex process without explicit user action.
+Do not claim a new full-art desktop deployment until its supported extension point and security boundary have both been independently verified.

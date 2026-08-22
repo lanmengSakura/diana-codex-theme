@@ -9,13 +9,13 @@ const read = (relativePath) => readFile(path.join(root, relativePath), "utf8");
 test("the public showcase uses every production theme asset", async () => {
   const preview = await read("preview/preview.css");
   const manifests = await Promise.all([
-    read("themes/diana-dark/codedrobe.json"),
-    read("themes/diana-light/codedrobe.json")
+    read("themes/diana-dark/theme.json"),
+    read("themes/diana-light/theme.json")
   ]);
 
   for (const manifestSource of manifests) {
     const manifest = JSON.parse(manifestSource);
-    for (const assetPath of Object.values(manifest.images)) {
+    for (const assetPath of Object.values(manifest.assets)) {
       assert.match(preview, new RegExp(path.basename(assetPath).replaceAll(".", "\\.")));
     }
   }
