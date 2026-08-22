@@ -59,3 +59,27 @@ test("complete artwork is the default goal while experimental CDP remains inform
   assert.match(experiment, /must not contain a ready-made CDP launcher/);
   assert.match(experiment, /Automatic mounting is a second, separate decision/);
 });
+
+test("installation uses a two-turn GitHub path flow and reports deployment states separately", async () => {
+  const readme = await readFile(path.join(root, "README.md"), "utf8");
+  const skill = await readFile(path.join(skillRoot, "SKILL.md"), "utf8");
+
+  assert.match(readme, /\$skill-installer/);
+  assert.match(
+    readme,
+    /github\.com\/lanmengSakura\/diana-codex-theme\/tree\/main\/skills\/diana-codex-theme/,
+  );
+  assert.match(readme, /下一条消息/);
+  assert.match(readme, /Release ZIP 备用方式/);
+  assert.doesNotMatch(readme, /推荐安装方式[^\n]*直接拖进 Codex/);
+
+  for (const state of [
+    "skill_available",
+    "native_palette_applied",
+    "full_artwork_mounted",
+    "deployment_blocked",
+  ]) {
+    assert.match(skill, new RegExp(state));
+  }
+  assert.match(skill, /does not prove deployment/);
+});

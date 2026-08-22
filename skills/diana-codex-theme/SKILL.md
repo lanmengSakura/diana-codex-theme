@@ -7,6 +7,8 @@ description: Apply, adapt, preview, or restore the self-contained Diana/Jiaran C
 
 Bring Diana into Codex without weakening the app's security boundary. The skill carries the finalized day/night artwork, native color values, and CSS blueprints, so do not fetch substitutes or require the surrounding repository.
 
+If this skill is active, its installation step is already complete for the current turn. Do not reinstall it unless the user explicitly asks to update or repair the Skill.
+
 ## Start here
 
 1. Detect the operating system, exact Codex version, distribution, and current appearance.
@@ -69,6 +71,17 @@ When complete artwork requires an experimental debugger route:
 6. Keep the first deployment manual and temporary. Offer automatic mounting only after one verified enable, disable, full process exit, normal relaunch, and restore cycle.
 
 The standalone skill supplies the visual source of truth and decision procedure, not a prebuilt debugger or background listener.
+
+## Report installation and deployment separately
+
+Never use “installed” as an ambiguous success statement. Report the highest state actually verified:
+
+1. `skill_available`: this Skill is discoverable and its bundle passes verification; no Codex appearance change is implied.
+2. `native_palette_applied`: the real Codex Appearance values changed and the restore path was tested; corner artwork is not implied.
+3. `full_artwork_mounted`: the real Codex work area visibly shows the intended character and decorations, interaction tests pass, and disable/restore were verified.
+4. `deployment_blocked`: the Skill is available, but the requested visual layer was not applied; state the exact missing hook, declined approval, or failed verification.
+
+Copying assets, writing an adapter proposal, passing CSS or ZIP validation, or opening the browser preview does not prove deployment. Do not claim `full_artwork_mounted` without observing the real Codex interface. If the current turn must stop for approval or restart, report the intermediate state and the exact next action instead of saying the theme is installed.
 
 ## Visual workflow
 

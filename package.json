@@ -1,6 +1,6 @@
 {
   "name": "diana-codex-theme",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Safe Diana visual blueprints and artwork for Codex, plus a verified Windows Terminal theme.",
   "private": true,
   "type": "module",

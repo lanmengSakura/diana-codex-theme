@@ -5,7 +5,7 @@
 - Operating system: Windows 11
 - Codex distribution: Microsoft Store / MSIX
 - Locally inspected version: `26.814.5517.0`
-- Theme release: `0.2.3`
+- Theme release: `0.2.4`
 - Visual status: Diana Night and Diana Day finalized
 - Desktop status: native color recipe + visual blueprint; no executable injector
 
@@ -27,6 +27,13 @@
 - Debugging endpoints: none in the repository or release; a local experiment may be generated only after notification and explicit user approval
 - Persistence: none
 - Legacy migration: use `npm run security:remove-legacy`, restart Codex normally, then run `npm run security:audit`
+
+## Skill installation status
+
+- Deterministic route: use the bundled `$skill-installer` with `https://github.com/lanmengSakura/diana-codex-theme/tree/main/skills/diana-codex-theme`.
+- Activation boundary: invoke `$diana-codex-theme` in the next message after installation.
+- Release ZIP: offline/manual fallback only; attaching it to a task does not itself prove registration.
+- Success boundary: Skill availability, native palette deployment, and complete artwork mounting are separate states.
 
 The public release deliberately does not claim that the full simulated desktop artwork can currently be installed through an official hook. Online screenshots remain visual design references. A user-generated experimental adapter is local, opt-in after notification, version-specific, and outside the release compatibility claim.
 

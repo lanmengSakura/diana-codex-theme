@@ -54,6 +54,8 @@ Verify home, conversation, settings, diff, approval, error, long scroll, narrow 
 
 Report the exact tested versions, created paths, process and port behavior, omitted states, disable command, uninstall command, and residual risk.
 
+Do not report complete-artwork success when only an adapter scaffold, CSS file, copied asset directory, or deployment proposal exists. `full_artwork_mounted` requires visible evidence from the real Codex work area plus interaction and restore verification. If restart interrupts the current task, report the intermediate state and leave an exact continuation instruction for the next turn.
+
 ## Optional automatic mounting
 
 Automatic mounting is a second, separate decision. Offer it only after the manual cycle above passes. Before creating persistence, disclose the precise login item or scheduled task, watcher lifetime, idle resource use, update failure mode, log location, and one-step removal command, then obtain explicit approval again.
