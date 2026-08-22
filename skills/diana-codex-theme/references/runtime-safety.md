@@ -17,7 +17,7 @@ The bundled CSS and artwork are visual blueprints. They do not prove that a new 
 
 ## Application boundary
 
-Never alter installed application files, packages, resources, signatures, `app.asar`, `WindowsApps`, or a macOS `.app` bundle. Never launch Codex with a remote debugging flag, connect through CDP, or create a localhost debugger for theming. Loopback binding is not an authentication boundary.
+Never alter installed application files, packages, resources, signatures, `app.asar`, `WindowsApps`, or a macOS `.app` bundle. The default deployment must not launch Codex with a remote debugging flag, connect through CDP, or create a localhost debugger. When no documented artwork hook exists, notify the user and follow [experimental-full-visual.md](experimental-full-visual.md); loopback binding is not an authentication boundary, so CDP requires separate approval for the exact local plan.
 
 On every platform, use Codex's own Appearance controls first. The full artwork requires a documented user-space theme, plugin, pet, or extension hook. If the inspected build does not provide one, applying only the native palette is the safe outcome.
 
@@ -26,6 +26,7 @@ On every platform, use Codex's own Appearance controls first. The full artwork r
 Explicit approval is required before:
 
 - restarting or closing Codex;
+- opening a debugging endpoint or starting a local adapter;
 - creating a login item, LaunchAgent, scheduled task, or other persistence;
 - replacing an existing user configuration file rather than merging a narrowly scoped entry.
 

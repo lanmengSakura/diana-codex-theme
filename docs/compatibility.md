@@ -5,7 +5,7 @@
 - Operating system: Windows 11
 - Codex distribution: Microsoft Store / MSIX
 - Locally inspected version: `26.814.5517.0`
-- Theme release: `0.2.2`
+- Theme release: `0.2.3`
 - Visual status: Diana Night and Diana Day finalized
 - Desktop status: native color recipe + visual blueprint; no executable injector
 
@@ -22,13 +22,13 @@
 ## Codex desktop status
 
 - Safe supported layer: native Appearance colors and fonts
-- Full corner artwork: blueprint only until the installed Codex version exposes a documented user-space visual hook
+- Full corner artwork: targeted by default; use a documented user-space hook when available, otherwise the skill may propose a user-approved, machine-local experimental adapter
 - Background processes: none
-- Debugging endpoints: forbidden
+- Debugging endpoints: none in the repository or release; a local experiment may be generated only after notification and explicit user approval
 - Persistence: none
 - Legacy migration: use `npm run security:remove-legacy`, restart Codex normally, then run `npm run security:audit`
 
-The public release deliberately does not claim that the full simulated desktop artwork can currently be installed. Online screenshots remain visual design references.
+The public release deliberately does not claim that the full simulated desktop artwork can currently be installed through an official hook. Online screenshots remain visual design references. A user-generated experimental adapter is local, opt-in after notification, version-specific, and outside the release compatibility claim.
 
 ## macOS status
 

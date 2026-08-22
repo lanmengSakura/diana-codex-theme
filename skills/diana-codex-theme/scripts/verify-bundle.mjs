@@ -7,6 +7,13 @@ const assetRoot = "assets/theme-blueprint/assets/diana-brand/derived";
 const themeRoot = "assets/theme-blueprint/themes";
 
 const required = [
+  "SKILL.md",
+  "agents/openai.yaml",
+  "references/experimental-full-visual.md",
+  "references/runtime-safety.md",
+];
+
+required.push(...[
   "acao-cheer-v1.png",
   "acao-heart-v3.png",
   "diana-candy-lollipop-v1.png",
@@ -17,7 +24,7 @@ const required = [
   "diana-left-top-detailed-corner-mask-v7.png",
   "diana-line-art-approved-upper.png",
   "diana-night-v3.png"
-].map((name) => `${assetRoot}/${name}`);
+].map((name) => `${assetRoot}/${name}`));
 
 for (const variant of ["diana-dark", "diana-light"]) {
   for (const name of ["theme.css", "theme.json"]) {

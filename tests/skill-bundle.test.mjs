@@ -45,3 +45,17 @@ test("the macOS route is explicitly experimental and refuses app-bundle patching
   assert.match(source, /valid outcome/);
   assert.match(source, /Never use CDP/);
 });
+
+test("complete artwork is the default goal while experimental CDP remains informed opt-in", async () => {
+  const skill = await readFile(path.join(skillRoot, "SKILL.md"), "utf8");
+  const experiment = await readFile(
+    path.join(skillRoot, "references", "experimental-full-visual.md"),
+    "utf8",
+  );
+
+  assert.match(skill, /Complete artwork by default/);
+  assert.match(skill, /does not by itself authorize opening CDP/);
+  assert.match(experiment, /Stop and wait for explicit approval/);
+  assert.match(experiment, /must not contain a ready-made CDP launcher/);
+  assert.match(experiment, /Automatic mounting is a second, separate decision/);
+});

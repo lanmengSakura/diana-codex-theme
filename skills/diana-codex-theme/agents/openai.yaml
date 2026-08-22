@@ -2,4 +2,4 @@ interface:
   display_name: "嘉然 Codex 主题"
   short_description: "携带完整素材，安全部署嘉然 Codex 日间与暗夜主题"
   brand_color: "#B84970"
-  default_prompt: "Use $diana-codex-theme to inspect this Codex installation, deploy the Diana day or night theme from the bundled assets, verify it, and preserve a restore path."
+  default_prompt: "Use $diana-codex-theme to deploy the complete Diana day or night composition from the bundled assets, notify me before any experimental CDP step, verify it, and preserve a restore path."
