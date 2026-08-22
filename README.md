@@ -23,6 +23,42 @@
 > [!NOTE]
 > 这是非官方、非商业的粉丝项目，与 OpenAI、Codex 及 A-SOUL 官方没有隶属或背书关系。代码采用 MIT License；嘉然、阿草及相关美术素材不包含在 MIT 授权中。本项目中的相关视觉内容均为 A-SOUL 二创内容，请勿用于任何商业化用途。
 
+## v0.2.2 安全修复说明
+
+### 旧版问题是什么
+
+`v0.2.1` 及更早的完整桌面皮肤为了把立绘和角落线稿放进 Codex 工作区，会用 `--remote-debugging-port=9336` 启动 Codex，再由常驻 watcher 通过 Chrome DevTools Protocol（CDP）修改渲染页面。端口虽然只绑定到本机回环地址，不会直接暴露给局域网或互联网，但它没有独立认证：同一台电脑上的其他程序可能连接这个高权限调试接口，读取页面内容或操作渲染器。
+
+这不是素材本身的问题，也不是普通 CSS 配色的问题；风险来自“为了注入 CSS 而持续开放桌面应用调试接口”这一运行方式。公开发行版不应要求用户承担这类边界不清晰的高权限入口，因此该路线已经停止分发。
+
+### 本次移除了什么
+
+- 删除桌面 CDP 运行器、watcher、自动挂载脚本与开机计划任务安装脚本。
+- 删除 `@codedrobe/core` 运行依赖和 `.codedrobe-theme` 可执行主题包。
+- 发布流程会拒绝重新打包上述文件，并自动清理旧的 `.codedrobe-theme` 产物。
+- GitHub 历史 Release 中的旧桌面注入附件已经撤回；历史源码标签仅用于审计，不建议安装。
+- 保留 `security:audit` 和 `security:remove-legacy`，只用于检查、清理旧版残留，不会连接 CDP，也不会读取 Codex 会话。
+
+### 仍然保留什么
+
+- Diana Night / Diana Day 的原生配色数值。
+- 嘉然立绘、阿草、星星、糖果、草莓和简笔线稿等全部定稿美术资源。
+- 日夜 CSS 视觉蓝图，供未来正式支持的主题、插件、Pet 或用户样式入口复用。
+- 静态在线演示与高保真模拟截图。
+- 经过验证的 Windows Terminal 主题；它与旧桌面注入运行器没有依赖关系。
+
+### 修复后的能力边界
+
+| 功能 | v0.2.2 公开版状态 | 是否需要后台进程或监听端口 |
+|---|---|---|
+| Codex 日夜原生配色 | 可直接使用 | 否 |
+| Codex UI／代码字体 | 可直接使用 | 否 |
+| Codex 角落立绘和线稿 | 保留素材，等待受支持入口 | 否；没有安全入口时不部署 |
+| 在线演示页面 | 可直接打开 | 否，页面为静态文件 |
+| Diana PowerShell / CMD | Windows Terminal 1.24+ 已验证 | 否 |
+
+[OpenAI 当前公开的原生外观范围](https://learn.chatgpt.com/docs/reference/settings#appearance)是基础主题、强调色、背景色、前景色、对比度以及 UI／代码字体，并支持主题导入和复制；没有角落贴图字段。因此完整美术不会再通过未认证调试端口强行挂载。
+
 ## 效果预览
 
 <a href="https://lanmengsakura.github.io/diana-codex-theme/?theme=dark&scene=complete&controls=none">
@@ -41,6 +77,8 @@
 
 ## 安全使用路线
 
+如果是第一次安装，请直接从下面的路线一、路线二或 Diana Terminal 中选择；不要下载历史版本的 `.codedrobe-theme`，也不要照旧教程给 Codex 添加 `--remote-debugging-port`。
+
 ### 路线一：Codex 原生配色
 
 这是当前最稳妥的桌面路线，不启动后台进程，不修改 Codex 安装文件，也不打开调试端口。
@@ -54,15 +92,44 @@
 
 原生外观可以保留日夜氛围和主要按钮色，但不会出现嘉然立绘、阿草、糖果、星星与角落线稿。OpenAI 官方列出的原生外观范围包括基础主题、强调色、背景色、前景色和 UI／代码字体。
 
+安装步骤：
+
+1. 打开 Codex，按 <kbd>Ctrl</kbd> + <kbd>,</kbd> 进入设置。
+2. 进入 **外观（Appearance）**，先选择 Light 或 Dark 基础主题。
+3. 依次填写上表中的强调色、背景色、前景色、对比度和字体。
+4. 如果当前版本提供 **Copy theme / Import**，可以复制配置留作备份；切换日夜时分别应用对应的一组数值。
+5. 重启 Codex 后若配色恢复为默认，请先确认当前版本是否正确保存了自定义主题，不要用调试端口补救。
+
 ### 路线二：让 Codex 使用视觉 Skill
 
 发行包中的 `diana-codex-theme-skill-0.2.2.zip` 自包含全部定稿素材、日夜 CSS 蓝图与安全规则。解压到用户级 Skill 目录后，可以对 Codex 说：
 
 > 使用 Diana Skill 检查当前版本能否安全部署暗夜主题；禁止开启 CDP、调试端口或后台监听。
 
-Skill 会先查找当前版本正式支持的外观、主题、插件、Pet 或用户样式入口。只有找到不修改签名应用、不开调试端口、可恢复的用户空间入口时，才可以继续部署完整角落美术；否则应停在原生配色。
+Skill 会先查找当前版本正式支持的外观、主题、插件、Pet 或用户样式入口。只有找到不修改签名应用、不开调试端口、可恢复的用户空间入口时，才可以继续部署完整角落美术；否则应停在原生配色。Skill 是部署决策和素材包，不会因为被安装就自动修改 Codex；关于 Skill 的作用范围可参考 [OpenAI Skills & Plugins 文档](https://learn.chatgpt.com/docs/skills-and-plugins)。
 
-Windows 用户可将 Skill 放到 `%USERPROFILE%\.agents\skills\diana-codex-theme`；macOS 用户可放到 `$HOME/.agents/skills/diana-codex-theme`。macOS 尚未经过真机部署验证，仍属于实验性路线。
+#### Windows 安装 Skill
+
+1. 从最新版 Release 下载 `diana-codex-theme-skill-0.2.2.zip`。
+2. 解压后确认目录中直接存在 `SKILL.md`，不要多套一层同名目录。
+3. 将整个目录复制到：
+
+   ```text
+   %USERPROFILE%\.codex\skills\diana-codex-theme
+   ```
+
+4. 重新打开 Codex，在新任务中输入：
+
+   > 使用 Diana Codex Theme Skill 部署暗夜主题。优先使用 Codex 原生外观；检查当前版本是否存在受支持的完整美术入口。禁止 CDP、远程调试端口、后台监听、修改 app.asar 或应用签名文件。没有安全入口时只应用原生配色，并告诉我立绘素材保留在哪里。
+
+5. 日间版本把“暗夜主题”改成“日间主题”即可。
+
+#### macOS / Linux 素材路线
+
+可将 Skill 解压到 `$HOME/.codex/skills/diana-codex-theme`，再使用同样的提示词。macOS 和 Linux 没有经过本项目真机验证，也没有发布自动安装脚本；Codex 应只使用当时版本明确支持的用户空间入口。若不存在，就保留素材并停止，不修改应用包。
+
+> [!TIP]
+> 以后 Codex 如果正式加入桌面背景、Pet、主题插件或用户样式接口，本项目会优先把现有美术资源迁移到该接口，而不是恢复 CDP 注入。
 
 ## 从 v0.2.1 或更早版本迁移
 
@@ -80,9 +147,13 @@ npm run security:audit
 
 只有输出 `SAFE` 才说明旧 watcher、计划任务、调试端口启动参数和 `9336` 监听都已消失。清理工具不会连接旧调试端口，也不会读取任何会话内容。详细说明见 [v0.2.2 安全迁移](docs/security-migration-v0.2.2.md)。
 
+如果清理前仍能看到角落立绘，说明旧运行器可能仍在当前 Codex 进程中生效。清理和完全退出 Codex 后，立绘消失属于预期结果；它没有被删除，仍保存在 Skill 和 `assets/` 中。
+
 ## Diana Terminal（Windows 已验证）
 
 Windows Terminal 版本使用本地静态 PNG 和原生 Fragment，不运行 watcher、动画、着色器或后台进程，因此可以继续作为正式发行功能。
+
+这里的 `Diana CMD` 指 **Windows Terminal 中以 `cmd.exe` 为命令行的 Diana 配置**，不是传统 `conhost.exe` 黑框窗口。传统 CMD 本身没有这套背景图能力；请从 Windows Terminal 的下拉菜单或开始菜单中的 `Diana CMD` 快捷方式打开。
 
 <img src="terminal/qa/terminal-readme-1600x900.png" alt="Diana PowerShell 高保真模拟截图" width="100%">
 
@@ -107,6 +178,18 @@ npm run terminal:uninstall
 ```
 
 两条安装路线都不会覆盖或删除原生 PowerShell、CMD 配置。终端主题要求 Windows Terminal `1.24` 或更高版本，详细说明见 [terminal/README.md](terminal/README.md)。
+
+### Terminal 会写入哪些位置
+
+| 内容 | 当前用户路径 | 用途 |
+|---|---|---|
+| 配置 Fragment | `%LOCALAPPDATA%\Microsoft\Windows Terminal\Fragments\DianaCodexTheme\diana-terminal.json` | 注册 Diana PowerShell / CMD 和配色 |
+| 本地背景图 | 同目录下的 `diana-terminal-bg-v2.png` | 由 Windows Terminal 直接读取 |
+| 开始菜单快捷方式 | `%APPDATA%\Microsoft\Windows\Start Menu\Programs\Diana Terminal` | 独立打开两个 Diana 配置 |
+| 默认项恢复状态 | Fragment 目录下的 `diana-terminal.state` | 仅在选择“设为默认”时记录原默认配置 |
+| 设置备份 | Windows Terminal `settings.json.diana-时间.bak` | 仅在选择“设为默认”时生成 |
+
+安装器不写系统服务、不注册计划任务、不访问网络、不开放端口，也不替换 `cmd.exe`、`powershell.exe`、`pwsh.exe` 或 Windows Terminal 可执行文件。卸载时只移除上述主题文件与快捷方式；如果默认项仍是 Diana，才恢复此前记录的默认配置。
 
 ## 在线演示
 

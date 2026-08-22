@@ -45,6 +45,29 @@ test("legacy cleanup removes persistence without reconnecting to CDP", async () 
   assert.doesNotMatch(audit, /Invoke-RestMethod|\/json\/list|WebSocket/);
 });
 
+test("Windows Terminal profiles are static local fragments with no listener or persistence", async () => {
+  const fragmentSource = await read("terminal/diana-terminal/diana-terminal.json");
+  const fragment = JSON.parse(fragmentSource);
+  const terminalSources = await Promise.all([
+    read("terminal/install-diana-terminal.ps1"),
+    read("terminal/set-diana-terminal-default.ps1"),
+    read("terminal/new-diana-terminal-shortcut.ps1"),
+    read("terminal/uninstall-diana-terminal.ps1"),
+  ]);
+  const combined = `${fragmentSource}\n${terminalSources.join("\n")}`;
+
+  assert.deepEqual(
+    fragment.profiles.map((profile) => profile.commandline),
+    ["pwsh.exe -NoLogo", "cmd.exe"],
+  );
+  assert.ok(fragment.profiles.every((profile) => profile.backgroundImage === "diana-terminal-bg-v2.png"));
+  assert.doesNotMatch(combined, /https?:\/\//i);
+  assert.doesNotMatch(
+    combined,
+    /remote-debugging|DevTools|WebSocket|HttpListener|TcpListener|Register-ScheduledTask|schtasks|Start-Job|codedrobe|9336/i,
+  );
+});
+
 test("both visual blueprints keep the environment star and non-interactive decoration", async () => {
   for (const relativePath of [
     "themes/diana-dark/theme.css",

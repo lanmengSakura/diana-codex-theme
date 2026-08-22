@@ -2,6 +2,8 @@
 
 这是为 Windows Terminal 制作的暗夜主题，包含 `Diana PowerShell` 和 `Diana CMD` 两个可选配置。用户可以将它们独立保留，也可以主动把 Diana PowerShell 设为当前用户的默认配置。
 
+`Diana CMD` 是 Windows Terminal 内启动 `cmd.exe` 的配置，不是传统 `conhost.exe` 窗口。完整背景需要从 Windows Terminal 下拉菜单或 Diana 开始菜单快捷方式进入。
+
 ![Diana PowerShell 高保真模拟截图](qa/terminal-readme-1600x900.png)
 
 ## 安装
@@ -63,6 +65,19 @@ npm run terminal:uninstall
 ```
 
 发行压缩包用户也可以双击 `uninstall.cmd`。
+
+## 安全边界与落盘位置
+
+Terminal 主题和旧版 Codex 桌面 CDP 注入不是同一种实现。它只使用 Windows Terminal 原生 Fragment 和本地图片：
+
+| 内容 | 路径 |
+|---|---|
+| Fragment 与背景图 | `%LOCALAPPDATA%\Microsoft\Windows Terminal\Fragments\DianaCodexTheme` |
+| 开始菜单快捷方式 | `%APPDATA%\Microsoft\Windows\Start Menu\Programs\Diana Terminal` |
+| 默认项恢复状态 | Fragment 目录中的 `diana-terminal.state`，仅“设为默认”路线生成 |
+| Windows Terminal 设置备份 | `settings.json.diana-时间.bak`，仅“设为默认”路线生成 |
+
+安装脚本不会启动 watcher、HTTP/TCP/WebSocket 监听器或计划任务，不访问网络，不替换任何终端可执行文件，也不会给 CMD/PowerShell 增加远程调试参数。`Diana PowerShell` 与 `Diana CMD` 共用同一张静态本地 PNG；区别仅是前者启动 `pwsh.exe -NoLogo`，后者启动 `cmd.exe`。
 
 主题只向当前用户的 Windows Terminal Fragment 目录复制一个 JSON 和一张本地 PNG。终端专用背景让左侧信息密集区完全透明；右上复用桌面暗夜版的星星、弧线与草莓线稿，右下按同一比例缩入嘉然立绘、两颗手绘星、糖果、棒棒糖和两只阿草。没有 Acrylic、像素着色器、动画、远程资源或常驻进程。
 
