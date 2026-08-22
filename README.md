@@ -23,6 +23,16 @@
 > [!NOTE]
 > 这是非官方、非商业的粉丝项目，与 OpenAI、Codex 及 A-SOUL 官方没有隶属或背书关系。代码采用 MIT License；嘉然、阿草及相关美术素材不包含在 MIT 授权中。本项目中的相关视觉内容均为 A-SOUL 二创内容，请勿用于任何商业化用途。
 
+## 安装
+
+推荐安装方式：从仓库下载最新版主题包，直接拖进 Codex，然后说一句：
+
+> 帮我安装并挂载这套 Diana Codex 主题。
+
+桌面主题包为最新版 Release 中的 `diana-codex-theme-skill-0.2.2.zip`。安装位置、日夜配色和当前版本可用的美术入口均由 Codex 根据实际环境处理，不需要手动复制 Skill 或填写配置。
+
+主题包内含全部定稿素材、日夜 CSS 蓝图与安全规则。若当前版本没有正式支持的完整美术入口，Codex 会保留立绘和装饰素材，只应用能够安全落盘的外观设置，不会恢复旧版 CDP 注入。Windows、macOS 与 Linux 均可采用同样的交付方式，实际可部署范围以各平台当前支持能力为准。
+
 ## v0.2.2 安全修复说明
 
 ### 旧版问题是什么
@@ -74,62 +84,6 @@
 <p align="center"><sub>Diana Day · 暖白、浅莓色与彩色细线简笔画</sub></p>
 
 截图由仓库内的 [高保真桌面模拟页](preview/index.html) 生成。任务、路径与环境信息均为虚构内容，不包含作者的真实会话或项目截图。
-
-## 安全使用路线
-
-如果是第一次安装，请直接从下面的路线一、路线二或 Diana Terminal 中选择；不要下载历史版本的 `.codedrobe-theme`，也不要照旧教程给 Codex 添加 `--remote-debugging-port`。
-
-### 路线一：Codex 原生配色
-
-这是当前最稳妥的桌面路线，不启动后台进程，不修改 Codex 安装文件，也不打开调试端口。
-
-在 Codex 的 **设置 → 外观** 中分别录入以下数值：
-
-| 版本 | 强调色 | 背景色 | 前景色 | 对比度 | UI 字体 | 代码字体 |
-|---|---|---|---|---:|---|---|
-| Diana Night | `#D86E91` | `#0D0C0F` | `#F3EEF0` | `60` | Microsoft YaHei UI | Cascadia Code |
-| Diana Day | `#B84970` | `#FBF8F6` | `#2C2529` | `45` | Microsoft YaHei UI | Cascadia Code |
-
-原生外观可以保留日夜氛围和主要按钮色，但不会出现嘉然立绘、阿草、糖果、星星与角落线稿。OpenAI 官方列出的原生外观范围包括基础主题、强调色、背景色、前景色和 UI／代码字体。
-
-安装步骤：
-
-1. 打开 Codex，按 <kbd>Ctrl</kbd> + <kbd>,</kbd> 进入设置。
-2. 进入 **外观（Appearance）**，先选择 Light 或 Dark 基础主题。
-3. 依次填写上表中的强调色、背景色、前景色、对比度和字体。
-4. 如果当前版本提供 **Copy theme / Import**，可以复制配置留作备份；切换日夜时分别应用对应的一组数值。
-5. 重启 Codex 后若配色恢复为默认，请先确认当前版本是否正确保存了自定义主题，不要用调试端口补救。
-
-### 路线二：让 Codex 使用视觉 Skill
-
-发行包中的 `diana-codex-theme-skill-0.2.2.zip` 自包含全部定稿素材、日夜 CSS 蓝图与安全规则。解压到用户级 Skill 目录后，可以对 Codex 说：
-
-> 使用 Diana Skill 检查当前版本能否安全部署暗夜主题；禁止开启 CDP、调试端口或后台监听。
-
-Skill 会先查找当前版本正式支持的外观、主题、插件、Pet 或用户样式入口。只有找到不修改签名应用、不开调试端口、可恢复的用户空间入口时，才可以继续部署完整角落美术；否则应停在原生配色。Skill 是部署决策和素材包，不会因为被安装就自动修改 Codex；关于 Skill 的作用范围可参考 [OpenAI Skills & Plugins 文档](https://learn.chatgpt.com/docs/skills-and-plugins)。
-
-#### Windows 安装 Skill
-
-1. 从最新版 Release 下载 `diana-codex-theme-skill-0.2.2.zip`。
-2. 解压后确认目录中直接存在 `SKILL.md`，不要多套一层同名目录。
-3. 将整个目录复制到：
-
-   ```text
-   %USERPROFILE%\.codex\skills\diana-codex-theme
-   ```
-
-4. 重新打开 Codex，在新任务中输入：
-
-   > 使用 Diana Codex Theme Skill 部署暗夜主题。优先使用 Codex 原生外观；检查当前版本是否存在受支持的完整美术入口。禁止 CDP、远程调试端口、后台监听、修改 app.asar 或应用签名文件。没有安全入口时只应用原生配色，并告诉我立绘素材保留在哪里。
-
-5. 日间版本把“暗夜主题”改成“日间主题”即可。
-
-#### macOS / Linux 素材路线
-
-可将 Skill 解压到 `$HOME/.codex/skills/diana-codex-theme`，再使用同样的提示词。macOS 和 Linux 没有经过本项目真机验证，也没有发布自动安装脚本；Codex 应只使用当时版本明确支持的用户空间入口。若不存在，就保留素材并停止，不修改应用包。
-
-> [!TIP]
-> 以后 Codex 如果正式加入桌面背景、Pet、主题插件或用户样式接口，本项目会优先把现有美术资源迁移到该接口，而不是恢复 CDP 注入。
 
 ## 从 v0.2.1 或更早版本迁移
 
