@@ -60,5 +60,6 @@ Keep Codex's native jump-to-message buttons and hit areas intact. Only restyle t
 - Up to 40 user-message buttons: retain the regular tick rhythm.
 - From 41 to 80 buttons: shorten and soften inactive ticks, while keeping every fifth tick easier to scan.
 - From 81 buttons onward: use the compact density tier; keep every tenth tick as a restrained major division.
+- Count descendant message buttons rather than assuming they are direct children of the `nav`; current Codex Desktop nests the list below scrolling wrappers.
 - Exclude `[data-diana-viewport-current="true"]` from every density rule. The real current-message star and its strong tick must remain singular and visually dominant.
 - Keep hover and keyboard focus feedback available at every density.

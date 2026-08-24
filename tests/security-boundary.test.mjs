@@ -92,8 +92,13 @@ test("long conversations reduce only inactive message-rail density", async () =>
 
     assert.ok(activeStar >= 0, `${relativePath} lost the real current-message star`);
     assert.ok(densityRules > activeStar, `${relativePath} applies density before the active marker`);
-    assert.match(source, /:has\(> button:nth-child\(41\)\)/);
-    assert.match(source, /:has\(> button:nth-child\(81\)\)/);
+    assert.match(source, /:has\(button:nth-child\(41\)\)/);
+    assert.match(source, /:has\(button:nth-child\(81\)\)/);
+    assert.doesNotMatch(
+      source,
+      /:has\(> button:nth-child/,
+      `${relativePath} assumes rail buttons are direct nav children`,
+    );
     assert.match(
       source,
       /button:nth-child\(10n \+ 1\):not\(\[data-diana-viewport-current="true"\]\)/,
