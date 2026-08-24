@@ -9,6 +9,12 @@ Bring Diana into Codex without weakening the app's security boundary. The skill 
 
 If this skill is active, its installation step is already complete for the current turn. Do not reinstall it unless the user explicitly asks to update or repair the Skill.
 
+## Installation handoff
+
+If this Skill was installed in the previous turn and the user replies “继续”, resume the original request to mount the complete Diana theme. Do not reinstall the Skill or ask the user to paste another command.
+
+The installation turn ends after reporting `skill_available`. On the next turn, continue with the deployment workflow automatically. Before restarting Codex, opening CDP, or creating persistence, explain the exact plan and wait for approval. If Codex must fully exit, prepare an external launcher and recovery command before asking the user to exit.
+
 ## Start here
 
 1. Detect the operating system, exact Codex version, distribution, and current appearance.
