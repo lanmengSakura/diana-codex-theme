@@ -45,6 +45,19 @@ Do not generate substitute characters, mirror the wrong corner ornament, bake a 
 - Keep the hand-drawn environment-heading star attached to the real heading when that hook exists; omit it if no safe dynamic hook is available.
 - Use `pointer-events: none` on every art layer and keep the composer above decoration.
 
+### Top-edge compatibility
+
+- Keep Codex's native toolbar and main-content top fade. Do not remove the fade merely to reveal Diana artwork. On the inspected Windows build `26.818.5229.0`, the fade measured `62px` (`46px` solid plus a `16px` transition), but this is diagnostic evidence, not a reusable constant.
+- Preserve the toolbar's native computed positioning and stacking. Never use a blanket rule such as `.diana-skin-surface > :not(#diana-theme-chrome) { position: relative; z-index: 1; }`; it can turn a fixed toolbar into a normal-flow element and move the native fade over the ornaments.
+- Find the exact direct child that contains the verified conversation viewport and mark only that node as the foreground. Keep the Diana chrome absolute at `z-index: 0`, non-interactive, and sized from the inspected work area. Re-measure after a Codex update instead of relying on a class hash or the previous fade height.
+- Correct mounting and stacking before changing opacity. When the inspected build still needs a restrained upper-right-line compensation, use `.33` in dark mode and `.30` in light mode, then confirm by screenshot that the line is legible without crossing task text. Do not use this compensation to brighten the left ornament, character, or main-work-area typography.
+
+### Environment-heading star
+
+- Render the bundled hand-drawn star at `21px × 21px`, `display: block`, and `flex: 0 0 auto`; use `.72` opacity in dark mode and `.64` in light mode as the production starting point.
+- If the real heading text is a truncating span, do not prepend a block element inside that span. Mark the exact heading label or its non-truncating flex row and render the star with a scoped `::before`, or insert it as a sibling in that row. The star and title must remain on one line.
+- Reuse the adapter's existing DOM observer to restore the marker after panel redraws. Remove stale markers before attaching the current one and verify that exactly one environment star is present.
+
 ## Components
 
 - Preserve main-work-area text and code colors unless the user explicitly approves a readability change.

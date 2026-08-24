@@ -21,6 +21,13 @@ Never alter installed application files, packages, resources, signatures, `app.a
 
 On every platform, use Codex's own Appearance controls first. The full artwork requires a documented user-space theme, plugin, pet, or extension hook. If the inspected build does not provide one, applying only the native palette is the safe outcome.
 
+## Layout compatibility boundary
+
+- Treat hashed DOM classes, toolbar geometry, and the measured top-fade height as build-specific evidence. Do not ship a selector or numeric offset merely because it worked on one Codex version.
+- Do not remove or neutralize Codex's native main-content top fade. Preserve the native toolbar positioning and place Diana artwork around it.
+- Do not assign `position` or `z-index` to all direct children of the main surface. Identify the exact conversation-containing foreground node, scope the change to that node, and keep decoration non-interactive beneath task content.
+- When attaching the environment star, avoid mutating a truncating text span in a way that creates a new line. Use the contract in [visual-system.md](visual-system.md), then verify the real title-star relationship after a panel redraw.
+
 ## Change control
 
 Explicit approval is required before:
@@ -32,6 +39,6 @@ Explicit approval is required before:
 
 ## Verification
 
-Test home, conversation, settings, diff, approval, long scrolling, narrow width, compact/secondary windows, theme switching, disable, and restore. Verify pointer and keyboard interaction with decorations enabled.
+Test home, conversation, settings, diff, approval, long scrolling, narrow width, compact/secondary windows, theme switching, disable, and restore. Verify pointer and keyboard interaction with decorations enabled. On desktop builds, also inspect the native toolbar, top fade, both upper ornaments, and the environment heading after redraw.
 
 A browser mockup is visual design evidence only. A successful bundle check proves file completeness only. Neither is runtime compatibility evidence.

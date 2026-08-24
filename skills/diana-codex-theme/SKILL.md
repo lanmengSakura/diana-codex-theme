@@ -56,7 +56,7 @@ Preview and package the visual assets, but do not claim real-app support unless 
 3. Inspect supported appearance, theme, plugin, pet, and user-style entry points. Do not create a debugging connection.
 4. Prepare a restore record before the first write. Back up only files that this workflow will change.
 5. Copy required assets and styles into a user-writable support directory; never write into the installed application bundle.
-6. Keep selectors below an explicit host scope and keep every decorative layer non-interactive.
+6. Keep selectors below an explicit host scope and keep every decorative layer non-interactive. Preserve Codex's native toolbar and top-fade layout: mark only the verified conversation foreground, never reposition or raise every direct child of the main surface.
 7. Ask before restarting Codex or replacing an existing user configuration file. Do not change launch arguments or install persistence.
 8. Verify home, conversation, settings, diff, approval, long scroll, narrow width, theme switching, restart, disable, and restore.
 9. Report the exact tested version, deployed paths, remaining limitations, and restore command.
@@ -103,6 +103,7 @@ Copying assets, writing an adapter proposal, passing CSS or ZIP validation, or o
 - Never patch `WindowsApps`, a macOS `.app` bundle, `app.asar`, signatures, quarantine metadata, or bundled Codex resources.
 - Never open CDP, install a watcher, or create persistence without first notifying the user and receiving explicit approval for the exact plan. Any approved experiment must follow [experimental-full-visual.md](references/experimental-full-visual.md), remain machine-local, and never be shipped as a repository runtime.
 - Never inject analytics, remote CSS, remote images, or arbitrary remote scripts.
+- Never delete Codex's native main-content top fade or hardcode its observed height as a cross-version constant. Follow the top-edge and environment-heading contracts in [visual-system.md](references/visual-system.md).
 - Never claim compatibility from a mockup, CSS parse, or screenshot alone.
 - Keep code licensing separate from character-art licensing.
 - Preserve an explicit, tested restore path.
