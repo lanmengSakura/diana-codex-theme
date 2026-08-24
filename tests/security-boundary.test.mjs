@@ -80,3 +80,33 @@ test("both visual blueprints keep the environment star and non-interactive decor
     assert.match(source, /html\.diana-theme-host/);
   }
 });
+
+test("long conversations reduce only inactive message-rail density", async () => {
+  for (const relativePath of [
+    "themes/diana-dark/theme.css",
+    "themes/diana-light/theme.css",
+  ]) {
+    const source = await read(relativePath);
+    const activeStar = source.indexOf('button[data-diana-viewport-current="true"]::before');
+    const densityRules = source.indexOf("Keep long conversations readable");
+
+    assert.ok(activeStar >= 0, `${relativePath} lost the real current-message star`);
+    assert.ok(densityRules > activeStar, `${relativePath} applies density before the active marker`);
+    assert.match(source, /:has\(> button:nth-child\(41\)\)/);
+    assert.match(source, /:has\(> button:nth-child\(81\)\)/);
+    assert.match(
+      source,
+      /button:nth-child\(10n \+ 1\):not\(\[data-diana-viewport-current="true"\]\)/,
+    );
+
+    const denseSection = source.slice(densityRules, source.indexOf("button:focus-visible", densityRules));
+    assert.match(
+      denseSection,
+      /button:not\(\[data-diana-viewport-current="true"\]\) > span > span/,
+    );
+    assert.doesNotMatch(
+      denseSection,
+      /button\[data-diana-viewport-current="true"\] > span > span/,
+    );
+  }
+});

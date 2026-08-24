@@ -52,3 +52,13 @@ Do not generate substitute characters, mirror the wrong corner ornament, bake a 
 - Accent only primary actions, selected state, focus ring, and restrained navigation cues.
 - Motion: `120–180ms`; respect reduced-motion preference.
 - Do not use low-recognition replacement icons for core work-area actions.
+
+## Starberry message rail
+
+Keep Codex's native jump-to-message buttons and hit areas intact. Only restyle their visual ticks, and never replace the real navigation behavior with a static decorative rail.
+
+- Up to 40 user-message buttons: retain the regular tick rhythm.
+- From 41 to 80 buttons: shorten and soften inactive ticks, while keeping every fifth tick easier to scan.
+- From 81 buttons onward: use the compact density tier; keep every tenth tick as a restrained major division.
+- Exclude `[data-diana-viewport-current="true"]` from every density rule. The real current-message star and its strong tick must remain singular and visually dominant.
+- Keep hover and keyboard focus feedback available at every density.
