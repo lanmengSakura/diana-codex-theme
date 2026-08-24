@@ -9,6 +9,8 @@ html.diana-theme-host {
   --diana-accent-wash-strong: rgb(184 73 112 / 16%);
   --diana-accent-ring: rgb(184 73 112 / 42%);
   --diana-rail-seed: rgb(184 73 112 / 55%);
+  --diana-rail-major: var(--diana-rail-seed);
+  --diana-rail-hover: var(--diana-rail-seed);
   --diana-rail-seed-strong: rgb(174 55 96 / 92%);
   --diana-border: #e8dfe2;
   --diana-sidebar-surface: #f8f3f5;
@@ -400,7 +402,7 @@ html.diana-theme-host ::selection {
   background: var(--diana-accent-wash-strong);
 }
 
-/* Starberry message rail: preserves Codex's native jump-to-message behavior. */
+/* Starberry message rail: v0.2.4 color lock with the solid hybrid rhythm. */
 html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) {
   isolation: isolate;
   overflow: visible;
@@ -429,40 +431,133 @@ html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User mess
   bottom: -7px;
 }
 
-html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:first-child[data-diana-viewport-current="true"])::before,
-html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:last-child[data-diana-viewport-current="true"])::after {
-  opacity: 0;
-}
-
 html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button {
+  --diana-art-scale-base: .23;
+  --diana-density-offset: 0;
+  --diana-major-offset: 0;
+  --diana-art-scale-fallback: calc(var(--diana-art-scale-base) + var(--diana-density-offset));
   position: relative;
   border-radius: 4px;
 }
 
+/* Total message count selects a restrained sparse, balanced, or dense profile. */
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):not(:has(button:nth-child(33))) button {
+  --diana-density-offset: .03;
+  --diana-major-offset: .12;
+}
+
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:nth-child(33)):not(:has(button:nth-child(97))) button {
+  --diana-density-offset: .01;
+  --diana-major-offset: .07;
+}
+
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:nth-child(97)) button {
+  --diana-density-offset: 0;
+  --diana-major-offset: 0;
+}
+
+/* A long, art-directed sequence avoids both a ruler and a sine-wave rhythm. */
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 1) { --diana-art-scale-base: .23; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 2) { --diana-art-scale-base: .31; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 3) { --diana-art-scale-base: .26; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 4) { --diana-art-scale-base: .36; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 5) { --diana-art-scale-base: .28; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 6) { --diana-art-scale-base: .33; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 7) { --diana-art-scale-base: .24; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 8) { --diana-art-scale-base: .35; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 9) { --diana-art-scale-base: .29; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 10) { --diana-art-scale-base: .27; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 11) { --diana-art-scale-base: .37; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 12) { --diana-art-scale-base: .25; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 13) { --diana-art-scale-base: .32; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 14) { --diana-art-scale-base: .28; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 15) { --diana-art-scale-base: .34; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 16) { --diana-art-scale-base: .24; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 17) { --diana-art-scale-base: .36; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 18) { --diana-art-scale-base: .30; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 19) { --diana-art-scale-base: .26; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 20) { --diana-art-scale-base: .33; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 21) { --diana-art-scale-base: .23; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 22) { --diana-art-scale-base: .35; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 23) { --diana-art-scale-base: .27; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 24) { --diana-art-scale-base: .31; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 25) { --diana-art-scale-base: .25; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 26) { --diana-art-scale-base: .34; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 27) { --diana-art-scale-base: .29; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 28) { --diana-art-scale-base: .24; }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(29n + 29) { --diana-art-scale-base: .32; }
+
+/* Every fifth message is a division, while the divisions still vary by hand. */
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(45n + 1) { --diana-art-scale-fallback: calc(.42 + var(--diana-major-offset)); }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(45n + 6) { --diana-art-scale-fallback: calc(.47 + var(--diana-major-offset)); }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(45n + 11) { --diana-art-scale-fallback: calc(.40 + var(--diana-major-offset)); }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(45n + 16) { --diana-art-scale-fallback: calc(.45 + var(--diana-major-offset)); }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(45n + 21) { --diana-art-scale-fallback: calc(.43 + var(--diana-major-offset)); }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(45n + 26) { --diana-art-scale-fallback: calc(.48 + var(--diana-major-offset)); }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(45n + 31) { --diana-art-scale-fallback: calc(.41 + var(--diana-major-offset)); }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(45n + 36) { --diana-art-scale-fallback: calc(.46 + var(--diana-major-offset)); }
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]) button:nth-child(45n + 41) { --diana-art-scale-fallback: calc(.44 + var(--diana-major-offset)); }
+
+/* Legacy one-layer marker fallback. */
 html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"])
   button > span > span {
-  height: 3px !important;
+  height: 2px !important;
   border-radius: 999px !important;
   background: var(--diana-rail-seed) !important;
+  color: var(--diana-rail-seed) !important;
   opacity: .72 !important;
+  transform: scaleX(var(--diana-art-scale, var(--diana-art-scale-fallback))) !important;
   transform-origin: left center !important;
   transition:
-    transform 140ms cubic-bezier(.2, .8, .2, 1),
-    opacity 140ms ease,
-    filter 140ms ease !important;
+    transform 160ms linear(0, .398 10%, .682 20%, .843 30%, .925 40%, .972 50%, 1.004 60%, 1.008 70%, 1.003 80%, 1),
+    background-color 140ms ease !important;
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+/* Current Codex adds a MarkerLine below Marker; keep the outer marker inert. */
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"])
+  button > span > span:has(> span) {
+  background: transparent !important;
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"])
-  button:nth-child(5n + 1):not([data-diana-viewport-current="true"]) > span > span {
-  transform: scaleX(.38) !important;
+  button > span > span > span {
+  height: 2px !important;
+  border-radius: 999px !important;
+  background: var(--diana-rail-seed) !important;
+  background-image: none !important;
+  opacity: .72 !important;
+  transform: scaleX(max(var(--diana-art-scale, var(--diana-art-scale-fallback)), calc(.2308 + .7692 * var(--marker-progress, 0)))) !important;
+  transform-origin: left center !important;
+  transition:
+    transform 160ms linear(0, .398 10%, .682 20%, .843 30%, .925 40%, .972 50%, 1.004 60%, 1.008 70%, 1.003 80%, 1),
+    background-color 140ms ease !important;
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"])
+  :is(button:nth-child(5n + 1), button[data-diana-rail-major="true"]) > span > span:not(:has(> span)),
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"])
+  :is(button:nth-child(5n + 1), button[data-diana-rail-major="true"]) > span > span > span {
+  background: var(--diana-rail-major) !important;
   opacity: .9 !important;
 }
 
 html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"])
-  button:not([data-diana-viewport-current="true"]):hover > span > span {
+  button:not([data-diana-viewport-current="true"]):hover > span > span:not(:has(> span)) {
   transform: scaleX(.72) !important;
+  background: var(--diana-rail-hover) !important;
   opacity: 1 !important;
-  filter: drop-shadow(0 0 4px rgb(184 73 112 / 28%));
+}
+
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"])
+  button:not([data-diana-viewport-current="true"]):hover > span > span > span {
+  background: var(--diana-rail-hover) !important;
+  opacity: 1 !important;
 }
 
 html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"])
@@ -483,64 +578,21 @@ html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User mess
 
 html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"])
   button[data-diana-viewport-current="true"] > span > span {
-  transform: scaleX(.76) !important;
+  --marker-progress: 1;
+  color: var(--diana-rail-seed-strong) !important;
+}
+
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"])
+  button[data-diana-viewport-current="true"] > span > span:not(:has(> span)) {
+  transform: scaleX(1) !important;
   background: var(--diana-rail-seed-strong) !important;
   opacity: .78 !important;
 }
 
-/* Preserve the preview's line proportions; long threads reduce visible marks, not line width. */
-html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:nth-child(41))
-  button:not([data-diana-viewport-current="true"]) > span > span {
-  height: 2px !important;
-  transform: scaleX(.42) !important;
-  opacity: .46 !important;
-  filter: none !important;
-}
-
-html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:nth-child(41))
-  button:nth-child(5n + 1):not([data-diana-viewport-current="true"]) > span > span {
-  transform: scaleX(.68) !important;
-  opacity: .62 !important;
-}
-
-html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:nth-child(81))
-  button:not([data-diana-viewport-current="true"]) > span > span {
-  height: 2px !important;
-  transform: scaleX(.42) !important;
-  opacity: 0 !important;
-}
-
-html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:nth-child(81))
-  button:nth-child(5n + 1):not([data-diana-viewport-current="true"]) > span > span {
-  transform: scaleX(.42) !important;
-  opacity: 0 !important;
-}
-
-html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:nth-child(81))
-  button:nth-child(3n + 1):not([data-diana-viewport-current="true"]) > span > span {
-  transform: scaleX(.42) !important;
-  opacity: .38 !important;
-}
-
-html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:nth-child(81))
-  button:nth-child(10n + 1):not([data-diana-viewport-current="true"]) > span > span {
-  height: 2px !important;
-  transform: scaleX(.72) !important;
-  opacity: .6 !important;
-}
-
-html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:nth-child(41))
-  button:not([data-diana-viewport-current="true"]):hover > span > span {
-  height: 2px !important;
-  transform: scaleX(.72) !important;
-  opacity: .9 !important;
-  filter: drop-shadow(0 0 4px rgb(184 73 112 / 24%)) !important;
-}
-
-html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:nth-child(81))
-  button:not([data-diana-viewport-current="true"]):hover > span > span {
-  transform: scaleX(.56) !important;
-  opacity: .82 !important;
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"])
+  button[data-diana-viewport-current="true"] > span > span > span {
+  background: var(--diana-rail-seed-strong) !important;
+  opacity: .78 !important;
 }
 
 html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"])

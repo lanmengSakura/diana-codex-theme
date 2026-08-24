@@ -55,12 +55,12 @@ Do not generate substitute characters, mirror the wrong corner ornament, bake a 
 
 ## Starberry message rail
 
-Keep Codex's native jump-to-message buttons and hit areas intact. Only restyle their visual ticks, and never replace the real navigation behavior with a static decorative rail.
+Keep Codex's native jump-to-message buttons and hit areas intact. Only restyle their visible marker line, and never replace the real navigation behavior with a static decorative rail. Read [message-rail.md](message-rail.md) for the exact profiles and adapter contract.
 
-- Up to 40 user-message buttons: retain the regular tick rhythm.
-- From 41 to 80 buttons: retain the published preview's line proportions, soften inactive ticks, and keep every fifth tick easier to scan.
-- From 81 buttons onward: reduce the number of visible marks instead of compressing the whole rail. Show a regular line every third button and keep every tenth button as a restrained major division.
-- Target roughly 11px for regular visible lines, 18–20px for major divisions, and about 20px plus the octagonal star for the current marker in the current 26px marker geometry.
-- Count descendant message buttons rather than assuming they are direct children of the `nav`; current Codex Desktop nests the list below scrolling wrappers.
-- Exclude `[data-diana-viewport-current="true"]` from every density rule. The real current-message star and its strong tick must remain singular and visually dominant.
-- Keep hover and keyboard focus feedback available at every density.
+- Select sparse (`1–32`), balanced (`33–96`), or dense (`97+`) proportions from the total descendant button count.
+- Keep every normal tick visible at 2px high. Use irregular short lengths plus a varied division every fifth message; do not hide alternating ticks or draw a regular ruler.
+- Current Codex Desktop nests a marker line below its marker container. Make the outer container transparent and style the inner line so overlapping layers cannot create a two-color mark.
+- Let Codex's native `--marker-progress` expand the line on hover. The rest length is a lower bound, not a replacement for the native local hover wave.
+- Keep both endpoint diamonds visible even when the real current message is first or last.
+- Preserve the pre-`v0.2.5` Diana Day rail palette and opacity; do not copy the dark solid colors into light mode.
+- The real `[data-diana-viewport-current="true"]` octagonal star and its strong tick remain singular and visually dominant.

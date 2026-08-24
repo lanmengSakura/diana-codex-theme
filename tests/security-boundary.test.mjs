@@ -81,41 +81,52 @@ test("both visual blueprints keep the environment star and non-interactive decor
   }
 });
 
-test("long conversations reduce only inactive message-rail density", async () => {
+test("hybrid message rail keeps every native target visible and interactive", async () => {
   for (const relativePath of [
     "themes/diana-dark/theme.css",
     "themes/diana-light/theme.css",
   ]) {
     const source = await read(relativePath);
     const activeStar = source.indexOf('button[data-diana-viewport-current="true"]::before');
-    const densityRules = source.indexOf("Preserve the preview's line proportions");
+    const railStart = source.indexOf("Starberry message rail");
+    const railEnd = source.indexOf("Native work surfaces", railStart);
+    const rail = source.slice(railStart, railEnd);
 
     assert.ok(activeStar >= 0, `${relativePath} lost the real current-message star`);
-    assert.ok(densityRules > activeStar, `${relativePath} applies density before the active marker`);
-    assert.match(source, /:has\(button:nth-child\(41\)\)/);
-    assert.match(source, /:has\(button:nth-child\(81\)\)/);
-    assert.match(source, /button:nth-child\(3n \+ 1\):not\(\[data-diana-viewport-current="true"\]\)/);
+    assert.ok(railStart >= 0 && railEnd > railStart, `${relativePath} lost the rail section`);
+    assert.match(rail, /:not\(:has\(button:nth-child\(33\)\)\)/);
+    assert.match(rail, /:has\(button:nth-child\(33\)\):not\(:has\(button:nth-child\(97\)\)\)/);
+    assert.match(rail, /:has\(button:nth-child\(97\)\)/);
+    assert.match(rail, /button:nth-child\(29n \+ 29\)/);
+    assert.match(rail, /button:nth-child\(45n \+ 41\)/);
     assert.doesNotMatch(
-      source,
+      rail,
       /:has\(> button:nth-child/,
       `${relativePath} assumes rail buttons are direct nav children`,
     );
-    assert.match(
-      source,
-      /button:nth-child\(10n \+ 1\):not\(\[data-diana-viewport-current="true"\]\)/,
-    );
-
-    const denseSection = source.slice(densityRules, source.indexOf("button:focus-visible", densityRules));
-    assert.match(
-      denseSection,
-      /button:not\(\[data-diana-viewport-current="true"\]\) > span > span/,
-    );
-    assert.match(denseSection, /transform: scaleX\(\.42\) !important;/);
-    assert.match(denseSection, /transform: scaleX\(\.72\) !important;/);
-    assert.match(denseSection, /opacity: 0 !important;/);
-    assert.doesNotMatch(
-      denseSection,
-      /button\[data-diana-viewport-current="true"\] > span > span/,
-    );
+    assert.match(rail, /button > span > span > span/);
+    assert.match(rail, /max\(var\(--diana-art-scale, var\(--diana-art-scale-fallback\)\), calc\(\.2308 \+ \.7692 \* var\(--marker-progress, 0\)\)\)/);
+    assert.match(rail, /height: 2px !important/);
+    assert.doesNotMatch(rail, /opacity: 0 !important/);
+    assert.doesNotMatch(rail, /last-child\[data-diana-viewport-current="true"\]\)::after/);
   }
+});
+
+test("day rail retains the pre-v0.2.5 berry palette", async () => {
+  const source = await read("themes/diana-light/theme.css");
+  assert.match(source, /--diana-rail-seed: rgb\(184 73 112 \/ 55%\)/);
+  assert.match(source, /--diana-rail-seed-strong: rgb\(174 55 96 \/ 92%\)/);
+  assert.match(source, /--diana-rail-opacity:|opacity: \.72 !important/);
+  assert.match(source, /opacity: \.9 !important/);
+  assert.match(source, /opacity: \.78 !important/);
+});
+
+test("skill documents the exact adaptive rail profile without shipping a runtime", async () => {
+  const reference = await read("skills/diana-codex-theme/references/message-rail.md");
+  assert.match(reference, /sparse/);
+  assert.match(reference, /balanced/);
+  assert.match(reference, /dense/);
+  assert.match(reference, /block \* 7/);
+  assert.match(reference, /i % 5 === 0/);
+  assert.match(reference, /--diana-art-scale/);
 });

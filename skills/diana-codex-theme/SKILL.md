@@ -89,7 +89,7 @@ Copying assets, writing an adapter proposal, passing CSS or ZIP validation, or o
 2. Edit day and night variants together.
 3. Keep decorative artwork below task content and outside the composer.
 4. Update a browser preview before changing a deployment adapter.
-5. Test the Starberry message rail with short, medium, and 81-plus-message conversations; inactive ticks must reduce density while the real current-message star remains singular and prominent.
+5. Read [message-rail.md](references/message-rail.md) when adapting the Starberry rail. Test short, medium, 97-plus, and real 200-plus-message conversations; the irregular ticks remain visible while the real current-message star stays singular and prominent.
 6. Inspect screenshots rather than relying only on DOM checks.
 
 ## Guardrails
