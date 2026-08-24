@@ -5,7 +5,7 @@
 - Operating system: Windows 11
 - Codex distribution: Microsoft Store / MSIX
 - Locally inspected version: `26.818.5229.0`
-- Theme release: `0.2.8`
+- Theme release: `0.2.9`
 - Visual status: Diana Night and Diana Day finalized
 - Desktop status: native color recipe + visual blueprint; no executable injector
 
@@ -28,6 +28,8 @@
 - Persistence: none
 - Legacy migration: use `npm run security:remove-legacy`, restart Codex normally, then run `npm run security:audit`
 - Message rail blueprint: total descendant buttons select sparse (`1–32`), balanced (`33–96`), or dense (`97+`) proportions across the current nested MarkerLine DOM; every real target remains visibly represented, native hover progress stays active, both endpoint diamonds remain visible, and Diana Day retains the pre-`v0.2.5` berry palette
+- Top-edge blueprint: preserve the native fixed toolbar and main-content fade; mark only the verified direct child containing both the conversation viewport and composer as foreground
+- Inspector-heading blueprint: attach one non-interactive hand-drawn star to the first meaningful title row of the visible right panel, independent of localized heading text
 
 ## Skill installation status
 

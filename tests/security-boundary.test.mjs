@@ -81,6 +81,31 @@ test("both visual blueprints keep the generic panel-heading star non-interactive
   }
 });
 
+test("top-edge stacking is scoped to the verified conversation foreground", async () => {
+  for (const relativePath of [
+    "themes/diana-dark/theme.css",
+    "themes/diana-light/theme.css",
+  ]) {
+    const source = await read(relativePath);
+    assert.match(
+      source,
+      /\.diana-skin-surface\s*>\s*\.diana-skin-foreground\s*\{[\s\S]*?z-index:\s*1/,
+    );
+    assert.doesNotMatch(
+      source,
+      /\.diana-skin-surface\s*>\s*:not\(\s*#diana-theme-chrome\s*\)/,
+      `${relativePath} must not raise every direct surface child`,
+    );
+  }
+
+  const skill = await read("skills/diana-codex-theme/SKILL.md");
+  const visualSystem = await read("skills/diana-codex-theme/references/visual-system.md");
+  const runtimeSafety = await read("skills/diana-codex-theme/references/runtime-safety.md");
+  assert.match(skill, /mark only the verified conversation foreground/);
+  assert.match(visualSystem, /Never use a blanket rule/);
+  assert.match(runtimeSafety, /Do not assign `position` or `z-index` to all direct children/);
+});
+
 test("hybrid message rail keeps every native target visible and interactive", async () => {
   for (const relativePath of [
     "themes/diana-dark/theme.css",

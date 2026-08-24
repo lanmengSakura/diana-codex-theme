@@ -72,6 +72,9 @@ test("installation uses a two-turn GitHub path flow and reports deployment state
   assert.match(readme, /下一条消息/);
   assert.match(readme, /Release ZIP 备用方式/);
   assert.doesNotMatch(readme, /推荐安装方式[^\n]*直接拖进 Codex/);
+  assert.match(skill, /## Installation handoff/);
+  assert.match(skill, /user replies “继续”/);
+  assert.match(skill, /resume the original request to mount the complete Diana theme/);
 
   for (const state of [
     "skill_available",
