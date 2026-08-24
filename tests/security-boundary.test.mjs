@@ -88,12 +88,13 @@ test("long conversations reduce only inactive message-rail density", async () =>
   ]) {
     const source = await read(relativePath);
     const activeStar = source.indexOf('button[data-diana-viewport-current="true"]::before');
-    const densityRules = source.indexOf("Keep long conversations readable");
+    const densityRules = source.indexOf("Preserve the preview's line proportions");
 
     assert.ok(activeStar >= 0, `${relativePath} lost the real current-message star`);
     assert.ok(densityRules > activeStar, `${relativePath} applies density before the active marker`);
     assert.match(source, /:has\(button:nth-child\(41\)\)/);
     assert.match(source, /:has\(button:nth-child\(81\)\)/);
+    assert.match(source, /button:nth-child\(3n \+ 1\):not\(\[data-diana-viewport-current="true"\]\)/);
     assert.doesNotMatch(
       source,
       /:has\(> button:nth-child/,
@@ -109,6 +110,9 @@ test("long conversations reduce only inactive message-rail density", async () =>
       denseSection,
       /button:not\(\[data-diana-viewport-current="true"\]\) > span > span/,
     );
+    assert.match(denseSection, /transform: scaleX\(\.42\) !important;/);
+    assert.match(denseSection, /transform: scaleX\(\.72\) !important;/);
+    assert.match(denseSection, /opacity: 0 !important;/);
     assert.doesNotMatch(
       denseSection,
       /button\[data-diana-viewport-current="true"\] > span > span/,

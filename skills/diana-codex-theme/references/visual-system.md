@@ -58,8 +58,9 @@ Do not generate substitute characters, mirror the wrong corner ornament, bake a 
 Keep Codex's native jump-to-message buttons and hit areas intact. Only restyle their visual ticks, and never replace the real navigation behavior with a static decorative rail.
 
 - Up to 40 user-message buttons: retain the regular tick rhythm.
-- From 41 to 80 buttons: shorten and soften inactive ticks, while keeping every fifth tick easier to scan.
-- From 81 buttons onward: use the compact density tier; keep every tenth tick as a restrained major division.
+- From 41 to 80 buttons: retain the published preview's line proportions, soften inactive ticks, and keep every fifth tick easier to scan.
+- From 81 buttons onward: reduce the number of visible marks instead of compressing the whole rail. Show a regular line every third button and keep every tenth button as a restrained major division.
+- Target roughly 11px for regular visible lines, 18–20px for major divisions, and about 20px plus the octagonal star for the current marker in the current 26px marker geometry.
 - Count descendant message buttons rather than assuming they are direct children of the `nav`; current Codex Desktop nests the list below scrolling wrappers.
 - Exclude `[data-diana-viewport-current="true"]` from every density rule. The real current-message star and its strong tick must remain singular and visually dominant.
 - Keep hover and keyboard focus feedback available at every density.

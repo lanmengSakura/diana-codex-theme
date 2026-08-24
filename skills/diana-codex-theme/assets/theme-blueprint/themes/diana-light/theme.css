@@ -488,53 +488,59 @@ html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User mess
   opacity: .78 !important;
 }
 
-/* Keep long conversations readable without changing the real current-message marker. */
+/* Preserve the preview's line proportions; long threads reduce visible marks, not line width. */
 html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:nth-child(41))
   button:not([data-diana-viewport-current="true"]) > span > span {
   height: 2px !important;
-  transform: scaleX(.34) !important;
-  opacity: .42 !important;
+  transform: scaleX(.42) !important;
+  opacity: .46 !important;
   filter: none !important;
 }
 
 html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:nth-child(41))
   button:nth-child(5n + 1):not([data-diana-viewport-current="true"]) > span > span {
-  transform: scaleX(.54) !important;
-  opacity: .58 !important;
+  transform: scaleX(.68) !important;
+  opacity: .62 !important;
 }
 
 html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:nth-child(81))
   button:not([data-diana-viewport-current="true"]) > span > span {
-  height: 1px !important;
-  transform: scaleX(.2) !important;
-  opacity: .24 !important;
+  height: 2px !important;
+  transform: scaleX(.42) !important;
+  opacity: 0 !important;
 }
 
 html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:nth-child(81))
   button:nth-child(5n + 1):not([data-diana-viewport-current="true"]) > span > span {
-  transform: scaleX(.34) !important;
-  opacity: .34 !important;
+  transform: scaleX(.42) !important;
+  opacity: 0 !important;
+}
+
+html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:nth-child(81))
+  button:nth-child(3n + 1):not([data-diana-viewport-current="true"]) > span > span {
+  transform: scaleX(.42) !important;
+  opacity: .38 !important;
 }
 
 html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:nth-child(81))
   button:nth-child(10n + 1):not([data-diana-viewport-current="true"]) > span > span {
   height: 2px !important;
-  transform: scaleX(.52) !important;
-  opacity: .5 !important;
+  transform: scaleX(.72) !important;
+  opacity: .6 !important;
 }
 
 html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:nth-child(41))
   button:not([data-diana-viewport-current="true"]):hover > span > span {
   height: 2px !important;
-  transform: scaleX(.64) !important;
+  transform: scaleX(.72) !important;
   opacity: .9 !important;
   filter: drop-shadow(0 0 4px rgb(184 73 112 / 24%)) !important;
 }
 
 html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"]):has(button:nth-child(81))
   button:not([data-diana-viewport-current="true"]):hover > span > span {
-  transform: scaleX(.52) !important;
-  opacity: .78 !important;
+  transform: scaleX(.56) !important;
+  opacity: .82 !important;
 }
 
 html.diana-theme-host nav:is([aria-label="用户消息"], [aria-label="User messages"])

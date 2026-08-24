@@ -5,7 +5,7 @@
 - Operating system: Windows 11
 - Codex distribution: Microsoft Store / MSIX
 - Locally inspected version: `26.818.5229.0`
-- Theme release: `0.2.6`
+- Theme release: `0.2.7`
 - Visual status: Diana Night and Diana Day finalized
 - Desktop status: native color recipe + visual blueprint; no executable injector
 
@@ -27,7 +27,7 @@
 - Debugging endpoints: none in the repository or release; a local experiment may be generated only after notification and explicit user approval
 - Persistence: none
 - Legacy migration: use `npm run security:remove-legacy`, restart Codex normally, then run `npm run security:audit`
-- Message rail blueprint: inactive ticks use 41-item and 81-item density tiers across the current nested scroll-container DOM; the current-message star and native jump targets remain unchanged
+- Message rail blueprint: inactive ticks use 41-item and 81-item density tiers across the current nested scroll-container DOM; high density preserves preview line proportions and reduces visible marks without removing native jump targets
 
 ## Skill installation status
 
