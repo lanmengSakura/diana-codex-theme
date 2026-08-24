@@ -37,7 +37,7 @@ On macOS, keep CDP disabled because that route has not been verified on real har
 - Before every connection, verify the listener owner, executable identity, expected Codex package, renderer target, and visible native window. These checks reduce mistakes but do not protect against hostile same-user software.
 - Load CSS and images only from the bundled local assets. Do not fetch remote code, CSS, images, telemetry, or update payloads.
 - Scope selectors below a Diana host marker. Keep decoration non-interactive with `pointer-events: none`, below task content, and outside the composer.
-- Follow the build-specific top-edge and environment-heading contracts in [visual-system.md](visual-system.md): preserve the native toolbar and top fade, mark only the verified conversation foreground, and never apply blanket positioning or stacking to every main-surface child.
+- Follow the build-specific top-edge and panel-heading contracts in [visual-system.md](visual-system.md): preserve the native toolbar and top fade, mark only the verified conversation foreground, and never apply blanket positioning or stacking to every main-surface child.
 - Do not log conversation text, task titles, DOM snapshots, screenshots, cookies, tokens, WebSocket URLs, or authentication data. Logs may contain timestamps, versions, PIDs, state transitions, and redacted errors only.
 - Do not force-close Codex. Ask before the initial restart and warn about active tasks.
 - Keep the first run foreground/manual with no scheduled task, service, login item, or hidden watcher.

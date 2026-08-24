@@ -42,7 +42,7 @@ Do not generate substitute characters, mirror the wrong corner ornament, bake a 
 - Anchor the main character to the lower-right edge using the bundled CSS as the exact starting point.
 - Keep the approved left narrative drawing and upper-corner decorations inside the work-area edges, not the global window chrome.
 - Preserve sparse whitespace around the conversation column and composer.
-- Keep the hand-drawn environment-heading star attached to the real heading when that hook exists; omit it if no safe dynamic hook is available.
+- Keep the hand-drawn panel-heading star attached to the first real title row of the visible right inspector when that hook exists; omit it if no safe dynamic hook is available.
 - Use `pointer-events: none` on every art layer and keep the composer above decoration.
 
 ### Top-edge compatibility
@@ -52,11 +52,12 @@ Do not generate substitute characters, mirror the wrong corner ornament, bake a 
 - Find the exact direct child that contains the verified conversation viewport and mark only that node as the foreground. Keep the Diana chrome absolute at `z-index: 0`, non-interactive, and sized from the inspected work area. Re-measure after a Codex update instead of relying on a class hash or the previous fade height.
 - Correct mounting and stacking before changing opacity. When the inspected build still needs a restrained upper-right-line compensation, use `.33` in dark mode and `.30` in light mode, then confirm by screenshot that the line is legible without crossing task text. Do not use this compensation to brighten the left ornament, character, or main-work-area typography.
 
-### Environment-heading star
+### Panel-heading star
 
 - Render the bundled hand-drawn star at `21px × 21px`, `display: block`, and `flex: 0 0 auto`; use `.72` opacity in dark mode and `.64` in light mode as the production starting point.
-- If the real heading text is a truncating span, do not prepend a block element inside that span. Mark the exact heading label or its non-truncating flex row and render the star with a scoped `::before`, or insert it as a sibling in that row. The star and title must remain on one line.
-- Reuse the adapter's existing DOM observer to restore the marker after panel redraws. Remove stale markers before attaching the current one and verify that exactly one environment star is present.
+- Do not bind the mount to translated strings such as `环境信息`, `Environment`, or `输出内容`. Locate the right `presentation` panel, verify its first visible title row contains meaningful text, and mount the star at the start of that row so future native heading variants inherit the same treatment without inventing or replacing text.
+- Keep the star as its own `aria-hidden` sibling instead of prepending a block element inside a truncating text span. The star and title must remain on one line, while pure icon, add-button, or content rows must never qualify as headings.
+- Reuse the adapter's existing DOM observer to restore the star after panel redraws. Remove stale injected nodes before attaching the current one and verify that exactly one panel-heading star is present.
 
 ## Components
 

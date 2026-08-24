@@ -242,7 +242,7 @@ button:focus-visible, textarea:focus-visible, select:focus-visible, input:focus-
 .inspector-title, .source-heading { display: flex; align-items: center; }
 .inspector-title { gap: 7px; min-height: 29px; padding: 1px 5px 6px; color: var(--muted); }
 .inspector-title button, .source-heading button { margin-left: auto; border: 0; background: transparent; color: var(--muted); }
-.inspector-star { width: 25px; aspect-ratio: 1; background: var(--accent); -webkit-mask: url("../assets/diana-brand/derived/diana-hand-star-reference-v2.png") center / contain no-repeat; mask: url("../assets/diana-brand/derived/diana-hand-star-reference-v2.png") center / contain no-repeat; opacity: .7; transform: rotate(-8deg); }
+.diana-panel-heading-star { width: 25px; aspect-ratio: 1; flex: 0 0 auto; background: url("../assets/diana-brand/derived/diana-hand-star-reference-v2.png") center / contain no-repeat; opacity: .7; transform: rotate(-8deg); pointer-events: none; }
 .inspector > button { width: 100%; min-height: 32px; display: flex; align-items: center; gap: 10px; padding: 6px; border: 0; border-radius: 7px; background: transparent; text-align: left; }
 .inspector > button:hover { color: var(--accent); background: var(--accent-wash); }
 .inspector > button .icon { width: 14px; height: 14px; }

@@ -103,7 +103,7 @@ Copying assets, writing an adapter proposal, passing CSS or ZIP validation, or o
 - Never patch `WindowsApps`, a macOS `.app` bundle, `app.asar`, signatures, quarantine metadata, or bundled Codex resources.
 - Never open CDP, install a watcher, or create persistence without first notifying the user and receiving explicit approval for the exact plan. Any approved experiment must follow [experimental-full-visual.md](references/experimental-full-visual.md), remain machine-local, and never be shipped as a repository runtime.
 - Never inject analytics, remote CSS, remote images, or arbitrary remote scripts.
-- Never delete Codex's native main-content top fade or hardcode its observed height as a cross-version constant. Follow the top-edge and environment-heading contracts in [visual-system.md](references/visual-system.md).
+- Never delete Codex's native main-content top fade or hardcode its observed height as a cross-version constant. Follow the top-edge and panel-heading contracts in [visual-system.md](references/visual-system.md).
 - Never claim compatibility from a mockup, CSS parse, or screenshot alone.
 - Keep code licensing separate from character-art licensing.
 - Preserve an explicit, tested restore path.

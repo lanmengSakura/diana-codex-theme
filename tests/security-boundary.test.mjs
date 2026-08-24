@@ -68,13 +68,13 @@ test("Windows Terminal profiles are static local fragments with no listener or p
   );
 });
 
-test("both visual blueprints keep the environment star and non-interactive decoration", async () => {
+test("both visual blueprints keep the generic panel-heading star non-interactive", async () => {
   for (const relativePath of [
     "themes/diana-dark/theme.css",
     "themes/diana-light/theme.css",
   ]) {
     const source = await read(relativePath);
-    assert.match(source, /\.diana-environment-heading-star/);
+    assert.match(source, /\.diana-panel-heading-star/);
     assert.match(source, /--diana-image-hand-star/);
     assert.match(source, /pointer-events:\s*none/);
     assert.match(source, /html\.diana-theme-host/);

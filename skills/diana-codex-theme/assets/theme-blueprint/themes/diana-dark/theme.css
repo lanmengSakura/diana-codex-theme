@@ -284,7 +284,7 @@ html.diana-theme-host header button[class*="section-toggle"]:not(:disabled):hove
   color: var(--diana-accent) !important;
 }
 
-html.diana-theme-host .diana-environment-heading-star {
+html.diana-theme-host .diana-panel-heading-star {
   display: block;
   flex: 0 0 auto;
   width: 21px;
