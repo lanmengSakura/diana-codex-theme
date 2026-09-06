@@ -6,7 +6,9 @@
 
 日间与暗夜分别设计，保留 Codex 原本的阅读层级，让嘉然、阿草与手绘线稿安静地停留在工作区边角。
 
-[在线演示](https://lanmengsakura.github.io/diana-codex-theme/) · [CodexThemes 视觉参考](https://codexthemes.ai/skins/diana-codex-theme) · [下载发行包](https://github.com/lanmengSakura/diana-codex-theme/releases/latest) · [兼容性记录](docs/compatibility.md) · [安全说明](SECURITY.md)
+[在线体验 Codex 主题](https://diana-launcher-demo.szbluedream01.chatgpt.site/themes?app=codex) · [启动器演示](https://diana-launcher-demo.szbluedream01.chatgpt.site/) · [原独立演示](https://lanmengsakura.github.io/diana-codex-theme/) · [CodexThemes 视觉参考](https://codexthemes.ai/skins/diana-codex-theme) · [下载发行包](https://github.com/lanmengSakura/diana-codex-theme/releases/latest) · [兼容性记录](docs/compatibility.md) · [安全说明](SECURITY.md)
+
+在线体验沿用原桌面演示母版，统一日间、暗夜、原版参考与应用切换；使用示例内容，不操作本机。真实 Codex 的原版启动仍需先完整退出。
 
 ![Release](https://img.shields.io/github/v/release/lanmengSakura/diana-codex-theme?display_name=tag&color=b84970&label=release)
 ![Platform](https://img.shields.io/badge/verified-Windows%20Terminal-b85f7c)
