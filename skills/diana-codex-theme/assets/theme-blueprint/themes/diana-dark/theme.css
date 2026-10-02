@@ -27,6 +27,17 @@ html.diana-theme-host body {
   color: var(--diana-ink);
 }
 
+/* Compact/auxiliary Codex windows are natively transparent (for example the
+   desktop pet).  Keep the theme from painting an opaque rectangle behind
+   those surfaces while preserving the normal full-window background. */
+html.diana-theme-host:is(.compact-window, .diana-auxiliary-window),
+html.diana-theme-host:is(.compact-window, .diana-auxiliary-window) body,
+html.diana-theme-host:is(.compact-window, .diana-auxiliary-window) #root,
+html.diana-theme-host:is(.compact-window, .diana-auxiliary-window) .diana-skin-surface {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
 html.diana-theme-host #diana-theme-chrome {
   position: absolute;
   z-index: 0;

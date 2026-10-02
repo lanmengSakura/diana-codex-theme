@@ -5,7 +5,7 @@
 - Operating system: Windows 11
 - Codex distribution: Microsoft Store / MSIX
 - Locally inspected version: `26.818.5229.0`
-- Theme release: `0.2.9`
+- Theme release: `0.2.10`
 - Visual status: Diana Night and Diana Day finalized
 - Desktop status: native color recipe + visual blueprint; no executable injector
 
